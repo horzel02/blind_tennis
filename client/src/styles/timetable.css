@@ -1,0 +1,67 @@
+/* container wrapper spójny z resztą */
+.schedule-shell.container { max-width: 980px; margin: 0 auto; }
+
+/* head + tabs */
+.schedule-head { display:flex; justify-content:space-between; align-items:flex-end; margin: 8px 0 16px; gap: 12px; }
+.schedule-head h2 { margin:0; }
+.schedule-tabs { display:flex; gap:12px; flex-wrap:wrap; }
+.st-group { display:flex; gap:6px; }
+.st-tab {
+  padding:6px 10px; border:1px solid #e3e3e7; border-radius:8px; background:#fff; cursor:pointer;
+  font-size:14px; line-height:1; transition:all .15s ease;
+}
+.st-tab:hover { background:#f8f9fb; }
+.st-tab.active { background:#0b74ff; border-color:#0b74ff; color:#fff; }
+
+/* list */
+.schedule-list { display:flex; flex-direction:column; gap:0; border:1px solid #eee; border-radius:12px; overflow:hidden; }
+.schedule-item {
+  display:grid; grid-template-columns: minmax(0,1fr) auto 140px; gap:16px;
+  padding:14px 16px; background:#fff; border-bottom:1px solid #eee; align-items:center;
+}
+.schedule-item:last-child { border-bottom:none; }
+.schedule-item:hover { background:#fafbff; }
+.schedule-item:focus { outline:2px solid #0b74ff33; outline-offset:-2px; }
+
+.sl-left { min-width:0; }
+.sl-title { font-weight:600; }
+.sl-sub { color:#60646c; font-size:13px; margin-top:2px; }
+.sl-opponent { margin-top:6px; font-size:14px; }
+
+.sl-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-self:flex-start; }
+
+.sl-right { justify-self:end; text-align:right; }
+.sl-score { font-weight:600; }
+
+.sl-chip {
+  background:#f2f5ff; border:1px solid #e1e6ff; color:#1b1f33;
+  border-radius:999px; padding:4px 8px; font-size:12px;
+}
+.sl-chip--muted {
+  background:#f6f7f9; border-color:#eceff3; color:#7a7f88;
+}
+
+.sl-badge {
+  font-size:12px; padding:3px 8px; border-radius:999px; border:1px solid #e5e7eb; background:#fff; color:#374151;
+}
+.sl-badge--live { border-color:#ffb3b3; background:#ffecec; color:#b60000; }
+.sl-badge--done { border-color:#b7ebc6; background:#eefbf2; color:#146c2e; }
+.sl-badge--admin { border-color:#ffe2b3; background:#fff7e6; color:#8a4a00; }
+
+.live-dot {
+  display:inline-block; width:8px; height:8px; border-radius:50%; background:#ff2a2a; margin-left:6px;
+  box-shadow: 0 0 0 0 rgba(255,42,42,0.7); animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,42,42,0.6); }
+  70%{ box-shadow: 0 0 0 8px rgba(255,42,42,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(255,42,42,0); }
+}
+
+.sl-empty, .sl-loading-more { padding:16px; color:#666; text-align:center; }
+
+/* responsive */
+@media (max-width: 1024px) {
+  .schedule-item { grid-template-columns: 1fr; align-items:flex-start; }
+  .sl-right { justify-self:start; text-align:left; }
+}

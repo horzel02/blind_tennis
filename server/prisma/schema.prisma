@@ -1,0 +1,388 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Etap rozgrywek (faza grupowa / pucharowa)
+enum MatchStage {
+  group
+  knockout
+}
+
+enum TournamentFormat {
+  GROUPS_KO   // faza grupowa + drabinka KO
+  KO_ONLY     // tylko drabinka KO (bez grup)
+}
+
+enum KOSeedingPolicy {
+  RANDOM_CROSS   // losowy zwycięzca vs losowy drugie miejsce (z unikaniem tej samej grupy)
+  STRUCTURED     // schemat A1–H2, B1–G2 itd.
+}
+
+enum MatchResultType {
+  NORMAL           // zwykły mecz na sety
+  WALKOVER         // walkower (WO)
+  DISQUALIFICATION // dyskwalifikacja (DQ)
+  RETIREMENT       // krecz (RET)
+}
+
+enum GuardianStatus {
+  invited
+  accepted
+  declined
+  revoked
+}
+
+enum TournamentFormula {
+  towarzyski
+  mistrzowski
+}
+
+model roles {
+  id                Int          @id @default(autoincrement())
+  role_name         String       @unique(map: "role_name") @db.VarChar(50)
+  creation_date     DateTime     @default(now()) @db.Timestamp(0)
+  modification_date DateTime     @default(now()) @db.Timestamp(0)
+  active            Boolean      @default(true)
+  user_roles        user_roles[]
+}
+
+model tournament {
+  id                    Int       @id @default(autoincrement())
+  name                  String    @db.VarChar(255)
+  description           String?   @db.Text
+  street                String    @db.VarChar(255)
+  postalCode            String    @map("postal_code")           @db.VarChar(10)
+  city                  String    @db.VarChar(100)
+  country               String    @db.VarChar(100)
+  start_date            DateTime  @db.Date
+  end_date              DateTime  @db.Date
+  registration_deadline DateTime?
+  participant_limit     Int?
+  applicationsOpen      Boolean   @map("applications_open")     @default(true)
+  type                  String    @default("open") @db.VarChar(10)
+  organizer_id          Int
+  organizer             users     @relation(fields: [organizer_id], references: [id])
+  created_at            DateTime  @default(now()) @db.Timestamp(0)
+  updated_at            DateTime  @default(now()) @db.Timestamp(0)
+  formula               TournamentFormula @default(towarzyski)
+
+  // === Ustawienia KO/Grup (NOWE, bez dubli) ===
+  format             TournamentFormat @default(KO_ONLY)   // zgodne z Twoim isGroupPhase=false
+  groupSize          Int              @map("group_size")           @default(4) // 3 lub 4
+  qualifiersPerGroup Int              @map("qualifiers_per_group") @default(2) // 1 lub 2
+  allowByes          Boolean          @map("allow_byes")           @default(true)
+  koSeedingPolicy    KOSeedingPolicy  @map("ko_seeding_policy")    @default(RANDOM_CROSS)
+  avoidSameGroupInR1 Boolean          @map("avoid_same_group_in_r1") @default(true)
+
+  // === To zostaje (masz już) ===
+  status            String  @default("registration_open") @db.VarChar(20)
+  isGroupPhase      Boolean @map("is_group_phase")        @default(false)   // legacy toggle — na razie zostawiamy
+  isGenderSeparated Boolean @map("is_gender_separated")   @default(false)
+  setsToWin         Int     @map("sets_to_win")           @default(2)
+  gamesPerSet       Int     @map("games_per_set")         @default(4)
+  tieBreakType      String  @map("tie_break_type")        @default("super") @db.VarChar(30)
+
+  tournamentRegistrations tournamentregistration[]
+  tournamentUserRoles     tournamentuserrole[]
+  categories              TournamentCategory[]
+  matches                 Match[]
+
+  guardians               TournamentGuardian[]
+}
+
+model user_roles {
+  id              Int      @id @default(autoincrement())
+  user_id         Int
+  role_id         Int
+  assignment_date DateTime @default(now()) @db.Timestamp(0)
+
+  users users @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "user_roles_ibfk_1")
+  roles roles @relation(fields: [role_id], references: [id], onUpdate: Restrict, map: "user_roles_ibfk_2")
+
+  @@index([role_id], map: "role_id")
+  @@index([user_id], map: "user_id")
+}
+
+model users {
+  id                Int      @id @default(autoincrement())
+  name              String   @db.VarChar(100)
+  surname           String   @db.VarChar(100)
+  email             String   @unique(map: "email") @db.VarChar(100)
+  password_hash     String   @db.VarChar(255)
+  creation_date     DateTime @default(now()) @db.Timestamp(0)
+  modification_date DateTime @default(now()) @db.Timestamp(0)
+  active            Boolean  @default(true)
+  gender            String?  @db.VarChar(10)
+  preferredCategory String?  @map("preferred_category") @db.VarChar(10)
+
+  user_roles              user_roles[]
+  tournaments             tournament[]
+  tournamentRegistrations tournamentregistration[]
+  tournamentUserRoles     tournamentuserrole[]
+  matchesAsPlayer1        Match[]                  @relation("Player1Matches")
+  matchesAsPlayer2        Match[]                  @relation("Player2Matches")
+  matchesAsReferee        Match[]                  @relation("RefereeMatches")
+  matchesWon              Match[]                  @relation("WinnerMatches")
+  GroupSlot               GroupSlot[]
+  notifications           Notification[]
+  guardiansAsPlayer       TournamentGuardian[] @relation("GuardianPlayer")
+  guardiansAsGuardian     TournamentGuardian[] @relation("GuardianUser")
+  guardiansInvited        TournamentGuardian[] @relation("GuardianInviter")
+}
+
+model tournamentregistration {
+  @@map("tournament_registration")
+
+  id                Int      @id @default(autoincrement())
+  tournamentId      Int      @map("tournament_id")
+  userId            Int      @map("user_id")
+  blindnessCategory String?  @map("blindness_category") @db.VarChar(10)
+  gender            String?  @db.VarChar(10)
+  status            String   @default("pending") @db.VarChar(10)
+  createdAt         DateTime @map("created_at") @default(now()) @db.Timestamp(0)
+  updatedAt         DateTime @map("updated_at") @default(now()) @updatedAt
+  invitedBy         Int?     @map("invited_by")
+
+  tournament tournament @relation(fields: [tournamentId], references: [id])
+  user       users      @relation(fields: [userId], references: [id])
+
+  @@index([tournamentId])
+  @@index([userId])
+  @@index([invitedBy])
+}
+
+model tournamentuserrole {
+  @@map("tournament_user_role")
+
+  id           Int      @id @default(autoincrement())
+  tournamentId Int      @map("tournament_id")
+  userId       Int      @map("user_id")
+  role         String   @db.VarChar(20)
+  createdAt    DateTime @map("created_at") @default(now())
+
+  tournament tournament @relation(fields: [tournamentId], references: [id])
+  user       users      @relation(fields: [userId], references: [id])
+
+  @@unique([tournamentId, userId, role])
+  @@index([tournamentId])
+  @@index([userId])
+}
+
+model TournamentCategory {
+  @@map("tournament_category")
+
+  id           Int      @id @default(autoincrement())
+  tournamentId Int      @map("tournament_id")
+  categoryName String   @map("category_name") @db.VarChar(10)
+  gender       String   @db.VarChar(10)
+  createdAt    DateTime @map("created_at") @default(now())
+
+  tournament     tournament      @relation(fields: [tournamentId], references: [id])
+  matches        Match[]
+  CategoryConfig CategoryConfig?
+  CategoryGroup  CategoryGroup[]
+
+  @@unique([tournamentId, categoryName, gender])
+  @@index([tournamentId])
+}
+
+model Match {
+  @@map("match")
+
+  id                   Int       @id @default(autoincrement())
+  tournamentId         Int       @map("tournament_id")
+  tournamentCategoryId Int       @map("tournament_category_id")
+  round                String    @db.VarChar(50)
+  player1Id            Int?      @map("player1_id")
+  player2Id            Int?      @map("player2_id")
+  refereeId            Int?      @map("referee_id")
+  winnerId             Int?      @map("winner_id")
+  status               String    @default("scheduled") @db.VarChar(20)
+  courtNumber          String?   @map("court_number") @db.VarChar(10)
+  matchTime            DateTime? @map("match_time")
+  durationMin          Int?      @map("duration_min")
+
+  /// NOWE:
+  stage           MatchStage @default(group) // group | knockout
+  /// Jeśli mecz jest w grupie, wskaż do której
+  categoryGroupId Int?       @map("category_group_id")
+  /// porządek rundy w obrębie etapu (np. 1..N), pomocny przy sortowaniu
+  roundOrder      Int?       @map("round_order")
+  /// źródła w drabince (np. "A1" vs "B2", albo "QF1-W" vs "QF2-W")
+  sourceA         String?    @map("source_a") @db.VarChar(50)
+  sourceB         String?    @map("source_b") @db.VarChar(50)
+  /// czy pary są zablokowane przed auto-regenem
+  locked          Boolean    @default(false)
+
+  createdAt   DateTime       @map("created_at") @default(now())
+  updatedAt   DateTime       @map("updated_at") @default(now()) @updatedAt
+  resultType  MatchResultType @map("result_type") @default(NORMAL)
+  resultNote  String?         @map("result_note")
+
+  tournament tournament         @relation(fields: [tournamentId], references: [id])
+  category   TournamentCategory @relation(fields: [tournamentCategoryId], references: [id])
+  player1    users?             @relation("Player1Matches", fields: [player1Id], references: [id])
+  player2    users?             @relation("Player2Matches", fields: [player2Id], references: [id])
+  referee    users?             @relation("RefereeMatches", fields: [refereeId], references: [id])
+  winner     users?             @relation("WinnerMatches", fields: [winnerId], references: [id])
+  matchSets  MatchSet[]
+
+  /// relacja do grupy (opcjonalna)
+  group CategoryGroup? @relation(fields: [categoryGroupId], references: [id])
+
+  @@index([tournamentId])
+  @@index([tournamentCategoryId])
+  @@index([player1Id])
+  @@index([player2Id])
+  @@index([refereeId])
+  @@index([stage])
+  @@index([categoryGroupId])
+}
+
+model MatchSet {
+  @@map("match_set")
+
+  id           Int @id @default(autoincrement())
+  matchId      Int @map("match_id")
+  setNumber    Int @map("set_number")
+  player1Score Int @map("player1_score")
+  player2Score Int @map("player2_score")
+
+  match Match @relation(fields: [matchId], references: [id])
+
+  @@unique([matchId, setNumber])
+  @@index([matchId])
+}
+
+model session {
+  sid    String   @id
+  sess   String
+  expire DateTime
+
+  @@index([expire])
+}
+
+model CategoryConfig {
+  @@map("category_config")
+
+  id                   Int     @id @default(autoincrement())
+  tournamentCategoryId Int     @map("tournament_category_id") @unique
+  /// liczba grup w tej kategorii (np. 4 grupy: A,B,C,D)
+  groupsCount          Int     @map("groups_count")        @default(0)
+  /// minimalny i maksymalny rozmiar grupy
+  groupSizeMin         Int     @map("group_size_min")      @default(3)
+  groupSizeMax         Int     @map("group_size_max")      @default(6)
+  /// ilu awansuje bezpośrednio z każdej grupy (np. 2)
+  advancePerGroup      Int     @map("advance_per_group")   @default(2)
+  /// czy dopuszczamy „najlepsze X miejsc trzecich”
+  allowBestThirds      Boolean @map("allow_best_thirds")   @default(false)
+  /// sposób układania drabinki po grupach: "draw" | "manual"
+  bracketSeeding       String  @map("bracket_seeding")     @default("draw") @db.VarChar(20)
+  /// tryb tworzenia grup: "draw" | "manual"
+  groupAllocation      String  @map("group_allocation")    @default("draw") @db.VarChar(20)
+  /// inne reguły (np. tie-break) w formacie JSON
+  rulesJson            Json?   @map("rules_json")
+
+  category TournamentCategory @relation(fields: [tournamentCategoryId], references: [id])
+
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
+}
+
+model CategoryGroup {
+  @@map("category_group")
+
+  id                   Int    @id @default(autoincrement())
+  tournamentCategoryId Int    @map("tournament_category_id")
+  /// Nazwa grupy: "A", "B", ... (albo pełna: "Grupa A")
+  name                 String @db.VarChar(20)
+  /// Porządek sortowania grup (A=1, B=2, ...)
+  orderIndex           Int    @map("order_index") @default(1)
+
+  category TournamentCategory @relation(fields: [tournamentCategoryId], references: [id])
+  slots    GroupSlot[]
+
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
+  Match     Match[]
+
+  @@unique([tournamentCategoryId, name])
+  @@index([tournamentCategoryId])
+}
+
+model GroupSlot {
+  @@map("group_slot")
+
+  id       Int  @id @default(autoincrement())
+  groupId  Int  @map("group_id")
+  userId   Int  @map("user_id")
+  /// Pozycja w grupie (1..N) – przydatne do ręcznego układania terminarza
+  position Int?
+  /// Seed w kategorii (opcjonalnie, jeśli chcesz seedować)
+  seed     Int?
+
+  group CategoryGroup @relation(fields: [groupId], references: [id])
+  user  users         @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
+
+  @@unique([groupId, userId])
+  @@unique([groupId, position])
+  @@index([userId])
+}
+
+model Notification {
+  @@map("notification")
+
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  type       String   @db.VarChar(40)  // 'GUARDIAN_INVITE', 'REFEREE_INVITE', ...
+  title      String?  @db.VarChar(120)
+  body       String?  @db.Text
+  link       String?  @db.VarChar(255) // deep link do akcji/ekranu
+  meta       Json?
+  createdAt  DateTime @map("created_at") @default(now())
+  readAt     DateTime? @map("read_at")
+  resolvedAt DateTime? @map("resolved_at")
+
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([userId, resolvedAt])
+}
+
+model TournamentGuardian {
+  @@map("tournament_guardian")
+
+  id              Int            @id @default(autoincrement())
+  tournamentId    Int            @map("tournament_id")
+  playerId        Int            @map("player_id")          // users.id – zawodnik
+  guardianUserId  Int?           @map("guardian_user_id")   // users.id – opiekun
+  status          GuardianStatus @default(invited)
+  invitedAt       DateTime       @map("invited_at")  @default(now())
+  respondedAt     DateTime?      @map("responded_at")
+  invitedByUserId Int?           @map("invited_by_user_id") // kto zaprosił
+  note            String?        @db.VarChar(255)
+
+  // Relacje
+  tournament  tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  player      users      @relation("GuardianPlayer",   fields: [playerId],        references: [id], onDelete: Cascade)
+  guardian    users?     @relation("GuardianUser",     fields: [guardianUserId],  references: [id])
+  invitedBy   users?     @relation("GuardianInviter",  fields: [invitedByUserId], references: [id])
+
+  // 1 opiekun na zawodnika w danym turnieju
+  @@unique([tournamentId, playerId, guardianUserId])
+
+  // Indeksy pod szybkie lookupy
+  @@index([tournamentId])
+  @@index([playerId])
+  @@index([guardianUserId])
+}

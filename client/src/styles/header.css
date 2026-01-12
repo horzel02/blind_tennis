@@ -1,0 +1,179 @@
+/* ---------------- Header ---------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: var(--ct-dark);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.header-inner {
+  display: flex;
+  width: 100%;
+  padding: 0 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-logo-icon {
+  font-size: 1.75rem;
+  margin-right: 0.5rem;
+}
+
+.header-logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* ---------------- Nav & Buttons ---------------- */
+.header-nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.icon-button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(68, 35, 140, 0.2);
+  transition: background-color .2s;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.icon-button:hover {
+  background-color: rgba(95, 61, 217, 0.3);
+}
+
+/* Tooltip */
+.icon-button .tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+  padding: 4px 8px;
+  background-color: var(--ct-dark);
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+  z-index: 10;
+}
+
+.icon-button .tooltip::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent transparent var(--ct-dark) transparent;
+}
+
+.icon-button:hover .tooltip {
+  opacity: 1;
+}
+
+
+/* --- Stylowanie dla desktopów (od 768px w górę) --- */
+@media (min-width: 768px) {
+  .header-inner {
+    padding: 0 1.5rem;
+  }
+  .header-nav {
+    gap: 1rem;
+  }
+}
+
+/* --- Dostosowania responsywne dla urządzeń mobilnych (do 767px włącznie) --- */
+@media (max-width: 767px) {
+  .header {
+    height: auto;
+    min-height: 64px;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0.8rem 1rem;
+  }
+
+  .header-logo {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-logo-text {
+    font-size: 1.1rem;
+  }
+
+  .header-logo-icon {
+    font-size: 1.6rem;
+  }
+
+  .header-nav {
+    width: 100%;
+    justify-content: flex-end;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .icon-button .tooltip {
+    display: none;
+  }
+}
+
+/* --- Dostosowania dla bardzo małych ekranów (do 480px) --- */
+@media (max-width: 480px) {
+  .header-inner {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .header-logo-text {
+    font-size: 1rem;
+  }
+
+  .header-logo-icon {
+    font-size: 1.4rem;
+  }
+
+  .header-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-bottom: 5px;
+  }
+  .header-nav > * {
+    flex-shrink: 0;
+  }
+}

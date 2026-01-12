@@ -1,0 +1,376 @@
+/* globals.css */
+/* ========================================================================== */
+/* 1. RESET i PODSTAWY                                                      */
+/* ========================================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+  color: var(--ct-darkest);
+}
+
+/* ========================================================================== */
+/* 2. KOLORY i ZMIENNE                                                        */
+/* ========================================================================== */
+:root {
+  --ct-darkest: #120826;
+  --ct-dark:    #1e0f40;
+  --ct-primary: #44238c;
+  --ct-accent:  #5f3dd9;
+  --ct-red:     #a71717;
+  --ct-muted:   #888888;
+}
+
+/* ========================================================================== */
+/* 3. LINKI, OBRAZY, LISTY                                                    */
+/* ========================================================================== */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ========================================================================== */
+/* 4. KONTEJNERY ( .container ), FLEX/GRID itp.                                 */
+/* ========================================================================== */
+.container {
+  width: 100%;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: none;
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: 100%; /* Brak ograniczenia */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* Żeby tekst nie dotykał krawędzi ekranu */
+  padding-right: 1rem;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.app-shell main {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* ========================================================================== */
+/* 5. FOCUS-VISIBLE (WCAG) – wspólny outline dla wszystkich elementów focusable */
+/* ========================================================================== */
+:focus-visible {
+  outline: 3px dashed var(--ct-green);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px dashed var(--ct-green);
+  outline-offset: 2px;
+}
+
+/* ========================================================================== */
+/* 6. WSPÓLNE STYLE DLA PRZYCISKÓW                                            */
+/* -------------------------------------------------------------------------- */
+/* .btn-primary: fioletowy z białym tekstem                                    */
+/* hover: biały z fioletowym obramowaniem/tekstem                              */
+.btn-primary {
+  background-color: var(--ct-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #fff;
+  color: var(--ct-primary);
+  border: 1px solid var(--ct-primary);
+}
+.btn-primary:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* .btn-secondary: transparent + fioletowy obrys/tekst                        */
+/* hover: fioletowe wypełnienie z białym tekstem                               */
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--ct-primary);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: var(--ct-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--ct-primary);
+  color: #fff;
+  border-color: var(--ct-accent);
+}
+.btn-secondary:disabled {
+  background-color: #f7f7f7;
+  border-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* .btn-delete                      */
+.btn-delete {
+  background-color: #fff;
+  border: 1px solid var(--ct-green);
+  color: var(--ct-green);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+.btn-delete:hover,
+.btn-delete:focus {
+  background-color: var(--ct-green);
+  color: #fff;
+  border-color: var(--ct-green);
+}
+.btn-delete:disabled {
+  background-color: #f7f7f7;
+  border-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ========================================================================== */
+/* 7. WSPÓLNE STYLE DLA KART                                        */
+/* ========================================================================== */
+.card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+.card:hover,
+.card:focus {
+  transform: translateY(-4px);
+}
+
+/* Nagłówki i metadane w karcie */
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--ct-dark);
+}
+.card-date,
+.card-location {
+  font-size: 0.9rem;
+  color: var(--ct-dark);
+  margin-bottom: 0.5rem;
+}
+.card-meta {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+.card-meta.open {
+  color: green;
+}
+.card-meta.closed {
+  color: var(--ct-dark);
+}
+.card-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ========================================================================== */
+/* 8. PAGINACJA (wspólne dla każdej listy z paginacją)                          */
+/* ========================================================================== */
+.pagination {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.pagination button {
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pagination button:hover,
+.pagination button:focus {
+  background-color: #e0e0e0;
+}
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pagination span {
+  font-size: 0.9rem;
+}
+
+/* ========================================================================== */
+/* 9. KOMUNIKAT “Brak wyników”                                                  */
+/* ========================================================================== */
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+.no-results p {
+  font-size: 1.1rem;
+  color: var(--ct-dark);
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: var(--muted-color);
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 120px;
+    }
+}
+
+/* ========== CHIPS / PILLS ========== */
+:root{
+  --chip-bg:        #f3f4f6;
+  --chip-fg:        #111827;
+  --chip-ring:      rgba(0,0,0,0.06);
+
+  --chip-male-bg:   #e6f0ff;
+  --chip-male-fg:   #1e40af;
+
+  --chip-fem-bg:    #ffe8f2;
+  --chip-fem-fg:    #9d174d;
+
+  /* B1–B4 (spójna, pastelowa paleta) */
+  --chip-b1-bg:     #ecfdf5; --chip-b1-fg: #065f46;  /* zielony */
+  --chip-b2-bg:     #eff6ff; --chip-b2-fg: #1d4ed8;  /* niebieski */
+  --chip-b3-bg:     #fef3c7; --chip-b3-fg: #92400e;  /* bursztyn */
+  --chip-b4-bg:     #f5f3ff; --chip-b4-fg: #6d28d9;  /* fiolet */
+}
+
+.chip{
+  display:inline-flex; align-items:center; gap:.5ch;
+  height: 26px; padding: 0 10px;
+  border-radius:999px; font-size:12px; font-weight:600;
+  letter-spacing:.2px;
+  background:var(--chip-bg); color:var(--chip-fg);
+  box-shadow: 0 0 0 1px var(--chip-ring) inset;
+  user-select:none; white-space:nowrap;
+}
+.chip .dot{width:6px;height:6px;border-radius:999px;background:currentColor;opacity:.8}
+
+/* Rozmiary (opcjonalnie) */
+.chip--sm{ height:22px; font-size:11px; padding:0 8px }
+.chip--lg{ height:30px; font-size:13px; padding:0 12px }
+
+/* Płeć */
+.chip--male   { background:var(--chip-male-bg); color:var(--chip-male-fg) }
+.chip--female { background:var(--chip-fem-bg);  color:var(--chip-fem-fg)  }
+
+/* Kategoria – przez data-atrybut (nie mnożymy klas) */
+.chip[data-cat="B1"]{ background:var(--chip-b1-bg); color:var(--chip-b1-fg) }
+.chip[data-cat="B2"]{ background:var(--chip-b2-bg); color:var(--chip-b2-fg) }
+.chip[data-cat="B3"]{ background:var(--chip-b3-bg); color:var(--chip-b3-fg) }
+.chip[data-cat="B4"]{ background:var(--chip-b4-bg); color:var(--chip-b4-fg) }
+
+/* Wersja „outline” (jak tag) */
+.chip--outline{ background:transparent; box-shadow:0 0 0 1px currentColor inset }
+
+/* Dark mode (jeśli masz) – delikatne podbicie kontrastu */
+@media (prefers-color-scheme: dark){
+  :root{
+    --chip-bg:#111827; --chip-fg:#e5e7eb; --chip-ring:rgba(255,255,255,.12);
+  }
+}
+

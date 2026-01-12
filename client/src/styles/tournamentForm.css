@@ -1,0 +1,191 @@
+/* client/src/styles/tournamentForm.css */
+
+:root {
+  --bg-card: #ffffff;
+  --text-main: #1f2937;      /* Ciemny szary tekst */
+  --text-muted: #6b7280;     /* Jasny szary tekst */
+  --border-color: #d1d5db;   /* Szara ramka */
+  --primary-color: #2563eb;  /* Niebieski (lub Twój główny kolor) */
+  --focus-ring: rgba(37, 99, 235, 0.2);
+}
+
+.wizard-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+  color: var(--text-main);
+}
+
+.wizard-header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.wizard-step {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  gap: .15rem;
+  transition: all 0.2s ease;
+}
+
+.wizard-step.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.wizard-body {
+  display: flex;
+  justify-content: center;
+}
+
+/* Standardowy wygląd karty (białe tło) */
+.wizard-card {
+  background: var(--bg-card);
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.wizard-card h3 {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .5rem;
+  color: #111827;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.wizard-card label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+/* Inputy w normalnym stylu */
+.wizard-card input:not([type="checkbox"]),
+.wizard-card select,
+.wizard-card textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--text-main);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.wizard-card input:focus,
+.wizard-card select:focus,
+.wizard-card textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* === CHECKBOX FIX (To jest to ustawienie, o które Ci chodziło) === */
+.checkbox-line {
+  display: flex;
+  align-items: center; /* Kluczowe: centruje checkbox i tekst w pionie */
+  gap: 12px;           /* Odstęp między checkboxem a tekstem */
+  cursor: pointer;
+  padding: 0.25rem 0;
+  width: 100%;
+  user-select: none;
+}
+
+/* Wygląd samego checkboxa - standardowy, ale powiększony i wyrównany */
+.checkbox-line input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--primary-color); /* Używa koloru głównego aplikacji */
+  flex-shrink: 0; /* Zapobiega zgniataniu checkboxa przy długim tekście */
+}
+
+.checkbox-line span {
+  font-weight: normal;
+  color: var(--text-main);
+  line-height: 1.4;
+  padding-top: 2px; /* Mikrokorekta dla idealnego wyrównania z tekstem */
+}
+
+/* Footer */
+.wizard-footer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: -0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #fee2e2;
+  border-radius: 4px;
+}
+
+.panel {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.panel strong {
+  color: #111827;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Media Query */
+@media (min-width: 601px) {
+  .wizard-shell {
+    padding: 2rem 0;
+    gap: 1.5rem;
+  }
+  .wizard-step {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    gap: .25rem;
+  }
+  .wizard-card {
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+}

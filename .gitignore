@@ -1,0 +1,17 @@
+# root
+.DS_Store
+Thumbs.db
+
+# node
+**/node_modules/
+**/dist/
+**/.env
+**/.env.*
+**/*.log
+
+# vite cache
+**/.vite/
+
+# prisma
+**/prisma/dev.db
+**/prisma/dev.db-journal

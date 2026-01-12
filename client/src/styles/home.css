@@ -1,0 +1,141 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding-bottom: 2rem;
+  }
+  
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+  
+  .hero-text,
+  .hero-image {
+    flex: 1 1 400px;    /* mogą się skurczyć do 400px i rosnąć, ale zachowają proporcje */
+    max-width: 500px;
+}
+
+  
+  .hero-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--ct-accent);
+    color: white;
+    font-weight: 600;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--ct-darkest);
+  }
+  
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--ct-dark);
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .hero-image {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  
+  .hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  
+  /* Features */
+  .features {
+    padding: 0 1rem;
+  }
+  
+  .features-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--ct-primary);
+    margin-bottom: 2rem;
+  }
+  
+  .features-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .feature-card {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    width: 280px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .feature-icon {
+    font-size: 2rem;
+  }
+  
+  .feature-title {
+    font-size: 1.25rem;
+    color: var(--ct-darkest);
+  }
+  
+  .feature-desc {
+    font-size: 1rem;
+    color: var(--ct-dark);
+  }
+  
+  /* CTA */
+  .cta {
+    background-color: var(--ct-accent);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-radius: 0.75rem;
+    margin: 0 1rem;
+  }
+  
+  .cta-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-button {
+    background: white;
+    color: var(--ct-accent);
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+  
+  .cta-button:hover {
+    background-color: #f0f0f0;
+  }
+  

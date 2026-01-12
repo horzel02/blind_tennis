@@ -1,0 +1,84 @@
+.account-settings-page {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.account-settings-header {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.account-settings-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--ct-primary, #2563eb);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.account-settings-title-block h1 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.account-settings-subtitle {
+  margin: 0.25rem 0 0.5rem;
+  color: var(--muted-color, #6b7280);
+  font-size: 0.95rem;
+}
+
+.account-settings-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--muted-color, #6b7280);
+}
+
+.account-settings-meta .sep {
+  opacity: 0.7;
+}
+
+.account-settings-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .account-settings-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.account-settings-help {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted-color, #6b7280);
+}
+
+.account-form .form-group {
+  margin-bottom: 0.9rem;
+}
+
+.account-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.account-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}

@@ -1,0 +1,496 @@
+/* client/src/styles/tournamentDetails.css */
+
+/* ========================================================================== */
+/* 1. OGÓLNE ELEMENTY NA GÓRZE STRONY                                         */
+/* ========================================================================== */
+
+/* Nawigacja breadcrumbs */
+.breadcrumbs {
+  margin-bottom: 1rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.breadcrumbs li::after {
+  content: '›';
+  margin: 0 0.5rem;
+}
+
+.breadcrumbs li:last-child::after {
+  content: '';
+}
+
+/* Przycisk "Wstecz" */
+.btn-back {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--ct-dark);
+  transition: color 0.2s;
+}
+
+.btn-back:hover,
+.btn-back:focus {
+  color: var(--ct-primary);
+}
+
+/* ========================================================================== */
+/* 2. GŁÓWNY UKŁAD DETALI (Lewy Panel / Prawy Panel)                          */
+/* ========================================================================== */
+.details-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Lewy panel */
+.left-panel h1.details-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Sekcja chipów */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chip {
+  background-color: var(--ct-accent);
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+/* Etykieta z ikoną*/
+.icon-label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--ct-dark);
+}
+
+/* Pasek postępu - Styl "Pastylka na środku" */
+.progress-container {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.progress-bar {
+  /* Tło paska (szare, żeby było widać, że jest pusty) */
+  background-color: #e5e7eb;
+  /* Ramka dookoła całego paska (fioletowa) */
+  border: 2px solid var(--ct-primary, #6d28d9); 
+  border-radius: 999px;
+  position: relative;
+  height: 1.5rem; /* Wysokość paska */
+  margin-top: 0.5rem;
+  overflow: hidden; /* Żeby wypełnienie nie wychodziło poza zaokrąglenie */
+}
+
+.progress-fill {
+  /* Wypełnienie paska (fioletowe) */
+  background-color: var(--ct-primary, #6d28d9);
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 0.3s ease;
+  z-index: 1;
+}
+
+.progress-text {
+  /* Pozycjonowanie na samym środku */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Musi być NAD wypełnieniem */
+  
+  /* STYLIZACJA "PASTYLKI" Z LICZBĄ (jak na screenie) */
+  background-color: var(--ct-primary, #6d28d9); /* Tło pod liczbą (fioletowe) */
+  color: #ffffff; /* Kolor liczby (biały) */
+  
+  /* Kształt i odstępy */
+  padding: 0.1rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  
+  /* Opcjonalnie: cień, żeby odstawało */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Podgląd mapy */
+.map-preview iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* ========================================================================== */
+/* 3. SEKCJA ORGANIZATORA                                                     */
+/* ========================================================================== */
+.organizer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  align-items: stretch;
+}
+
+.organizer-section h2 {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: var(--ct-dark);
+}
+
+/* Panel akcji organizatora */
+.organizer-actions h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--ct-dark);
+}
+
+.actions-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Lista organizatorów */
+.organizer-list h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--ct-dark);
+}
+
+.organizer-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.organizer-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.organizer-list .org-name {
+  flex: 1;
+}
+
+/* Nagłówek listy organizatorów */
+.organizer-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.organizer-list-header .btn-add-org {
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+/* ========================================================================== */
+/* 4. PASEK AKCJI                                                             */
+/* ========================================================================== */
+.details-actions.sticky {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+/* ========================================================================== */
+/* 5. MEDIA QUERIES DLA WIĘKSZYCH EKRANÓW (TABLET I DESKTOP)                  */
+/* ========================================================================== */
+@media (min-width: 768px) {
+  .details-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Układ sekcji organizatora */
+  .organizer-section {
+    display: grid;
+    grid-template-columns: minmax(250px, 1fr) minmax(200px, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+    align-items: start;
+  }
+
+  .details-actions.sticky {
+    position: static;
+    border-top: none;
+    box-shadow: none;
+    padding: 0;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+  }
+
+  .organizer-list-header .btn-add-org {
+    margin-left: 1rem;
+  }
+}
+
+/* ========================================================================== */
+/* 6. DODATKOWE POPRAWKI DLA PRZYCISKÓW W SEKCJACH                            */
+/* ========================================================================== */
+.organizer-actions .btn-secondary,
+.organizer-actions .btn-primary {
+  white-space: nowrap;
+}
+
+/* Specjalny styl dla przycisku "Usuń turniej" */
+.organizer-actions .btn-delete {
+  white-space: nowrap;
+  background-color: #ef4444;
+  color: #ffffff;
+  
+  /* Dodajemy przezroczystą ramkę, żeby zarezerwować miejsce (zapobiega skakaniu) */
+  border: 1px solid transparent; 
+  
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Zmiana po najechaniu myszką (Styl "Outline") */
+.organizer-actions .btn-delete:hover {
+  background-color: #ffffff; /* Białe tło */
+  color: #ef4444;            /* Czerwony tekst */
+  border: 1px solid #ef4444; /* Czerwona ramka */
+}
+
+/* Opcjonalnie: styl po kliknięciu */
+.organizer-actions .btn-delete:active {
+  background-color: #fee2e2; /* Bardzo jasny czerwony przy kliknięciu */
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+/* ========================================================================== */
+/* 7. FAZA GRUPOWA – KARTY + TABELKI                                          */
+/* ========================================================================== */
+
+.group-standings {
+  margin: 3rem 0 2rem;
+}
+
+.group-standings-header h2 {
+  font-size: 1.6rem;
+  margin: 0 0 0.25rem;
+  color: var(--color-text, var(--ct-dark));
+}
+
+.group-standings-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #6b7280);
+}
+
+/* siatka kart grupowych */
+.group-standings-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .group-standings-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+/* pojedyncza karta grupy */
+.group-card {
+  background: var(--color-bg-secondary, #ffffff);
+  color: var(--color-text, #111827);
+  border-radius: 16px;
+  border: 1px solid var(--color-border-subtle, rgba(148, 163, 184, 0.6));
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  padding: 1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+html.dark .group-card {
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
+}
+
+/* nagłówek karty */
+.group-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.group-card-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.group-card-pill {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(139, 92, 246, 0.14);
+  color: var(--color-primary, #5b21b6);
+}
+
+/* wrapper tabeli – scroll na małych ekranach */
+.group-table-wrapper {
+  margin-top: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  overflow: auto;
+  background: var(--color-bg-primary, #f9fafb);
+}
+
+.group-table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.group-table-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.85);
+}
+
+/* tabela */
+.standings-table {
+  width: 100%;
+  min-width: 420px; /* na telefonie pojawi się poziomy scroll */
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.standings-table thead {
+  background: linear-gradient(
+    90deg,
+    rgba(88, 28, 135, 0.95),
+    rgba(129, 140, 248, 0.9)
+  );
+  color: #fff;
+}
+
+.standings-table thead th {
+  padding: 0.55rem 0.7rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.12);
+  white-space: nowrap;
+}
+
+.standings-table thead th:first-child,
+.standings-table tbody td:first-child {
+  text-align: center;
+}
+
+/* wiersze */
+.standings-table tbody tr {
+  transition: background-color 0.12s ease, transform 0.08s ease;
+}
+
+.standings-table tbody td {
+  padding: 0.45rem 0.7rem;
+  text-align: center;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+/* podświetlenie wierszy – używamy zmiennych, więc działa w dark mode */
+.standings-table tbody tr:nth-child(odd) {
+  background: var(--color-bg-secondary, #ffffff);
+}
+
+.standings-table tbody tr:nth-child(even) {
+  background: var(--color-bg-primary, #f9fafb);
+}
+
+.standings-table tbody tr:hover {
+  background: rgba(129, 140, 248, 0.16);
+  transform: translateY(-1px);
+}
+
+/* kolumny specjalne */
+.standings-table tbody td.col-player {
+  text-align: left;
+  max-width: 230px;
+}
+
+.player-name {
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.col-rank {
+  font-weight: 700;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.col-points {
+  font-weight: 700;
+}
+
+/* mobile tweak */
+@media (max-width: 640px) {
+  .group-card {
+    padding: 0.9rem;
+  }
+
+  .standings-table {
+    font-size: 0.8rem;
+  }
+
+  .standings-table thead th,
+  .standings-table tbody td {
+    padding: 0.4rem 0.55rem;
+  }
+}

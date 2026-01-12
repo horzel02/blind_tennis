@@ -1,0 +1,2253 @@
+/* ===================== HIGH CONTRAST (Yellow/Black) ===================== */
+/* Aktywacja: <html class="hc"> */
+
+html.hc {
+  --hc-bg: #000000;
+  --hc-fg: #ffff00;             /* żółty */
+  --hc-accent: #ffd400;         /* cieplejszy żółty */
+  --hc-border: #ffff00;
+
+  /* mapowanie na Twoje zmienne – dużo styli z nich korzysta */
+  --ct-bg: var(--hc-bg);
+  --ct-bg-alt: #0f0f0f;
+  --ct-surface: #0f0f0f;
+  --ct-panel: #111111;
+  --ct-darkest: #000000;
+  --ct-dark: #0a0a0a;
+  --ct-muted: #eae07a;
+  --ct-text: var(--hc-fg);
+  --ct-on-surface: var(--hc-fg);
+  --ct-primary: var(--hc-fg);
+  --ct-green: #b7ff4d;
+  --ct-red: #ff4d4d;
+
+  --color-bg-secondary: var(--hc-bg);
+  --color-bg-tertiary: #0f0f0f;
+  --color-text: var(--hc-fg);
+  --color-text-faded: #e6e600;
+  --color-border: var(--hc-border);
+  --color-primary: var(--hc-fg);
+  --color-on-primary: #000000;
+
+  --shadow-sm: none;
+  --shadow-md: none;
+}
+
+html.hc body {
+  background: var(--hc-bg);
+  color: var(--hc-fg);
+}
+
+/* Linki */
+html.hc a,
+html.hc .reg-username-link {
+  color: var(--hc-fg) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ================== Komponenty o stałych białych tłach ================== */
+/* Tabele (tournamentRegistrationsAdmin.css) */
+html.hc .registrations-table {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  box-shadow: none !important;
+  border: 2px solid var(--hc-border) !important;
+}
+html.hc .registrations-table thead {
+  background: #000 !important;
+}
+html.hc .registrations-table thead th,
+html.hc .registrations-table td {
+  border-color: var(--hc-border) !important;
+  color: var(--hc-fg) !important;
+}
+html.hc .registrations-table tbody tr:nth-child(even) { background: #000 !important; }
+html.hc .registrations-table tbody tr:hover { background: #111 !important; }
+
+/* Karty/listy mobilne w registracjach */
+html.hc .registration-card {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+html.hc .card-header {
+  background: #000 !important;
+  border-bottom: 2px solid var(--hc-border) !important;
+}
+html.hc .card-actions-mobile .btn-icon {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+/* Panele/boxy używane globalnie */
+html.hc .wizard-card,
+html.hc .filters-panel,
+html.hc .bulk-actions-bar,
+html.hc .reg-summary,
+html.hc .pair-modal__card,
+html.hc .ko-toolbar,
+html.hc .container {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* Przyciski */
+html.hc .btn-primary,
+html.hc .btn-secondary,
+html.hc .btn-icon,
+html.hc .btn-danger,
+html.hc .btn-delete,
+html.hc button {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+html.hc .btn-primary:hover,
+html.hc .btn-secondary:hover,
+html.hc .btn-icon:hover,
+html.hc .btn-danger:hover,
+html.hc .btn-delete:hover,
+html.hc button:hover {
+  background: #111 !important;
+}
+
+/* Inputy/selecty/textarea */
+html.hc input,
+html.hc select,
+html.hc textarea {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+html.hc ::placeholder { color: #e6e600 !important; }
+
+/* Statusy/chipy */
+html.hc .reg-admin-status-pending,
+html.hc .reg-admin-status-invited,
+html.hc .reg-admin-status-approved,
+html.hc .reg-admin-status-rejected,
+html.hc .chip,
+html.hc .chip[data-cat] {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+/* Paginacja */
+html.hc .pagination button {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+html.hc .pagination button:hover:not(:disabled),
+html.hc .pagination button.active {
+  background: #111 !important;
+}
+
+/* Alerty */
+html.hc .alert {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+/* Header / navbar (jeśli masz .header i .icon-button) */
+html.hc .header {
+  background: #000 !important;
+  color: var(--hc-fg) !important;
+  box-shadow: 0 2px 0 var(--hc-border) !important;
+}
+html.hc .icon-button {
+  background: transparent !important;
+  border: 2px solid var(--hc-border) !important;
+  color: var(--hc-fg) !important;
+}
+
+/* Admin panel – nadpisujemy jego zmienne (adminPanel.css używa customowych) */
+html.hc {
+  --bg:#000; --bg-soft:#000;
+  --card-bg:#000;
+  --line:#ffff00; --line-soft:#ffff00;
+  --text:#ffff00; --muted:#e6e600;
+
+  --primary:#ffff00; --primary-600:#ffff00;
+
+  --success:#ffff00; --success-bg:#000; --success-br:#ffff00;
+  --warn:#ffff00; --warn-bg:#000; --warn-br:#ffff00;
+  --danger:#ffff00; --danger-700:#ffff00; --danger-bg:#000; --danger-br:#ffff00;
+
+  --shadow:none;
+}
+html.hc .st-tab.active { background:#ffff00 !important; color:#000 !important; border-color:#ffff00 !important; }
+html.hc .tbl thead th { background:#000 !important; color:#ffff00 !important; border-bottom:2px solid var(--line) !important; }
+html.hc .tbl tbody td { border-bottom:1px solid var(--line-soft) !important; }
+html.hc .ap-filters { background:#000 !important; border-color:var(--line) !important; }
+
+
+/* ===========================
+   High Contrast (HC) – zmienne
+   =========================== */
+:root {
+  --hc-bg: #000;
+  --hc-surface: #0a0a0a;
+  --hc-text: #fff;
+  --hc-text-muted: #d7d7d7;
+  --hc-accent: #ffe600;      /* żółty akcent */
+  --hc-border: #ffe600;      /* obrys */
+  --hc-focus: #fff200;       /* ring focus */
+}
+
+/* Przycisk w headerze */
+.btn-contrast-toggle {
+  background: transparent;
+  color: var(--hc-accent);
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-contrast-toggle:hover { filter: brightness(1.1); }
+
+/* ==================================================
+   HC: globalne nadpisania (wycina białe tła i czarne
+   fonty na czarnym, spójne obrysy, focusy itd.)
+   ================================================== */
+.hc {
+  background: var(--hc-bg);
+  color: var(--hc-text);
+}
+
+/* duże kontenery/karty/panele */
+.hc .card,
+.hc .panel,
+.hc .box,
+.hc .section,
+.hc .content,
+.hc .list,
+.hc .list-item,
+.hc .filters,
+.hc .filter-panel,
+.hc .sidebar,
+.hc .menu,
+.hc .dropdown,
+.hc .dropdown-menu,
+.hc .modal,
+.hc .modal-content,
+.hc .offcanvas,
+.hc .offcanvas-body,
+.hc .table-responsive-wrapper,
+.hc .wizard-card,
+.hc .tournament-card,
+.hc .registration-card,
+.hc .breadcrumbs,
+.hc .tournament-list .card,
+.hc .tournament-details .card,
+.hc .timetable-card,
+.hc .schedule-item {
+  background: var(--hc-surface) !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* hero / auth-split / gradienty -> czarne tło */
+.hc .home-hero,
+.hc .hero,
+.hc .auth-split,
+.hc .auth-split .left,
+.hc .auth-split .right,
+.hc .auth-split::before,
+.hc .auth-split::after {
+  background: #000 !important;
+  box-shadow: none !important;
+}
+
+/* header / footer */
+.hc header,
+.hc .topbar { background: #000 !important; border-bottom: 2px solid var(--hc-border) !important; }
+.hc footer     { background: #000 !important; border-top:    2px solid var(--hc-border) !important; }
+
+/* teksty i linki */
+.hc, .hc p, .hc a, .hc span, .hc li, .hc h1, .hc h2, .hc h3, .hc h4, .hc h5, .hc h6 {
+  color: var(--hc-text) !important;
+}
+.hc a { text-decoration: underline; }
+.hc .text-muted, .hc .muted, .hc small, .hc label { color: var(--hc-text-muted) !important; }
+
+/* przyciski */
+.hc .btn-primary, .hc button.btn-primary {
+  background: var(--hc-accent) !important;
+  color: #000 !important;
+  border-color: var(--hc-accent) !important;
+}
+.hc .btn, .hc button, .hc .btn-secondary {
+  background: transparent !important;
+  color: var(--hc-accent) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+/* inputy / selecty / textarea */
+.hc input,
+.hc select,
+.hc textarea {
+  background: #000 !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+.hc input::placeholder,
+.hc textarea::placeholder { color: #bdbdbd !important; }
+
+/* tabele */
+.hc table,
+.hc thead,
+.hc tbody,
+.hc tr,
+.hc td,
+.hc th {
+  background: transparent !important;
+  color: var(--hc-text) !important;
+  border-color: var(--hc-border) !important;
+}
+
+/* badge/chip/pagination */
+.hc .badge, .hc .chip {
+  background: transparent !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+.hc .pagination button {
+  background: transparent !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+/* ikony dziedziczą kolor */
+.hc svg { stroke: currentColor !important; fill: currentColor; }
+
+/* focus ring */
+.hc :is(a,button,input,select,textarea,[tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 3px dashed var(--hc-focus) !important;
+  outline-offset: 3px !important;
+}
+/* ===========================
+   HC – HOME: białe karty i fioletowe CTA
+   =========================== */
+
+/* typowe nazwy dla kart na home (łapiemy różne warianty) */
+.hc .home,
+.hc .homepage,
+.hc .home-page { /* kontener stronny – nic tu nie ustawiamy, tylko zwiększamy specyficzność */ }
+
+/* KAFLE "Dlaczego warto?" – wymuś ciemne tło + obrys */
+.hc .home .card,
+.hc .homepage .card,
+.hc .home-page .card,
+.hc .home .feature-card,
+.hc .homepage .feature-card,
+.hc .home-page .feature-card,
+.hc .home .why-card,
+.hc .homepage .why-card,
+.hc .home-page .why-card,
+.hc .why-section .card,
+.hc .why-grid .card {
+  background: var(--hc-surface) !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* jeżeli kafle mają wewnętrzne "pola" z białym tłem */
+.hc .home .card *[style*="background"],
+.hc .homepage .card *[style*="background"],
+.hc .home-page .card *[style*="background"] {
+  /* zbij wszystkie wstawiane inline biele/fiolety */
+  background: transparent !important;
+  color: var(--hc-text) !important;
+}
+
+/* CTA (ten fioletowy blok na dole strony) – na czarno z żółtym obrysem */
+.hc .home .cta,
+.hc .homepage .cta,
+.hc .home-page .cta,
+.hc .home .home-cta,
+.hc .homepage .home-cta,
+.hc .home-page .home-cta,
+.hc .cta-section,
+.hc .cta-banner,
+.hc .hero-cta {
+  background: #000 !important;                 /* bez gradientów/fioletów */
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* teksty/linki w CTA */
+.hc .cta a,
+.hc .home-cta a,
+.hc .cta-section a,
+.hc .cta-banner a,
+.hc .hero-cta a {
+  color: var(--hc-accent) !important;
+  text-decoration: underline;
+}
+
+/* przycisk w CTA */
+.hc .cta .btn-primary,
+.hc .home-cta .btn-primary,
+.hc .cta-section .btn-primary,
+.hc .cta-banner .btn-primary,
+.hc .hero-cta .btn-primary {
+  background: var(--hc-accent) !important;
+  color: #000 !important;
+  border-color: var(--hc-accent) !important;
+}
+
+/* jeżeli kafle mają obrazki/SVG w białych ramkach – usuń ramkę/tło */
+.hc .home .card img,
+.hc .home .card svg,
+.hc .feature-card img,
+.hc .feature-card svg {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Dodatkowe „miotły” na upierdliwe biele na home */
+.hc .home [class*="card"],
+.hc .home [class*="tile"],
+.hc .home [class*="panel"] {
+  background: var(--hc-surface) !important;
+  color: var(--hc-text) !important;
+  border-color: var(--hc-border) !important;
+}
+
+/* i gdyby coś uparcie miało #fff */
+.hc .home * {
+  color: inherit !important;
+}
+
+/* ===========================
+   HC – badge "Nowe możliwości" + przycisk w CTA
+   =========================== */
+
+/* Badge/pigułka na hero ("Nowe możliwości") */
+.hc .home .badge,
+.hc .homepage .badge,
+.hc .home-page .badge,
+.hc .home [class*="badge"],
+.hc .home [class*="pill"],
+.hc .home [class*="chip"] {
+  background: var(--hc-accent) !important;   /* żółte tło */
+  color: #000 !important;                    /* czarny tekst */
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* hover/focus dla badge */
+.hc .home .badge:hover,
+.hc .home [class*="badge"]:hover,
+.hc .home [class*="pill"]:hover,
+.hc .home [class*="chip"]:hover {
+  filter: brightness(1.05);
+}
+.hc .home .badge:focus,
+.hc .home [class*="badge"]:focus,
+.hc .home [class*="pill"]:focus,
+.hc .home [class*="chip"]:focus {
+  outline: 3px solid var(--hc-accent) !important;
+  outline-offset: 2px;
+}
+
+/* BIAŁY przycisk w CTA na dole → żółty z czarnym tekstem */
+.hc .cta button,
+.hc .cta .btn,
+.hc .cta .btn-primary,
+.hc .cta .btn-secondary,
+.hc .home-cta button,
+.hc .home-cta .btn,
+.hc .home-cta .btn-primary,
+.hc .home-cta .btn-secondary {
+  background: var(--hc-accent) !important;   /* żółty */
+  color: #000 !important;                    /* czarny tekst */
+  border: 2px solid var(--hc-accent) !important;
+  box-shadow: none !important;
+}
+
+/* hover/active/focus dla przycisku w CTA */
+.hc .cta button:hover,
+.hc .cta .btn:hover,
+.hc .home-cta button:hover,
+.hc .home-cta .btn:hover {
+  filter: brightness(0.95);
+}
+.hc .cta button:active,
+.hc .cta .btn:active,
+.hc .home-cta button:active,
+.hc .home-cta .btn:active {
+  transform: translateY(1px);
+}
+.hc .cta button:focus-visible,
+.hc .cta .btn:focus-visible,
+.hc .home-cta button:focus-visible,
+.hc .home-cta .btn:focus-visible {
+  outline: 3px solid var(--hc-accent) !important;
+  outline-offset: 2px;
+}
+
+
+/* ===========================
+   HC – CTA button (anchor-as-button)
+   =========================== */
+
+/* Link w sekcji CTA – zrób z niego żółty guzik */
+.hc .cta a,
+.hc .cta a:link,
+.hc .cta a:visited,
+.hc .home-cta a,
+.hc .home-cta a:link,
+.hc .home-cta a:visited {
+  display: inline-block !important;
+  background: var(--hc-accent) !important;  /* żółte tło */
+  color: #000 !important;                   /* czarny tekst */
+  border: 2px solid var(--hc-accent) !important;
+  border-radius: 8px !important;
+  padding: 0.6rem 1rem !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+.hc .cta a:hover,
+.hc .home-cta a:hover {
+  filter: brightness(0.95);
+}
+
+.hc .cta a:focus-visible,
+.hc .home-cta a:focus-visible {
+  outline: 3px solid var(--hc-accent) !important;
+  outline-offset: 2px;
+}
+
+/* ===========================
+   HC – safety net for buttons
+   (gdy inne miejsca używają custom klas)
+   =========================== */
+.hc a.btn,
+.hc a.button,
+.hc .btn,
+.hc button,
+.hc [class*="btn-"],
+.hc [class*="btn "],
+.hc [class$=" btn"] {
+  background: var(--hc-accent) !important;
+  color: #000 !important;
+  border: 2px solid var(--hc-accent) !important;
+  box-shadow: none !important;
+}
+
+/* Ghost/outline – daj wyraźny kontrast */
+.hc .btn-outline,
+.hc .btn-ghost,
+.hc [class*="outline"],
+.hc [class*="ghost"] {
+  background: #000 !important;
+  color: var(--hc-accent) !important;
+  border: 2px solid var(--hc-accent) !important;
+}
+
+/* ===========================
+   HC – porządek z ramkami
+   =========================== */
+
+/* 1) Usuń zbędne obrysy na layoutowych wrapperach */
+.hc main,
+.hc .page,
+.hc .container,
+.hc .content,
+.hc .content-wrapper,
+.hc .breadcrumbs,
+.hc .breadcrumbs *,
+.hc .listing-grid,
+.hc .grid,
+.hc .row,
+.hc .col {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 2) Zostaw wyraźną ramkę TYLKO na elementach kart/paneli */
+.hc .card,
+.hc .panel,
+.hc .box,
+.hc .tile,
+.hc .widget,
+.hc .module,
+.hc .tournament-card,
+.hc .filter-panel,
+.hc .filters,
+.hc .table,
+.hc .table-responsive-wrapper {
+  border: 2px solid var(--hc-accent) !important;
+  border-radius: 10px !important;
+  background: #0a0a0a !important; /* ciemne tło pod treść */
+}
+
+/* 3) Formularze – bez dodatkowych obrysów kontenerów */
+.hc form {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+}
+
+/* 4) Pola, selecty, inputy – jednoznaczna ramka i brak podwójnych obrysów */
+.hc input,
+.hc select,
+.hc textarea {
+  background: #000 !important;
+  color: #fff !important;
+  border: 2px solid var(--hc-accent) !important;
+  box-shadow: none !important;
+}
+.hc input::placeholder,
+.hc textarea::placeholder {
+  color: #ccc !important;
+}
+
+/* ===========================
+   HC – pigułki / badge / tagi
+   =========================== */
+.hc .badge,
+.hc .tag,
+.hc .chip,
+.hc .pill,
+.hc .label,
+.hc .tournament-card .meta .badge {
+  display: inline-block;
+  background: #000 !important;
+  color: var(--hc-accent) !important;
+  border: 2px solid var(--hc-accent) !important;
+  border-radius: 9999px !important;
+  padding: 0.1rem 0.55rem !important;
+  line-height: 1.2 !important;
+  box-shadow: none !important;
+}
+
+/* Jeżeli masz „bąbelki” z ikoną/emoji wewnątrz – też na żółto */
+.hc .badge i,
+.hc .tag i,
+.hc .chip i,
+.hc .pill i,
+.hc .badge svg,
+.hc .tag svg {
+  color: var(--hc-accent) !important;
+  fill: var(--hc-accent) !important;
+}
+
+/* ===========================
+   HC – przyciski (safety-net)
+   =========================== */
+.hc a.btn,
+.hc a.button,
+.hc .btn,
+.hc button,
+.hc [class*="btn-"],
+.hc [class*="btn "],
+.hc [class$=" btn"] {
+  background: var(--hc-accent) !important;
+  color: #000 !important;
+  border: 2px solid var(--hc-accent) !important;
+  box-shadow: none !important;
+}
+
+.hc .btn-outline,
+.hc .btn-ghost,
+.hc [class*="outline"],
+.hc [class*="ghost"] {
+  background: #000 !important;
+  color: var(--hc-accent) !important;
+  border: 2px solid var(--hc-accent) !important;
+}
+
+/* CTA-link w listach/kartach – traktuj jak guzik */
+.hc .tournament-card a,
+.hc .filters a,
+.hc .cta a {
+  text-decoration: none !important;
+}
+
+/* ===== DATE INPUTS – HIGH CONTRAST ===== */
+.hc input[type="date"] {
+  color: #fff;                      /* tekst w polu */
+  background: #0b0b0b;             /* ciemne tło */
+  border: 1.6px solid #FFD400;     /* żółta ramka jak reszta */
+  border-radius: 8px;
+  padding-right: 2.25rem;          /* miejsce na ikonkę */
+}
+
+/* Placeholdery w HC */
+.hc input[type="date"]::placeholder {
+  color: #bbb;
+}
+
+/* Chrome/Edge: pokoloruj natywny “picker indicator” na żółto i go rozjaśnij */
+.hc input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1 !important;
+  filter: invert(86%) sepia(98%) saturate(800%) hue-rotate(360deg) brightness(115%);
+}
+
+/* Ukryj przyciski spine/clear w WebKit, żeby nie gryzły się wizualnie */
+.hc input[type="date"]::-webkit-inner-spin-button,
+.hc input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+
+/* Firefox: wstaw własną żółtą ikonę jako tło (klasa .hc-date-force-icon poniżej) */
+.hc input[type="date"].hc-date-force-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='%23FFD400'%3E%3Cpath d='M7 2h2v2h6V2h2v2h3c1.1 0 2 .9 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h3V2zm14 8H3v10c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V10zM3 8h18V6c0-.55-.45-1-1-1h-3v2h-2V5H9v2H7V5H4c-.55 0-1 .45-1 1v2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .65rem center;
+  background-size: 18px 18px;
+}
+
+/* W Chrome/Edge, gdy używamy własnej ikonki, schowaj natywną */
+.hc input[type="date"].hc-date-force-icon::-webkit-calendar-picker-indicator {
+  opacity: 0 !important;
+}
+
+/* Focus ring w HC – złoty, ale bez przesady */
+.hc input[type="date"]:focus {
+  outline: 3px solid #FFD400;
+  outline-offset: 2px;
+}
+/* ====== HC: ostrzeżenia/błędy bez czerwieni ====== */
+.hc .error {
+  color: #FFD400;                 /* zamiast czerwonego */
+  background: #0b0b0b;           /* spójne z tłem */
+  border: 1.6px solid #FFD400;   /* lekki żółty obrys, żeby było wyraźnie */
+  border-radius: 8px;
+  padding: .55rem .75rem;
+  margin-top: .5rem;
+}
+.hc .error a { color: #FFD400; text-decoration: underline; }
+
+/* ====== HC: checkboxy w żółtym ====== */
+.hc input[type="checkbox"] {
+  accent-color: #FFD400;          /* Chrome/Edge/FF nowe */
+  width: 16px;
+  height: 16px;
+}
+.hc input[type="checkbox"]:focus {
+  outline: 2px solid #FFD400;
+  outline-offset: 2px;
+}
+
+/* Fallback dla przeglądarek bez accent-color */
+@supports not (accent-color: #000) {
+  .hc input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.6px solid #FFD400;
+    border-radius: 3px;
+    background: #0b0b0b;
+    position: relative;
+    cursor: pointer;
+  }
+  .hc input[type="checkbox"]:checked {
+    background: #FFD400;
+  }
+  .hc input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0px;
+    width: 6px;
+    height: 10px;
+    border: 2px solid #000;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg);
+  }
+}
+
+
+/* ================================================================
+   HIGH CONTRAST — NOTIFICATIONS (działa dla: body[data-contrast=high],
+   html[data-contrast=high], .hc, .high-contrast)
+   ================================================================ */
+
+/* pomocniczy „root” selektor dla wszystkich wariantów HC */
+html[data-contrast="high"], body[data-contrast="high"], .hc, .high-contrast {}
+
+/* DZWONEK + BADGE */
+html[data-contrast="high"] .notif-bell .icon-btn,
+body[data-contrast="high"] .notif-bell .icon-btn,
+.hc .notif-bell .icon-btn,
+.high-contrast .notif-bell .icon-btn{
+  background:#000 !important;
+  color:#FFD600 !important;
+  border:2px solid #FFD600 !important;
+  border-radius:10px !important;
+}
+html[data-contrast="high"] .notif-bell .badge,
+body[data-contrast="high"] .notif-bell .badge,
+.hc .notif-bell .badge,
+.high-contrast .notif-bell .badge{
+  background:#FFD600 !important;
+  color:#000 !important;
+  border:2px solid #000 !important;
+  font-weight:800 !important;
+}
+
+/* PANEL (mocno precyzyjny selektor, żeby przebić wszystko) */
+html[data-contrast="high"] .notif-bell .notif-dropdown,
+body[data-contrast="high"] .notif-bell .notif-dropdown,
+.hc .notif-bell .notif-dropdown,
+.high-contrast .notif-bell .notif-dropdown{
+  background:#0b0b0b !important;
+  color:#fff !important;
+  border:2px solid #FFD600 !important;
+  border-radius:12px !important;
+  box-shadow:none !important;
+}
+
+/* NAGŁÓWEK / STOPKA */
+html[data-contrast="high"] .notif-bell .notif-dropdown .notif-head,
+body[data-contrast="high"] .notif-bell .notif-dropdown .notif-head,
+.hc .notif-bell .notif-dropdown .notif-head,
+.high-contrast .notif-bell .notif-dropdown .notif-head{
+  color:#FFD600 !important;
+  font-weight:800 !important;
+  border-bottom:1px solid rgba(255,214,0,.35) !important;
+}
+html[data-contrast="high"] .notif-bell .notif-dropdown .notif-foot,
+body[data-contrast="high"] .notif-bell .notif-dropdown .notif-foot,
+.hc .notif-bell .notif-dropdown .notif-foot,
+.high-contrast .notif-bell .notif-dropdown .notif-foot{
+  border-top:1px solid rgba(255,214,0,.35) !important;
+}
+html[data-contrast="high"] .notif-bell .notif-dropdown .notif-foot .btn-link,
+body[data-contrast="high"] .notif-bell .notif-dropdown .notif-foot .btn-link,
+html[data-contrast="high"] .notif-bell .notif-dropdown .notif-foot a,
+body[data-contrast="high"] .notif-bell .notif-dropdown .notif-foot a,
+.hc .notif-bell .notif-dropdown .notif-foot .btn-link,
+.hc .notif-bell .notif-dropdown .notif-foot a,
+.high-contrast .notif-bell .notif-dropdown .notif-foot .btn-link,
+.high-contrast .notif-bell .notif-dropdown .notif-foot a{
+  color:#FFD600 !important;
+  text-decoration:underline !important;
+  text-underline-offset:2px !important;
+}
+
+/* POZYCJE LISTY */
+html[data-contrast="high"] .notif-bell .notif-dropdown .notif-item,
+body[data-contrast="high"] .notif-bell .notif-dropdown .notif-item,
+.hc .notif-bell .notif-dropdown .notif-item,
+.high-contrast .notif-bell .notif-dropdown .notif-item{
+  border-bottom:1px solid rgba(255,214,0,.25) !important;
+}
+html[data-contrast="high"] .notif-bell .notif-dropdown .notif-item.unread,
+body[data-contrast="high"] .notif-bell .notif-dropdown .notif-item.unread,
+.hc .notif-bell .notif-dropdown .notif-item.unread,
+.high-contrast .notif-bell .notif-dropdown .notif-item.unread{
+  background:#131300 !important;
+}
+html[data-contrast="high"] .notif-bell .notif-dropdown .notif-title,
+body[data-contrast="high"] .notif-bell .notif-dropdown .notif-title,
+.hc .notif-bell .notif-dropdown .notif-title,
+.high-contrast .notif-bell .notif-dropdown .notif-title{
+  color:#FFD600 !important;
+  font-weight:800 !important;
+}
+html[data-contrast="high"] .notif-bell .notif-dropdown .notif-body,
+body[data-contrast="high"] .notif-bell .notif-dropdown .notif-body,
+.hc .notif-bell .notif-dropdown .notif-body,
+.high-contrast .notif-bell .notif-dropdown .notif-body{
+  color:#fff !important;
+}
+
+/* PRZYCISKI W ITEMACH */
+html[data-contrast="high"] .notif-bell .notif-dropdown .btn-primary,
+body[data-contrast="high"] .notif-bell .notif-dropdown .btn-primary,
+.hc .notif-bell .notif-dropdown .btn-primary,
+.high-contrast .notif-bell .notif-dropdown .btn-primary{
+  background:#FFD600 !important;
+  color:#000 !important;
+  border:2px solid #000 !important;
+  border-radius:8px !important;
+  font-weight:800 !important;
+}
+html[data-contrast="high"] .notif-bell .notif-dropdown .btn-secondary,
+body[data-contrast="high"] .notif-bell .notif-dropdown .btn-secondary,
+.hc .notif-bell .notif-dropdown .btn-secondary,
+.high-contrast .notif-bell .notif-dropdown .btn-secondary{
+  background:transparent !important;
+  color:#FFD600 !important;
+  border:2px solid #FFD600 !important;
+  border-radius:8px !important;
+  font-weight:800 !important;
+}
+html[data-contrast="high"] .notif-bell .notif-dropdown .btn-link,
+body[data-contrast="high"] .notif-bell .notif-dropdown .btn-link,
+.hc .notif-bell .notif-dropdown .btn-link,
+.high-contrast .notif-bell .notif-dropdown .btn-link{
+  background:transparent !important;
+  color:#FFD600 !important;
+  border:none !important;
+  text-decoration:underline !important;
+  text-underline-offset:2px !important;
+}
+
+/* ================================
+   HIGH CONTRAST — SIDEBAR (HARD OVERRIDES)
+   ================================ */
+
+/* bramki: atrybut na <html> lub <body> albo klasy .contrast-high / .hc */
+html[data-contrast="high"] .sidebar-menu-panel,
+body[data-contrast="high"] .sidebar-menu-panel,
+.contrast-high .sidebar-menu-panel,
+.hc .sidebar-menu-panel,
+html[data-contrast="high"] .sidebar-menu-overlay .sidebar-menu-panel,
+body[data-contrast="high"] .sidebar-menu-overlay .sidebar-menu-panel,
+.contrast-high .sidebar-menu-overlay .sidebar-menu-panel,
+.hc .sidebar-menu-overlay .sidebar-menu-panel {
+  background:#0b0b0b !important;
+  color:#fff !important;
+  border-left:2px solid #FFD600 !important;
+  box-shadow:none !important;
+}
+
+/* overlay ciemniejszy */
+html[data-contrast="high"] .sidebar-menu-overlay,
+body[data-contrast="high"] .sidebar-menu-overlay,
+.contrast-high .sidebar-menu-overlay,
+.hc .sidebar-menu-overlay {
+  background:rgba(0,0,0,.8) !important;
+}
+
+/* nagłówek: żółty + czarny tekst/ikona */
+html[data-contrast="high"] .sidebar-menu-header,
+body[data-contrast="high"] .sidebar-menu-header,
+.contrast-high .sidebar-menu-header,
+.hc .sidebar-menu-header {
+  background:#FFD600 !important;
+  color:#000 !important;
+  border-bottom:2px solid #000 !important;
+}
+html[data-contrast="high"] .sidebar-menu-header h3,
+body[data-contrast="high"] .sidebar-menu-header h3,
+.contrast-high .sidebar-menu-header h3,
+.hc .sidebar-menu-header h3 { color:#000 !important; }
+
+html[data-contrast="high"] .sidebar-menu-close-btn,
+body[data-contrast="high"] .sidebar-menu-close-btn,
+.contrast-high .sidebar-menu-close-btn,
+.hc .sidebar-menu-close-btn {
+  color:#000 !important;
+  background:transparent !important;
+  border:2px solid #000 !important;
+  border-radius:8px !important;
+}
+
+/* sekcje + user box na ciemno */
+html[data-contrast="high"] .sidebar-user-info,
+body[data-contrast="high"] .sidebar-user-info,
+.contrast-high .sidebar-user-info,
+.hc .sidebar-user-info {
+  background:transparent !important;
+  border-bottom:1px solid rgba(255,214,0,.35) !important;
+}
+html[data-contrast="high"] .sidebar-avatar,
+body[data-contrast="high"] .sidebar-avatar,
+.contrast-high .sidebar-avatar,
+.hc .sidebar-avatar { border-color:#FFD600 !important; }
+
+html[data-contrast="high"] .sidebar-username,
+body[data-contrast="high"] .sidebar-username,
+.contrast-high .sidebar-username,
+.hc .sidebar-username { color:#fff !important; }
+
+html[data-contrast="high"] .sidebar-email,
+body[data-contrast="high"] .sidebar-email,
+.contrast-high .sidebar-email,
+.hc .sidebar-email { color:#cfcfcf !important; }
+
+html[data-contrast="high"] .sidebar-section-title,
+body[data-contrast="high"] .sidebar-section-title,
+.contrast-high .sidebar-section-title,
+.hc .sidebar-section-title {
+  color:#FFD600 !important;
+  border-top:1px solid rgba(255,214,0,.35) !important;
+}
+
+/* linki / przyciski w treści */
+html[data-contrast="high"] .sidebar-menu-content a,
+body[data-contrast="high"] .sidebar-menu-content a,
+.contrast-high .sidebar-menu-content a,
+.hc .sidebar-menu-content a,
+html[data-contrast="high"] .sidebar-menu-content button,
+body[data-contrast="high"] .sidebar-menu-content button,
+.contrast-high .sidebar-menu-content button,
+.hc .sidebar-menu-content button {
+  color:#FFD600 !important;
+  background:transparent !important;
+}
+html[data-contrast="high"] .sidebar-menu-content a:hover,
+body[data-contrast="high"] .sidebar-menu-content a:hover,
+.contrast-high .sidebar-menu-content a:hover,
+.hc .sidebar-menu-content a:hover,
+html[data-contrast="high"] .sidebar-menu-content button:hover,
+body[data-contrast="high"] .sidebar-menu-content button:hover,
+.contrast-high .sidebar-menu-content button:hover,
+.hc .sidebar-menu-content button:hover {
+  background:rgba(255,214,0,.12) !important;
+}
+
+/* logout pasek (już masz czarny – utrzymujemy) */
+html[data-contrast="high"] .sidebar-menu-content button.logout-btn,
+body[data-contrast="high"] .sidebar-menu-content button.logout-btn,
+.contrast-high .sidebar-menu-content button.logout-btn,
+.hc .sidebar-menu-content button.logout-btn {
+  color:#FFD600 !important;
+  border-top:1px solid rgba(255,214,0,.35) !important;
+}
+
+/* focus ring */
+html[data-contrast="high"] .sidebar-menu-panel :focus,
+body[data-contrast="high"] .sidebar-menu-panel :focus,
+.contrast-high .sidebar-menu-panel :focus,
+.hc .sidebar-menu-panel :focus {
+  outline:3px solid #FFD600 !important;
+  outline-offset:2px !important;
+}
+
+/* HIGH CONTRAST: Auth aside button (register/login CTA) */
+html[data-contrast="high"] .panel--aside .aside-button,
+.contrast-high .panel--aside .aside-button,
+.hc .panel--aside .aside-button,
+html[data-contrast="high"] .panel--aside .aside-button:link,
+html[data-contrast="high"] .panel--aside .aside-button:visited {
+  background:#FFD600 !important;   /* żółte tło */
+  color:#000 !important;            /* czarny tekst */
+  border:2px solid #000 !important; /* mocna ramka */
+  box-shadow:none !important;
+  font-weight:700;
+  border-radius:10px;
+  text-decoration:none !important;
+}
+
+html[data-contrast="high"] .panel--aside .aside-button:hover,
+.contrast-high .panel--aside .aside-button:hover,
+.hc .panel--aside .aside-button:hover {
+  background:#000 !important;
+  color:#FFD600 !important;
+  border-color:#FFD600 !important;
+}
+
+html[data-contrast="high"] .panel--aside .aside-button:focus,
+.contrast-high .panel--aside .aside-button:focus,
+.hc .panel--aside .aside-button:focus {
+  outline:3px solid #FFD600 !important;
+  outline-offset:2px !important;
+}
+
+/* ===========================
+   HIGH CONTRAST — PROFILE
+   =========================== */
+html[data-contrast="high"] .profile-container,
+.contrast-high .profile-container,
+.hc .profile-container {
+  color:#fff;
+}
+
+/* Avatar: czarne tło + żółta ramka, inicjały żółte */
+html[data-contrast="high"] .avatar,
+.contrast-high .avatar,
+.hc .avatar {
+  background:#000 !important;
+  border:2px solid #FFD600 !important;
+  color:#FFD600 !important;
+}
+
+/* Nagłówki i meta */
+html[data-contrast="high"] .profile-name,
+.contrast-high .profile-name,
+.hc .profile-name {
+  color:#fff !important;
+}
+html[data-contrast="high"] .profile-meta,
+.contrast-high .profile-meta,
+.hc .profile-meta {
+  color:#d6d6d6 !important;
+}
+
+/* Cardy */
+html[data-contrast="high"] .card,
+.contrast-high .card,
+.hc .card {
+  background:#0b0b0b !important;
+  border:1px solid #FFD600 !important;
+  border-radius:12px !important;
+  box-shadow:none !important;
+}
+html[data-contrast="high"] .card-header,
+.contrast-high .card-header,
+.hc .card-header {
+  background:#000 !important;
+  color:#FFD600 !important;
+  border-bottom:1px solid #FFD600 !important;
+}
+html[data-contrast="high"] .card-body,
+.contrast-high .card-body,
+.hc .card-body {
+  color:#fff !important;
+}
+
+/* Statystyki (kafelki) */
+html[data-contrast="high"] .stat-card,
+.contrast-high .stat-card,
+.hc .stat-card {
+  background:#000 !important;
+  border:1px solid #FFD600 !important;
+}
+html[data-contrast="high"] .stat-value,
+.contrast-high .stat-value,
+.hc .stat-value {
+  color:#FFD600 !important;
+}
+html[data-contrast="high"] .stat-label,
+.contrast-high .stat-label,
+.hc .stat-label {
+  color:#f1f1f1 !important;
+  opacity:.85;
+}
+
+/* Sekcje “Nadchodzące”, podtytuły, listy */
+html[data-contrast="high"] .section-subtitle,
+.contrast-high .section-subtitle,
+.hc .section-subtitle {
+  color:#FFD600 !important;
+}
+html[data-contrast="high"] .upcoming-grid,
+.contrast-high .upcoming-grid,
+.hc .upcoming-grid {
+  color:#fff !important;
+}
+
+/* Timeline / aktywność */
+html[data-contrast="high"] .timeline-list,
+.contrast-high .timeline-list,
+.hc .timeline-list {
+  color:#fff !important;
+}
+html[data-contrast="high"] .timeline-item .link-strong,
+.contrast-high .timeline-item .link-strong,
+.hc .timeline-item .link-strong,
+html[data-contrast="high"] .link-strong {
+  color:#FFD600 !important;
+  text-decoration:underline;
+}
+html[data-contrast="high"] .timeline-item a,
+.contrast-high .timeline-item a,
+.hc .timeline-item a {
+  color:#FFD600 !important;
+}
+
+/* Tekst “wyciszony” */
+html[data-contrast="high"] .muted,
+.contrast-high .muted,
+.hc .muted {
+  color:#cccccc !important;
+}
+
+/* Przycisk “Udostępnij” (jeśli to zwykły button/link) */
+html[data-contrast="high"] .share-btn,
+.contrast-high .share-btn,
+.hc .share-btn { display:flex; }
+html[data-contrast="high"] .share-btn .btn,
+.contrast-high .share-btn .btn,
+.hc .share-btn .btn,
+html[data-contrast="high"] .share-btn button,
+.contrast-high .share-btn button,
+.hc .share-btn button,
+html[data-contrast="high"] .share-btn a,
+.contrast-high .share-btn a,
+.hc .share-btn a {
+  background:#FFD600 !important;
+  color:#000 !important;
+  border:2px solid #000 !important;
+  border-radius:10px !important;
+  font-weight:700;
+}
+html[data-contrast="high"] .share-btn .btn:hover,
+.contrast-high .share-btn .btn:hover,
+.hc .share-btn .btn:hover,
+html[data-contrast="high"] .share-btn button:hover,
+.contrast-high .share-btn button:hover,
+.hc .share-btn button:hover,
+html[data-contrast="high"] .share-btn a:hover,
+.contrast-high .share-btn a:hover,
+.hc .share-btn a:hover {
+  background:#000 !important;
+  color:#FFD600 !important;
+  border-color:#FFD600 !important;
+}
+
+/* Linki ogólnie wewnątrz profilu */
+html[data-contrast="high"] .profile-container a,
+.contrast-high .profile-container a,
+.hc .profile-container a {
+  color:#FFD600 !important;
+  text-decoration:underline;
+}
+
+/* Focus ring dla klikalnych */
+html[data-contrast="high"] .profile-container a:focus,
+html[data-contrast="high"] .profile-container button:focus,
+.contrast-high .profile-container a:focus,
+.contrast-high .profile-container button:focus,
+.hc .profile-container a:focus,
+.hc .profile-container button:focus {
+  outline:3px solid #FFD600 !important;
+  outline-offset:2px !important;
+}
+
+/* ==============================
+   HIGH CONTRAST — TERMINARZ
+   ============================== */
+html[data-contrast="high"] .schedule-shell.container,
+.contrast-high .schedule-shell.container,
+.hc .schedule-shell.container {
+  color:#fff;
+}
+
+/* TABS u góry */
+html[data-contrast="high"] .schedule-tabs .st-tab,
+.contrast-high .schedule-tabs .st-tab,
+.hc .schedule-tabs .st-tab {
+  background:#000 !important;
+  color:#fff !important;
+  border:1px solid #FFD600 !important;
+  border-radius:999px !important;
+}
+html[data-contrast="high"] .schedule-tabs .st-tab:hover,
+.contrast-high .schedule-tabs .st-tab:hover,
+.hc .schedule-tabs .st-tab:hover {
+  background:#111 !important;
+}
+html[data-contrast="high"] .schedule-tabs .st-tab.active,
+.contrast-high .schedule-tabs .st-tab.active,
+.hc .schedule-tabs .st-tab.active {
+  background:#FFD600 !important;
+  color:#000 !important;
+  border-color:#FFD600 !important;
+}
+
+/* Lista i elementy – ciemne tło + jedna obwódka */
+html[data-contrast="high"] .schedule-list,
+.contrast-high .schedule-list,
+.hc .schedule-list {
+  background:#000 !important;
+  border:1px solid #FFD600 !important;
+  border-radius:12px !important;
+  overflow:hidden;
+}
+html[data-contrast="high"] .schedule-item,
+.contrast-high .schedule-item,
+.hc .schedule-item {
+  background:#0b0b0b !important;
+  color:#fff !important;
+  border-bottom:1px solid #3a3a3a !important; /* delikatna linia między wierszami */
+}
+html[data-contrast="high"] .schedule-item:last-child,
+.contrast-high .schedule-item:last-child,
+.hc .schedule-item:last-child {
+  border-bottom:none !important;
+}
+html[data-contrast="high"] .schedule-item:hover,
+.contrast-high .schedule-item:hover,
+.hc .schedule-item:hover {
+  background:#121212 !important;
+}
+html[data-contrast="high"] .sl-sub,
+.contrast-high .sl-sub,
+.hc .sl-sub {
+  color:#d4d4d4 !important;
+}
+
+/* Pigułki „chip” (czas/kort itp.) */
+html[data-contrast="high"] .sl-chip,
+.contrast-high .sl-chip,
+.hc .sl-chip {
+  background:#000 !important;
+  color:#FFD600 !important;
+  border:1px solid #FFD600 !important;
+}
+html[data-contrast="high"] .sl-chip--muted,
+.contrast-high .sl-chip--muted,
+.hc .sl-chip--muted {
+  background:#000 !important;
+  color:#e2e2e2 !important;
+  border:1px solid #555 !important;
+}
+
+/* Badges statusów */
+html[data-contrast="high"] .sl-badge,
+.contrast-high .sl-badge,
+.hc .sl-badge {
+  background:#000 !important;
+  color:#FFD600 !important;
+  border:1px solid #FFD600 !important;
+}
+html[data-contrast="high"] .sl-badge--live,
+.contrast-high .sl-badge--live,
+.hc .sl-badge--live {
+  border-color:#ff5252 !important;
+  color:#ff9a9a !important;
+}
+html[data-contrast="high"] .sl-badge--done,
+.contrast-high .sl-badge--done,
+.hc .sl-badge--done {
+  border-color:#31c66a !important;
+  color:#8ff2b0 !important;
+}
+html[data-contrast="high"] .sl-badge--admin,
+.contrast-high .sl-badge--admin,
+.hc .sl-badge--admin {
+  border-color:#ffb84d !important;
+  color:#ffd08a !important;
+}
+
+/* Kropka LIVE */
+html[data-contrast="high"] .live-dot,
+.contrast-high .live-dot,
+.hc .live-dot {
+  background:#ff2a2a !important;
+  box-shadow:0 0 0 0 rgba(255,42,42,.7);
+}
+
+/* Focus – dostępność */
+html[data-contrast="high"] .schedule-item:focus,
+.contrast-high .schedule-item:focus,
+.hc .schedule-item:focus {
+  outline:3px solid #FFD600 !important;
+  outline-offset:-3px !important;
+}
+
+/* Puste/ładowanie */
+html[data-contrast="high"] .sl-empty,
+html[data-contrast="high"] .sl-loading-more,
+.contrast-high .sl-empty,
+.contrast-high .sl-loading-more,
+.hc .sl-empty,
+.hc .sl-loading-more {
+  color:#e5e5e5 !important;
+}
+
+/* ========== HIGH CONTRAST v2 — minimalistyczne ramki ========== */
+.hc {
+  --hc-bg:#000; --hc-panel:#0b0b0b; --hc-text:#fff; --hc-muted:#d9d9d9;
+  --hc-border:#ffd400; --hc-border-soft:#ffd40080; --hc-focus:#ffe14a;
+}
+
+/* Tło + tekst */
+.hc body { background:var(--hc-bg) !important; color:var(--hc-text) !important; }
+
+/* 1) Ramka tylko na KONTENERACH (karty/sekcje/modale/sidebar) */
+.hc .card,
+.hc .section,
+.hc .panel,
+.hc .details-panel,
+.hc .tournament-box,
+.hc .schedule-list,
+.hc .modal,
+.hc .sidebar-menu-panel,
+.hc .bracket,
+.hc .match-card,
+.hc .options-box {
+  background:var(--hc-panel) !important;
+  color:var(--hc-text) !important;
+  border:1.5px solid var(--hc-border) !important;
+  box-shadow:none !important;
+}
+
+/* 2) WNĘTRZA bez ramek (tu wycinamy to, co robiło „drabinkę żółtych linii”) */
+.hc .card-header,
+.hc .card-body,
+.hc .stat-card,
+.hc .section-header,
+.hc .tm-section,
+.hc .role-box,
+.hc .match-actions,
+.hc .br-footer,
+.hc .br-player,
+.hc .details-row,
+.hc .tournament-meta,
+.hc .tournament-info-row { 
+  border:none !important;
+  background:transparent !important;
+}
+
+/* 3) Listy/pozycje: tylko subtelny separator */
+.hc .schedule-item { 
+  border:none !important; 
+  border-bottom:1px solid var(--hc-border-soft) !important; 
+  background:transparent !important;
+}
+.hc .schedule-item:last-child { border-bottom:none !important; }
+
+/* 4) Pigułki/badge bez grubej ramy */
+.hc .pill, .hc .badge, .hc .sl-badge, .hc .sl-chip {
+  background:#141414 !important;
+  border:1px solid var(--hc-border-soft) !important;
+  color:var(--hc-text) !important;
+}
+
+/* 5) Przyciski – lekka ramka, bez „boxu w boxie” */
+.hc .btn, .hc .btn-primary, .hc .btn-secondary, .hc .btn-danger,
+.hc .br-btn, .hc .st-tab {
+  background:transparent !important;
+  color:var(--hc-text) !important;
+  border:1px solid var(--hc-border-soft) !important;
+  box-shadow:none !important;
+}
+.hc .btn:hover, .hc .st-tab:hover { background:#141414 !important; }
+.hc .st-tab.active { border-color:var(--hc-border) !important; }
+
+/* 6) Formy – czytelne, ale nie „pudełko w pudełku” */
+.hc input, .hc select, .hc textarea {
+  background:var(--hc-bg) !important;
+  color:var(--hc-text) !important;
+  border:1.5px solid var(--hc-border) !important;
+}
+.hc input::placeholder, .hc textarea::placeholder { color:#bdbdbd !important; }
+.hc input[type="date"]::-webkit-calendar-picker-indicator,
+.hc input[type="time"]::-webkit-calendar-picker-indicator { filter:invert(1) brightness(1.4); }
+.hc input[type="checkbox"], .hc input[type="radio"] { accent-color:var(--hc-border) !important; }
+
+/* 7) Pasek postępu „Uczestnicy” – jedna ramka, żółte wypełnienie */
+/* ========================================================================== */
+/* HC: Pasek postępu (Uczestnicy) – Żółto-Czarny                             */
+/* ========================================================================== */
+
+/* Kontener paska (tło) */
+html.hc .progress-bar {
+  background-color: #000000 !important;     /* Czarne tło */
+  border: 2px solid #ffff00 !important;     /* Gruba żółta ramka */
+  border-radius: 999px !important;          /* Pastylka */
+  height: 1.75rem !important;               /* Wysokość spójna */
+  overflow: hidden !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Wypełnienie paska (postęp) */
+html.hc .progress-fill {
+  background-color: #ffff00 !important;     /* Żółte wypełnienie */
+  height: 100% !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  z-index: 1 !important;
+}
+
+html.hc .progress-bar {
+  background-color: #000000 !important;
+  border: 2px solid #ffff00 !important;
+  border-radius: 999px !important;
+  height: 1.75rem !important;
+  position: relative !important;       /* Ważne dla dziecka absolute */
+  overflow: hidden !important;
+  display: block !important;           /* Wyłączamy flexbox, żeby nie przesuwał */
+}
+
+/* Wypełnienie (żółty pasek) */
+html.hc .progress-fill {
+  background-color: #ffff00 !important;
+  height: 100% !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  z-index: 1 !important;
+}
+
+/* Tekst (liczba w pastylce) */
+html.hc .progress-text {
+  /* WYMUSZENIE ŚRODKA */
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Przesuwa o połowę własnej szerokości w lewo i w górę */
+  z-index: 2 !important;
+  
+  /* Wygląd pastylki */
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+  font-size: 0.9rem !important;
+  padding: 0.15rem 0.6rem !important;
+  border-radius: 6px !important;
+  border: 1px solid #000000 !important;
+  
+  /* Reszta */
+  mix-blend-mode: normal !important;
+  box-shadow: 0 0 0 2px #000000 !important;
+  white-space: nowrap !important;
+}
+
+/* 8) Modale – tylko zewnętrzna ramka */
+.hc .modal-header, .hc .modal-body, .hc .modal-footer { 
+  background:transparent !important; border:none !important; color:var(--hc-text) !important;
+}
+.hc .modal-backdrop { background:rgba(0,0,0,.75) !important; }
+
+/* 9) Drabinka – ramka na całej kolumnie/meczu, bez wnętrz */
+.hc .br-match, .hc .match-card { border:1.5px solid var(--hc-border) !important; }
+.hc .br-player, .hc .match-actions, .hc .br-footer { border:none !important; }
+
+/* 10) Focus – dostępność bez dodatkowych ramek wewnątrz */
+.hc :focus-visible { outline:2px solid var(--hc-focus) !important; box-shadow:0 0 0 3px rgba(255,208,0,.25) !important; }
+ 
+/* --- DETALe turnieju: pasek akcji (sticky) — czyszczenie w HC --- */
+.hc .details-actions.sticky {
+  position: static !important;   /* żadnego sticky */
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.hc .details-actions.sticky::before,
+.hc .details-actions.sticky::after {
+  content: none !important;      /* usuń pseudo-gradienty */
+}
+
+/* schowaj pole z linkiem/udostępnieniem w tym pasku */
+.hc .details-actions.sticky input[type="text"],
+.hc .details-actions.sticky .share-input,
+.hc .details-actions.sticky .share-link,
+.hc .details-actions.sticky .link-input {
+  display: none !important;
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  flex: 0 0 0 !important;
+}
+
+/* ================================
+   HC — turniej: lista meczów / karty
+   ================================ */
+.hc .match-card,
+.hc .div.match-card,
+.hc .match-card .card,
+.hc .match-card .card-body {
+  background: transparent !important;
+  border: 1px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* Tytuł meczu – usuń żółte tło/oznaczenie linka */
+.hc .match-info h3,
+.hc .match-info h3 a,
+.hc .match-info .match-title,
+.hc .match-info .match-title a {
+  background: transparent !important;
+  color: var(--hc-text) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  text-decoration: none !important;
+}
+.hc .match-info h3 a:hover,
+.hc .match-info .match-title a:hover {
+  text-decoration: underline !important;
+}
+
+/* Pigułki przy tytule – np. „Kobiety B1”, małe statusy daty/kortu */
+.hc .match-info .badge,
+.hc .match-info .chip,
+.hc .match-info .pill,
+.hc .badge,
+.hc .chip,
+.hc .pill {
+  background: #0a0a0a !important;
+  color: var(--hc-text) !important;
+  border: 1px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* Mała kapsułka z datą/kortem pod nazwiskami graczy */
+.hc .match-time,
+.hc .match-slot,
+.hc .match-meta .pill,
+.hc .match-meta .badge {
+  background: #0a0a0a !important;
+  color: var(--hc-text) !important;
+  border: 1px solid var(--hc-border) !important;
+}
+
+/* Linki/etykiety w sekcji „Sędzia:” – kolor i bez tła */
+.hc .match-referee a,
+.hc .match-referee,
+.hc .match-info .label,
+.hc .match-info label {
+  background: transparent !important;
+  color: var(--hc-text) !important;
+  border: 0 !important;
+}
+
+/* Checkbox „Zaznacz” – prosty, czytelny */
+.hc .match-select input[type="checkbox"],
+.hc input[type="checkbox"].match-select {
+  accent-color: var(--hc-accent) !important;
+}
+
+/* Przyciski akcji na karcie meczu (Ustaw termin / Wprowadź wynik / Ustaw parę) */
+.hc .match-card .btn,
+.hc .match-card .btn-primary,
+.hc .match-card .btn-secondary {
+  background: #111 !important;
+  color: var(--hc-text) !important;
+  border: 1px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+.hc .match-card .btn:hover {
+  background: #181818 !important;
+}
+
+/* Nagłówki sekcji rund (Ćwierćfinał, itp.) – bez podbitego tła */
+.hc .matches-section .match-header,
+.hc .matches-section header,
+.hc .matches-section h3,
+.hc .matches-section h2 {
+  background: transparent !important;
+  color: var(--hc-text) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Delikatniejszy obrys samej „kreski” kontenera listy meczów */
+.hc .matches-list,
+.hc .match-group,
+.hc .match-group .card {
+  background: transparent !important;
+  border: 1px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* HC: tytuł meczu (żółta kapsuła) – wymuś czarny tekst */
+.hc .match-card .match-info .match-round,
+.hc .match-card .match-info .match-round a,
+.hc .match-info .match-round,
+.hc .match-info .match-round * {
+  color: #000 !important;        /* czytelny tekst */
+  text-shadow: none !important;  /* bez poświat */
+  -webkit-text-stroke: 0 !important;
+}
+
+/* na wszelki wypadek: jeśli masz inne żółte kapsuły/badge */
+.hc .badge--highlight,
+.hc .pill--highlight,
+.hc .tag--highlight,
+.hc a.badge--highlight {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* ================================
+   HIGH CONTRAST (HC) — MODALS
+   ================================ */
+.hc .modal-backdrop{
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.8);           /* ciemniejszy overlay */
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10000;
+}
+
+.hc .modal-content{
+  width: 420px; max-width: 92%;
+  background: #0a0a0a;                  /* ciemne tło */
+  color: #fff;                          /* jasny tekst */
+  border: 2px solid #FFD400;            /* żółta ramka */
+  border-radius: 10px;
+  padding: 1rem 1rem 0.9rem;
+  box-shadow: 0 0 0 3px #000 inset;     /* separacja od tła */
+}
+
+.hc .modal-content h1,
+.hc .modal-content h2,
+.hc .modal-content h3{
+  color:#fff; margin:0 0 .6rem;
+}
+
+/* Pola wejściowe */
+.hc .modal-input{
+  width:100%;
+  background:#000;
+  color:#fff;
+  border:2px solid #FFD400;
+  border-radius:8px;
+  padding:.6rem .75rem;
+  margin:.5rem 0;
+  outline:none;
+}
+.hc .modal-input::placeholder{ color:#bdbdbd; }
+.hc .modal-input:focus{
+  box-shadow:0 0 0 2px #000 inset, 0 0 0 2px #FFD400;
+}
+
+/* Lista wyników / wyboru */
+.hc .list{
+  max-height: 220px;
+  overflow-y: auto;
+  list-style:none;
+  margin:.35rem 0 0;
+  padding:0;
+  background:#0a0a0a;
+  border:1px solid #FFD400;
+  border-radius:8px;
+}
+.hc .list-item{
+  padding:.6rem .75rem;
+  cursor:pointer;
+  border-bottom:1px dashed rgba(255,212,0,.35);
+}
+.hc .list-item:last-child{ border-bottom:none; }
+.hc .list-item:hover,
+.hc .list-item.selected{
+  background:#111;                      /* nie biały */
+  outline:2px solid #FFD400;            /* wyraźne zaznaczenie */
+  outline-offset:-2px;
+}
+
+/* Stopka z przyciskami */
+.hc .modal-actions{
+  display:flex;
+  gap:.6rem;
+  justify-content:flex-end;
+  margin-top:1rem;
+}
+
+/* Spójne guziki (jeśli już masz .btn-primary/.btn-secondary, to poniższe je wzmocni w modalach) */
+.hc .modal-content .btn-primary{
+  background:#FFD400;
+  color:#000;
+  border:2px solid #FFD400;
+  border-radius:10px;
+  padding:.55rem 1.1rem;
+  font-weight:700;
+}
+.hc .modal-content .btn-primary:hover{ filter:brightness(1.05); }
+
+.hc .modal-content .btn-secondary{
+  background:#000;
+  color:#FFD400;
+  border:2px solid #FFD400;
+  border-radius:10px;
+  padding:.55rem 1.1rem;
+  font-weight:700;
+}
+.hc .modal-content .btn-secondary:hover{ background:#111; }
+
+/* Drobne UX: brak dziwnych białych kresek dookoła modala */
+.hc .modal-content *{ box-shadow:none; }
+
+/* HC – usuń WSZYSTKIE białe tła w środku modala */
+.hc .modal-content * {
+  background-color: transparent !important;
+}
+
+/* zostawiamy świadomie tło dla inputów i przycisków */
+.hc .modal-content input,
+.hc .modal-content select,
+.hc .modal-content textarea {
+  background-color: #000 !important;
+}
+
+.hc .modal-content .btn-primary {
+  background-color: #FFD400 !important;
+  color: #000 !important;
+}
+
+.hc .modal-content .btn-secondary {
+  background-color: #000 !important;
+  color: #FFD400 !important;
+}
+
+/* jeżeli masz pusty kontener listy / „Brak wyników” – niech nie robi białej tafli */
+.hc .modal-content .list,
+.hc .modal-content .modal-body,
+.hc .modal-content .results,
+.hc .modal-content .panel,
+.hc .modal-content .empty,
+.hc .modal-content .no-results {
+  background: transparent !important;
+  border: 1px solid #FFD400;          /* opcjonalnie, usuń jeśli nie chcesz ramki */
+  border-radius: 8px;
+  color: #bdbdbd;
+  padding: .5rem .75rem;
+}
+
+/* elementy listy nadal czytelne przy hover/select */
+.hc .modal-content .list-item { border-bottom: 1px dashed rgba(255,212,0,.35); }
+.hc .modal-content .list-item:hover,
+.hc .modal-content .list-item.selected {
+  background: #111 !important;
+  outline: 2px solid #FFD400;
+  outline-offset: -2px;
+}
+
+/* HC: Auto-plan / modale — usuń białą stopkę */
+.hc .modal-footer,
+.hc .modal-actions,
+.hc .modal-content > .footer,
+.hc .auto-plan-modal .modal-footer,
+.hc .auto-plan-modal .modal-actions {
+  background: transparent !important;
+  border-top: 1px solid #FFD400;   /* jak nie chcesz linii — usuń */
+  box-shadow: none !important;
+}
+
+/* na wszelki wypadek: wyłącz białe tła w bezpośrednich dzieciach stopki */
+.hc .modal-footer > *,
+.hc .modal-actions > * {
+  background: transparent !important;
+}
+
+/* spójne przyciski w stopce */
+.hc .modal-footer .btn-primary,
+.hc .modal-actions .btn-primary {
+  background: #FFD400 !important;
+  color: #000 !important;
+}
+
+.hc .modal-footer .btn-secondary,
+.hc .modal-actions .btn-secondary {
+  background: #000 !important;
+  color: #FFD400 !important;
+  border: 1px solid #FFD400 !important;
+}
+
+/* ===========================
+   HC – Modale (uniwersalne)
+   =========================== */
+
+/* Główna karta modala */
+.hc .ReactModal__Content,
+.hc .modal-content,
+.hc [class*="modal"] .modal-content,
+.hc .ant-modal-content,
+.hc .ant-modal-header,
+.hc .ant-modal-body,
+.hc .ant-modal-footer {
+  background:#0b0b0b !important;
+  color:#fff !important;
+  border:1px solid #FFD400 !important;
+  box-shadow:none !important;
+}
+
+/* Tekst w środku */
+.hc [class*="modal"] .modal-content *,
+.hc .ant-modal * {
+  color:inherit !important;
+}
+
+/* Pole wyszukiwania / inputy */
+.hc [class*="modal"] input,
+.hc [class*="modal"] select,
+.hc [class*="modal"] textarea,
+.hc .ant-input,
+.hc .ant-select-selector,
+.hc .ant-input-affix-wrapper {
+  background:#000 !important;
+  color:#fff !important;
+  border:1px solid #FFD400 !important;
+}
+
+/* LISTA – usuń białe „pudło” i obramuj */
+.hc [class*="modal"] .list,
+.hc [class*="modal"] [class*="list"],
+.hc [class*="modal"] [class*="results"],
+.hc [class*="modal"] [class*="scroll"],
+.hc [class*="modal"] ul,
+.hc .ant-list,
+.hc .ant-list-split,
+.hc .rc-virtual-list-holder {
+  background:transparent !important;
+  border:1px solid #FFD400 !important;
+  border-radius:10px !important;
+  max-height:260px;
+  overflow:auto;
+}
+
+/* Elementy listy */
+/* POPRAWKA: Czarne tło dla listy w modalu w trybie HC */
+.hc [class*="modal"] ul {
+  background:var(--hc-bg) !important; /* Użyj czarnego tła (def. na górze pliku) */
+}
+
+.hc [class*="modal"] ul,
+.hc [class*="modal"] li,
+.hc .ant-list-item {
+  /* Usuwamy tło dla li, żeby 'ul' zadziałało, ale zostawiamy border */
+  /* lub zmieniamy z transparent na czarny, jeśli li ma osobne tło */
+  background:var(--hc-bg) !important; /* lub ustaw na czarny: #000 !important; */
+  border-bottom:1px solid #FFD40033 !important;
+}
+
+/* Wiersze listy */
+.hc [class*="modal"] .list-item:hover,
+.hc [class*="modal"] .list-item.selected,
+.hc .ant-list-item:hover {
+  background:rgba(255,212,0,.12) !important; /* Ten jest OK (efekt podświetlenia) */
+}
+.hc [class*="modal"] .list-item:hover,
+.hc [class*="modal"] .list-item.selected,
+.hc .ant-list-item:hover {
+  background:rgba(255,212,0,.12) !important;
+}
+
+/* Stopka modala */
+.hc [class*="modal"] .modal-actions,
+.hc [class*="modal"] .modal-footer,
+.hc .ant-modal-footer {
+  background:transparent !important;
+  border-top:1px solid #FFD400 !important;
+}
+
+/* Przyciski */
+.hc [class*="modal"] .btn-primary,
+.hc .ant-btn-primary {
+  background:#FFD400 !important;
+  color:#000 !important;
+  border:none !important;
+}
+.hc [class*="modal"] .btn-secondary,
+.hc [class*="modal"] .btn-outline,
+.hc .ant-btn-default {
+  background:#000 !important;
+  color:#FFD400 !important;
+  border:1px solid #FFD400 !important;
+}
+
+/* „X” (zamknij) */
+.hc [class*="modal"] .modal-close,
+.hc [class*="modal"] [class*="close"],
+.hc .ant-modal-close {
+  background:#000 !important;
+  color:#FFD400 !important;
+  border:1px solid #FFD400 !important;
+}
+
+/* Pasek przewijania listy */
+.hc [class*="modal"] .list::-webkit-scrollbar,
+.hc .rc-virtual-list-holder::-webkit-scrollbar { width:8px; height:8px; }
+.hc [class*="modal"] .list::-webkit-scrollbar-thumb,
+.hc .rc-virtual-list-holder::-webkit-scrollbar-thumb {
+  background:#FFD40033; border:1px solid #FFD40055; border-radius:6px;
+}
+
+html.hc .pair-modal__backdrop { z-index: 2000000 !important; }
+
+.hc .pair-modal__card:has(.pairing-list) .pair-modal__footer {
+  border-top: none !important;
+}
+
+/* === Dark / High-Contrast skin for Match Score Panel === */
+/* Używa klas .dark na <html> dla trybu ciemnego i .hc dla high-contrast. */
+/* Jeśli masz tylko .hc – możesz wywalić .dark z selektorów. */
+
+html.dark .score-panel-container,
+html.hc .score-panel-container {
+  background: #000;
+  color: #fff;
+  border: 2px solid var(--hc-border, #FFD600);
+  box-shadow: none;
+  max-width: 720px;                /* trochę szersze, żeby nie było ciasno */
+}
+
+html.dark .score-panel-title,
+html.hc .score-panel-title {
+  color: #fff;
+}
+
+html.dark .match-details,
+html.hc .match-details {
+  color: #FFE566;
+}
+
+html.dark .vs-label,
+html.hc .vs-label {
+  color: #B9B9B9;
+}
+
+/* Nagłówki i wiersze setów – subtelne, ale czytelne w HC */
+html.dark .sets-header,
+html.hc .sets-header {
+  border-bottom-color: rgba(255, 214, 0, 0.35);
+  color: #fff;
+}
+html.dark .set-row,
+html.hc .set-row {
+  border-bottom-color: rgba(255, 214, 0, 0.2);
+  color: #fff;
+}
+
+/* Inputy/selecty – pełne, nieprzezroczyste tło i żółte obrysy */
+html.dark .score-input,
+html.hc .score-input,
+html.dark select,
+html.hc select {
+  background: #000;
+  color: #fff;
+  border: 2px solid var(--hc-border, #FFD600);
+  border-radius: 8px;
+  box-shadow: none;
+}
+html.dark .score-input:focus,
+html.hc .score-input:focus,
+html.dark select:focus,
+html.hc select:focus {
+  outline: 3px solid var(--hc-border, #FFD600);
+  outline-offset: 0;
+}
+
+/* Przyciski – spójne z resztą UI */
+html.dark .add-set-btn,
+html.hc .add-set-btn {
+  background: #000;
+  color: #FFD600;
+  border: 2px solid #FFD600;
+}
+html.dark .add-set-btn:hover,
+html.hc .add-set-btn:hover {
+  filter: brightness(1.1);
+}
+
+html.dark .submit-score-btn,
+html.hc .submit-score-btn {
+  background: #FFD600;
+  color: #000;
+  border: 2px solid #FFD600;
+}
+html.dark .submit-score-btn:hover,
+html.hc .submit-score-btn:hover {
+  background: #FFE566;
+}
+
+/* Ikona usuwania seta – wyraźniejsza w dark/HC */
+html.dark .remove-set-btn,
+html.hc .remove-set-btn {
+  color: #FF7373;
+}
+html.dark .remove-set-btn:hover,
+html.hc .remove-set-btn:hover {
+  color: #FF4D4D;
+}
+
+/* Alerty */
+html.dark .success-message,
+html.hc .success-message {
+  color: #A6F3A6;
+  background: rgba(0, 128, 0, 0.15);
+  border: 1px solid #2ECC71;
+}
+html.dark .error-message,
+html.hc .error-message {
+  color: #FFB3B3;
+  background: rgba(255, 0, 0, 0.12);
+  border: 1px solid #FF6B6B;
+}
+
+/* Dodatkowe powietrze, żeby nic nie ocierało o krawędzie */
+html.dark .score-panel-container,
+html.hc .score-panel-container {
+  padding: 2.25rem;
+}
+
+
+/* ===================== HC / DARK SKIN ===================== */
+html.hc .table-responsive-wrapper {
+  overflow-x: visible;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Tabela */
+html.hc .registrations-table {
+  background: #000;
+  color: #fff;
+  border: 2px solid var(--hc-border, #FFD600);
+  border-radius: 10px;
+  box-shadow: none;
+  border-collapse: separate;         /* żeby border nie „połknął” radiusa */
+  border-spacing: 0;
+}
+
+html.hc .registrations-table thead {
+  background: #000;
+}
+html.hc .registrations-table thead th {
+  color: #fff;
+  border-bottom: 2px solid rgba(255,214,0,.4);
+}
+
+html.hc .registrations-table th,
+html.hc .registrations-table td {
+  border-right: 1px solid rgba(255,214,0,.25);
+}
+html.hc .registrations-table th:last-child,
+html.hc .registrations-table td:last-child {
+  border-right: 0;
+}
+
+/* zebry/hover */
+html.hc .registrations-table tbody tr:nth-child(even) {
+  background: rgba(255,214,0,.06);
+}
+html.hc .registrations-table tbody tr:hover {
+  background: rgba(255,214,0,.12);
+}
+
+/* Statusy – wyraźniejsze na czarnym */
+html.hc .reg-admin-status-pending   { color: #FFD600; }
+html.hc .reg-admin-status-approved  { color: #7DFF8A; }
+html.hc .reg-admin-status-rejected  { color: #FF6B6B; }
+html.hc .reg-admin-status-invited   { color: #7DB7FF; }
+
+/* Komórka akcji */
+html.hc .actions-cell { gap: .6rem; }
+
+/* Przyciski akcji – spójne z resztą HC */
+html.hc .btn-icon {
+  background: #000;
+  color: #FFD600;
+  border: 2px solid #FFD600;
+  border-radius: 8px;
+  padding: .4rem .8rem;
+}
+html.hc .btn-icon:hover { filter: brightness(1.1); }
+
+html.hc .btn-icon.btn-approve { border-color: #7DFF8A; color: #7DFF8A; }
+html.hc .btn-icon.btn-reject,
+html.hc .btn-icon.btn-delete { border-color: #FF6B6B; color: #FF6B6B; }
+
+/* Pasek akcji masowych + filtry */
+html.hc .bulk-actions-bar {
+  background: #000;
+  border: 2px solid #FFD600;
+  color: #fff;
+}
+html.hc .bulk-actions-bar label { color: #fff; }
+
+html.hc .reg-admin-search,
+html.hc .reg-admin-select,
+html.hc .reg-admin-date {
+  background: #000;
+  color: #fff;
+  border: 2px solid #FFD600;
+  border-radius: 8px;
+  box-shadow: none;
+}
+html.hc .reg-admin-search::placeholder { color: #bbb; }
+
+/* Paginacja */
+html.hc .pagination button {
+  background: #000;
+  color: #FFD600;
+  border: 2px solid #FFD600;
+}
+html.hc .pagination button:hover:not(:disabled),
+html.hc .pagination button.active {
+  background: #FFD600;
+  color: #000;
+}
+html.hc .pagination span { color: #fff; }
+
+/* Karty (mobile) */
+@media (max-width: 767px) {
+  html.hc .registration-card {
+    background: #000;
+    border: 2px solid #FFD600;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+  html.hc .card-header {
+    background: #000;
+    border-bottom: 1px solid rgba(255,214,0,.35);
+  }
+  html.hc .card-details p { color: #ddd; }
+  html.hc .card-details p strong { color: #fff; }
+
+  html.hc .card-actions-mobile .btn-icon {
+    background: #000;
+    color: #FFD600;
+    border: 2px solid #FFD600;
+  }
+}
+
+/* Checkboxy czytelne w HC */
+html.hc input[type="checkbox"] {
+  accent-color: #FFD600;
+}
+
+/* Focusy – mocny outline */
+html.hc .btn-icon:focus,
+html.hc .reg-admin-search:focus,
+html.hc .reg-admin-select:focus,
+html.hc .reg-admin-date:focus {
+  outline: 3px solid #FFD600;
+  outline-offset: 0;
+}
+
+
+/* HC: pasek uczestników – mocny kontrast i czytelny napis */
+.hc .progress-bar {
+  background: #000 !important;
+  border: 1px solid var(--hc-border) !important;
+  height: 14px; /* trochę wyższy, łatwiej trafić wzrokiem */
+  position: relative;
+}
+
+.hc .progress-fill {
+  background: #ff0 !important;   /* żółty jak reszta HC */
+  min-width: 6px;                 /* żeby zawsze było coś widać przy 1/… */
+  height: 100%;
+  border-radius: 4px 0 0 4px;
+}
+
+.hc .progress-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%); /* centrowanie w belce */
+  z-index: 2;
+  padding: 0 6px;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1.1;
+  color: #000 !important;         /* czarny tekst na żółtym tle */
+  background: #ff0 !important;    /* żółty „znaczek” pod napisem */
+  border: 1px solid var(--hc-border);
+  border-radius: 3px;
+  white-space: nowrap;
+  pointer-events: none;
+  /* mały „outline”, gdy żółty leży na żółtym wypełnieniu */
+  box-shadow: 0 0 0 2px #000;
+}

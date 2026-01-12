@@ -1,0 +1,11 @@
+{
+  "name": "blind-tennis",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm ci --prefix client && npm run build --prefix client && npm ci --prefix server",
+    "start": "node server/index.js"
+  }
+}

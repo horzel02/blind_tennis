@@ -1,0 +1,263 @@
+/* tournamentList.css */
+
+/* ========================================================================== */
+/* 1. KONTENER GŁÓWNY STRONY + UKŁAD (MOBILE-FIRST)                           */
+/* ========================================================================== */
+.tournaments-page.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.content-with-filters {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Sidebar filtrów (desktop)*/
+.filters {
+  display: none;
+  flex: 0 0 240px;
+}
+
+.tournament-grid {
+  /* wypełnij całą kolumnę obok sidebaru */
+  flex: 1 1 0%;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+
+  /* porządek w osi blokowej */
+  align-items: start;
+  /* NIE trzeba justify-content w gridzie z 1fr, bo kolumny i tak wypełniają wiersz */
+}
+
+
+/* ========================================================================== */
+/* 2. CONTROLS BAR: nagłówek z wyszukaj / sort / reset / przycisk filtrów     */
+/* ========================================================================== */
+.controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.controls-bar h1 {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.controls-bar input[type="text"],
+.controls-bar select {
+  flex: 1 1 180px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--ct-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.btn-filter-toggle:hover {
+  background-color: var(--ct-accent);
+}
+
+.controls-bar .btn-secondary {
+    margin-left: auto;
+}
+
+/* ========================================================================== */
+/* 3. PRZYCISK “RESETUJ FILTRY”                                               */
+/* ========================================================================== */
+.btn-clear {
+  background-color: #f7f7f7;
+  border: 1px solid var(--ct-muted);
+  color: var(--ct-primary);
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-clear:hover,
+.btn-clear:focus {
+  background-color: var(--ct-primary);
+  color: #fff;
+  border-color: var(--ct-accent);
+}
+
+.btn-clear:disabled {
+  background-color: #fafafa;
+  border-color: #cccccc;
+  color: #cccccc;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ========================================================================== */
+/* 4. “BRAK WYNIKÓW”                                                          */
+/* ========================================================================== */
+.no-results, .tlwc-no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.no-results p, .tlwc-no-results p {
+  font-size: 1.1rem;
+  color: var(--ct-dark);
+  text-align: center;
+}
+
+/* ========================================================================== */
+/* 6. STYLE MODALU FILTRÓW (TERAZ OFF-CANVAS)                                 */
+/* ========================================================================== */
+.filters-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.filters-modal-content {
+  background-color: #fff;
+  border-radius: 0;
+  padding: 1.5rem;
+  width: 80%;
+  max-width: 320px;
+  height: 100%;
+  position: relative;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  transform: translateX(-100%);
+  animation: slideInFromLeft 0.3s forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+.filters-modal-close-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ct-dark);
+  z-index: 1001;
+}
+
+.filters-modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--ct-darkest);
+}
+
+.filters-modal-content .filters-panel {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+
+.filters-modal-content .modal-actions {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.75rem;
+  margin-top: auto;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+.filters-modal-content .modal-actions button {
+  flex: 1;
+}
+
+/* Animacje */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOutToLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+
+/* ========================================================================== */
+/* 7. MEDIA QUERIES DLA WIĘKSZYCH EKRANÓW (TABLET I DESKTOP)                  */
+/* ========================================================================== */
+@media (min-width: 768px) {
+  .content-with-filters {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .filters {
+    display: block;
+  }
+
+  .btn-filter-toggle {
+    display: none;
+  }
+
+  .filters-modal-backdrop {
+    display: none;
+  }
+
+  .controls-bar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  .controls-bar h1 {
+    flex-grow: 1;
+  }
+  
+  .filters-panel .date-range {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-filter-toggle {
+    width: 100%;
+  }
+}

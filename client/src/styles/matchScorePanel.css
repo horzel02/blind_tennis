@@ -1,0 +1,130 @@
+/* client/src/styles/matchScorePanel.css */
+.score-panel-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.score-panel-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.match-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.vs-label {
+    font-weight: normal;
+    color: #666;
+}
+
+.score-input-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sets-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 50px;
+    gap: 10px;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+}
+
+.set-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 50px;
+    gap: 10px;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.score-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.add-set-btn, .submit-score-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.add-set-btn {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.add-set-btn:hover {
+    background-color: #4cae4c;
+}
+
+.submit-score-btn {
+    background-color: #0275d8;
+    color: white;
+}
+
+.submit-score-btn:hover {
+    background-color: #025aa5;
+}
+
+.remove-set-btn {
+    background: transparent;
+    border: none;
+    color: #d9534f;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.remove-set-btn:hover {
+    color: #c9302c;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.success-message {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border: 1px solid #d6e9c6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.error-message {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 1rem;
+    text-align: center;
+}

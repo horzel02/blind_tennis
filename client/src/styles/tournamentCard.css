@@ -1,0 +1,29 @@
+/* tournamentCard.css */
+
+/* Wszelkie dodatkowe drobne odstępstwa od “globalnej” karty można tu dodać. 
+   Jeśli nie ma nic poza klasą .card z `globals.css`, można zostawić pusty plik 
+   albo całkowicie go usunąć. */
+
+.card-location {
+  /* jeżeli np. chcemy inną marginę lub font-weight: */
+  font-style: italic;
+}
+
+.card-actions .btn-link {
+  text-decoration: underline;
+  color: var(--ct-primary);
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.card-actions .btn-link:hover,
+.card-actions .btn-link:focus {
+  color: var(--ct-accent);
+}
+
+/* Jeśli chcemy specyficzny spacing przycisków w karcie, np.: */
+.card-actions .btn-link + .btn-delete {
+  margin-left: 0.5rem;
+}
