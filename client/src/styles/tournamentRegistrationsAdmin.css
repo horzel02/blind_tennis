@@ -439,3 +439,119 @@
   overflow-x: auto; /* Włącza przewijanie w poziomie, gdy tabela wystaje */
   margin-bottom: 1rem;
 }
+
+/* =========================================================
+   TournamentRegistrationsAdmin — MOBILE CARDS + LANDSCAPE
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .registration-card {
+    border-radius: 12px;
+  }
+
+  .card-header {
+    gap: 10px;
+  }
+
+  .card-title h4 {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  /* status w headerze niech nie rozpycha */
+  .card-header > span {
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+
+  .card-details {
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  /* Detale jako 2 kolumny tam gdzie się da */
+  .card-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .card-details p {
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .card-details p strong {
+    display: inline-block;
+    min-width: 140px; /* wyrównuje “E-mail / Opiekun / …” */
+  }
+
+  /* Akcje: pełna szerokość i równe */
+  .card-actions-mobile {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    justify-content: unset;
+  }
+
+  .card-actions-mobile .btn-icon {
+    width: 100%;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 0.65rem 0.75rem;
+  }
+
+  /* Jak jest 1 przycisk (np. invited/accepted) to niech zajmuje 2 kolumny */
+  .card-actions-mobile .btn-icon:only-child {
+    grid-column: 1 / -1;
+  }
+
+  /* To “Czeka na akceptację…” niech wygląda normalnie */
+  .card-actions-mobile > span {
+    grid-column: 1 / -1;
+    font-style: normal !important;
+    color: var(--ct-dark) !important;
+    opacity: 0.85;
+    text-align: center;
+  }
+}
+
+/* LANDSCAPE: mała wysokość, większa szerokość */
+@media (max-width: 900px) and (orientation: landscape) {
+  /* header filtrów: daj 3 w rzędzie, żeby nie było “kupy” */
+  .reg-admin-header {
+    gap: 0.6rem !important;
+  }
+
+  .reg-admin-search,
+  .reg-admin-select,
+  .reg-admin-date,
+  .reg-admin-header .btn-secondary {
+    width: calc(33.333% - (0.6rem * 2 / 3)) !important;
+  }
+
+  /* karty: dwa “tile” obok siebie (czytelniej na landscape) */
+  .registrations-cards-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .registration-card {
+    margin: 0;
+  }
+
+  .card-actions-mobile {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* MEGA wąskie telefony: wróć do 1 kolumny akcji */
+@media (max-width: 360px) {
+  .card-actions-mobile {
+    grid-template-columns: 1fr;
+  }
+  .card-details p strong {
+    min-width: 120px;
+  }
+}

@@ -406,3 +406,184 @@ html.hc .pairing-list {
     gap: 16px;
   }
 }
+
+/* ========================================================================== */
+/* MOBILE + HC FIX dla TournamentMatches (wklej NA KONIEC tournamentMatches.css) */
+/* ========================================================================== */
+
+/* --- 1) Header: mobile układ bez rozpierdolu --- */
+@media (max-width: 640px) {
+  .matches-header {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "actions"
+      "tabs"
+      "bulk"
+      "ko";
+    gap: 10px;
+  }
+
+  .header-actions {
+    margin-top: 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .tabs-container {
+    gap: 8px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    padding: 10px 12px;
+  }
+
+  .bulk-toolbar .bulk-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .bulk-toolbar .bulk-row .btn-primary {
+    grid-column: 1 / -1; /* “Przydziel sędziego” na full */
+    margin-left: 0 !important;
+  }
+
+  .ko-toolbar {
+    padding: 10px;
+  }
+
+  .ko-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .ko-row strong {
+    margin-right: 0;
+  }
+
+  .select {
+    width: 100%;
+  }
+
+  .ko-tools {
+    width: 100%;
+  }
+}
+
+/* --- 2) Modal: scroll w środku (iOS friendly) --- */
+.pair-modal__card {
+  max-height: min(80vh, 720px);
+}
+
+.pair-modal__body {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* jak lista sędziów ma swój scroll, niech nie rozpycha modala */
+.pair-modal__body .pairing-row[style*="maxHeight"] {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* --- 3) Combo/listy: nieprzezroczyste tło i porządek z warstwami --- */
+.combo-list,
+.pairing-list {
+  background: var(--color-bg-secondary, #fff);
+  border-color: var(--color-border, #ddd);
+}
+
+/* --- 4) High Contrast: zero białych pasów, zero „żółtych ramek” na wrapperach --- */
+/* zakładam, że HC odpalasz przez klasę .hc na html lub body */
+html.hc .tabs-container .tab-btn {
+  background: #000 !important;
+  color: var(--hc-text, #fff) !important;
+  border: 2px solid var(--hc-border, #FFD600) !important;
+}
+
+html.hc .tabs-container .tab-btn.active {
+  background: var(--hc-accent, #FFD600) !important;
+  color: #000 !important;
+  border-color: var(--hc-accent, #FFD600) !important;
+}
+
+html.hc .ko-toolbar {
+  background: #000 !important;
+  border: 2px solid var(--hc-border, #FFD600) !important;
+}
+
+html.hc .select,
+html.hc .combo-input,
+html.hc .pairing-input {
+  background: #000 !important;
+  color: var(--hc-text, #fff) !important;
+  border: 2px solid var(--hc-border, #FFD600) !important;
+}
+
+/* listy dropdown (combo i pairing) */
+html.hc .combo-list,
+html.hc .pairing-list {
+  background: #000 !important;
+  color: var(--hc-text, #fff) !important;
+  border: 2px solid var(--hc-border, #FFD600) !important;
+  box-shadow: none !important;
+}
+
+html.hc .combo-list li:hover,
+html.hc .pairing-list li:hover {
+  background: rgba(255, 214, 0, 0.18) !important;
+}
+
+/* modal */
+html.hc .pair-modal__card {
+  background: #000 !important;
+  color: var(--hc-text, #fff) !important;
+  border: 2px solid var(--hc-border, #FFD600) !important;
+  box-shadow: none !important;
+}
+
+html.hc .pair-modal__header,
+html.hc .pair-modal__footer {
+  border-color: var(--hc-border, #FFD600) !important;
+}
+
+html.hc .pair-modal__backdrop {
+  background: rgba(0,0,0,.85) !important;
+}
+
+/* hint (amber) w HC -> żółty czytelny */
+html.hc .pairing-hint {
+  color: var(--hc-accent, #FFD600) !important;
+}
+
+/* --- 5) Żeby nie było “dziwnych obrysów” w HC na sekcjach --- */
+html.hc .matches-section,
+html.hc .matches-header,
+html.hc .matches-list,
+html.hc .match-group-section {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+
+@media (max-width: 640px) {
+  .ko-tools{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ko-tools .btn-secondary{
+    width: auto !important;      /* <<< klucz */
+    max-width: none !important;
+    min-width: 0;
+    padding: 8px 16px;           /* podobne do reszty */
+  }
+}
+

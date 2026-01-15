@@ -1,5 +1,13 @@
+/* =========================
+   TOURNAMENT BRACKET (clean)
+   - scroll pionowy: strona
+   - scroll poziomy: tylko drabinka
+   - high contrast: html.hc
+   ========================= */
+
 .br-section {
   padding: 16px;
+  overflow-x: hidden; /* nie rozpychaj body na boki */
 }
 
 .br-header {
@@ -16,6 +24,7 @@
   flex-wrap: wrap;
 }
 
+/* pills */
 .pill {
   font-size: 12px;
   padding: 4px 8px;
@@ -37,16 +46,35 @@
   background: #f1f5f9;
 }
 
+/* =========================
+   SCROLL TYLKO W ŚRODKU (POZIOM)
+   - musisz mieć wrapper w JSX:
+     <div className="br-grid-wrap"><div className="br-grid">...</div></div>
+   ========================= */
+.br-grid-wrap {
+  overflow-x: auto;                 /* tylko X */
+  overflow-y: visible;              /* Y zostaw stronie */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  padding-bottom: 10px;
+}
+
+/* grid */
 .br-grid {
   display: grid;
   gap: 24px;
   align-items: start;
+
+  width: max-content;               /* może być szersze niż ekran */
+  min-width: 100%;                  /* ale przynajmniej na szerokość kontenera */
 }
 
 .br-col {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-width: 260px;
+  max-width: 340px;
 }
 
 .br-col-title {
@@ -61,6 +89,7 @@
   gap: 16px;
 }
 
+/* match card */
 .br-match {
   background: #fff;
   border: 1px solid #e5e7eb;
@@ -152,6 +181,121 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
 .br-btn:hover {
   background: #eef2f7;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 1024px) {
+  .br-section { padding: 10px; }
+
+  .br-header {
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .br-grid { gap: 14px; }
+}
+
+@media (max-width: 420px) {
+  .br-header h2 {
+    font-size: 1.3rem;
+    line-height: 1.1;
+  }
+
+  .br-footer {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .br-btn {
+    margin-left: 0;
+    width: 100%;
+    padding: 8px 10px;
+  }
+}
+
+/* =========================
+   HIGH CONTRAST (html.hc)
+   ========================= */
+html.hc .br-section {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+html.hc .br-header h2,
+html.hc .br-col-title {
+  color: #ffff00 !important;
+}
+
+html.hc .pill {
+  background: #0b0b0b !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+html.hc .pill-live {
+  background: #111100 !important;
+  border-color: #ffff00 !important;
+}
+html.hc .pill-done {
+  background: #0b0b0b !important;
+  border-color: #ffff00 !important;
+}
+html.hc .pill-scheduled {
+  background: #0b0b0b !important;
+  border-color: #ffff00 !important;
+}
+
+html.hc .br-match {
+  background: #0b0b0b !important;
+  color: #fff !important;
+  border: 2px solid #ffff00 !important;
+  box-shadow: none !important;
+}
+
+html.hc .br-round {
+  color: #e6e600 !important;
+}
+
+html.hc .br-player {
+  background: #000 !important;
+  color: #fff !important;
+  border: 2px solid #ffff00 !important;
+}
+
+html.hc .br-player.winner {
+  background: #111100 !important;
+  border-color: #ffff00 !important;
+  color: #ffff00 !important;
+}
+
+html.hc .br-score {
+  color: #fff !important;
+}
+
+html.hc .winner-badge {
+  background: #ffff00 !important;
+  color: #000 !important;
+  border: 2px solid #000 !important;
+}
+
+html.hc .br-btn {
+  background: #000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+  box-shadow: none !important;
+}
+
+html.hc .br-btn:hover {
+  background: #111 !important;
+}
+
+html.hc .live-dot {
+  background: #ff2a2a !important;
+  box-shadow: 0 0 0 4px rgba(255,42,42,0.25) !important;
 }

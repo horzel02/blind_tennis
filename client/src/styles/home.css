@@ -139,3 +139,84 @@
     background-color: #f0f0f0;
   }
   
+  /* =========================
+   MOBILE FIX (bez zmiany stylu przycisków)
+   ========================= */
+
+/* mobile: mniej mleka, mniej ozdób, lepszy layout */
+@media (max-width: 767px) {
+  .home{
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .hero{
+    /* kasujemy “kapsułę” na mobile */
+    padding: 1rem 1rem;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .hero-badge{
+    /* zostaje, ale mniej “tłuste” */
+    background: rgba(95,61,217,.10);
+    color: var(--ct-primary);
+    box-shadow: 0 0 0 1px rgba(95,61,217,.14) inset;
+  }
+
+  .hero-title{
+    font-size: 2.1rem;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-top: .6rem;
+  }
+
+  /* usuń pasek highlight pod tytułem na mobile */
+  .hero-title::after{
+    content: none;
+  }
+
+  .hero-desc{
+    margin-top: .75rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .hero-text,
+  .hero-image{
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  /* przyciski: układ na mobile OK, ale styl bierzemy globalny */
+  .hero-buttons{
+    flex-direction: column;
+    gap: .75rem;
+    margin-top: 1rem;
+  }
+
+  /* nie zmieniamy wyglądu przycisków, tylko szerokość/układ */
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary{
+    width: 100%;
+  }
+
+  .hero-image{
+    margin-top: .5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(18,8,38,.10);
+    box-shadow: 0 14px 34px rgba(18,8,38,.12);
+  }
+}
+
+/* małe telefony: jeszcze ciaśniej */
+@media (max-width: 480px) {
+  .hero{
+    padding: .85rem .9rem;
+  }
+  .hero-title{
+    font-size: 1.95rem;
+  }
+}

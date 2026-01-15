@@ -184,3 +184,38 @@
   border-color: var(--ct-primary);
   box-shadow: 0 0 0 2px rgba(68, 35, 140, 0.2);
 }
+
+@media (max-width: 800px) {
+  .auth-page-wrapper{
+    padding: 1.25rem 1rem;   /* mniej pustki */
+    min-height: auto;
+  }
+
+  .auth-split-container{
+    margin-top: .75rem;      /* było 1.5rem */
+    gap: 1rem 0;             /* było 2rem 0 */
+  }
+
+  .panel--form,
+  .panel--aside{
+    padding: 1.25rem;        /* było 2rem */
+    box-shadow: 0 6px 18px rgba(0,0,0,.12); /* lżej */
+  }
+
+  .aside-illustration-wrapper{
+    padding: .75rem;
+    margin-bottom: 1rem;
+  }
+
+  .aside-illustration{
+    width: 84px;             /* było 100px */
+  }
+
+  .aside-text h3{
+    font-size: 1.5rem;       /* było 1.75rem */
+  }
+
+  .aside-text p{
+    margin-bottom: 1rem;     /* było 1.5rem */
+  }
+}

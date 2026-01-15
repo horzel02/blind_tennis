@@ -65,3 +65,79 @@
   .schedule-item { grid-template-columns: 1fr; align-items:flex-start; }
   .sl-right { justify-self:start; text-align:left; }
 }
+
+/* =========================
+   Schedule – MOBILE FIX
+   ========================= */
+@media (max-width: 767px) {
+  .schedule-shell.container{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* nagłówek jako kolumna */
+  .schedule-head{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin: 6px 0 12px;
+  }
+
+  /* tabs: zawijanie + równe przyciski */
+  .schedule-tabs{
+    width: 100%;
+    gap: 8px;
+  }
+
+  .st-group{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 w rzędzie, ładnie na tel */
+    gap: 8px;
+  }
+
+  .st-tab{
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 999px; /* bardziej mobile */
+    font-size: 14px;
+    text-align: center;
+    white-space: normal;   /* pozwól zawijać tekst */
+    line-height: 1.1;
+  }
+
+  /* lista i itemy */
+  .schedule-list{
+    border-radius: 14px;
+  }
+
+  .schedule-item{
+    grid-template-columns: 1fr;   /* już masz dla 1024, ale tu dopinamy spacing */
+    gap: 10px;
+    padding: 14px 14px;
+  }
+
+  .sl-meta{
+    justify-self: start;
+    gap: 6px;
+  }
+
+  .sl-right{
+    justify-self: start;
+    text-align: left;
+  }
+
+  /* chipy/badge: mniej miejsca */
+  .sl-chip,
+  .sl-badge{
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+}
+
+/* Ultra small: wszystko w 1 kolumnę (bo 2 przyciski mogą się dusić) */
+@media (max-width: 360px) {
+  .st-group{
+    grid-template-columns: 1fr; /* jeden pod drugim */
+  }
+}

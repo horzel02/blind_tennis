@@ -154,3 +154,96 @@
     flex-direction: row;
   }
 }
+
+
+/* ============================
+   HIGH CONTRAST — FILTERS PANEL
+   działa na: <html class="hc">
+   ============================ */
+
+html.hc .filters-panel{
+  background:#000 !important;
+  color:#ffff00 !important;
+  border:2px solid #ffff00 !important;
+  box-shadow:none !important;
+}
+
+html.hc .filters-panel fieldset{
+  border:none !important;
+}
+
+html.hc .filters-panel legend{
+  color:#ffff00 !important;
+  border-bottom:2px solid #ffff00 !important;
+  padding-bottom:.4rem !important;
+}
+
+/* checkbox + label */
+html.hc .filter-item{
+  color:#ffff00 !important;
+}
+
+/* checkboxy: żółte obramowanie i wypełnienie */
+html.hc .filter-item input[type="checkbox"]{
+  accent-color:#ffff00 !important;
+  width:18px;
+  height:18px;
+}
+
+/* focus — żeby było widać, gdzie jesteś */
+html.hc .filter-item input[type="checkbox"]:focus-visible,
+html.hc .filter-item input[type="text"]:focus-visible,
+html.hc .filter-item input[type="date"]:focus-visible{
+  outline:3px solid #ffff00 !important;
+  outline-offset:3px !important;
+}
+
+/* inputy */
+html.hc .filter-item input[type="text"],
+html.hc .filter-item input[type="date"]{
+  background:#000 !important;
+  color:#ffff00 !important;
+  border:2px solid #ffff00 !important;
+  box-shadow:none !important;
+}
+
+html.hc .filter-item input[type="text"]::placeholder{
+  color:#fff799 !important;
+  opacity:1 !important;
+  font-style:normal !important;
+}
+
+/* hover też ma być widoczny */
+html.hc .filter-item input[type="text"]:hover,
+html.hc .filter-item input[type="date"]:hover{
+  border-color:#ffff00 !important;
+}
+
+/* etykiety dat */
+html.hc .date-label{
+  color:#ffff00 !important;
+}
+
+/* separatory / linie w grupach */
+html.hc .filters-panel .filter-group{
+  border-bottom:2px solid rgba(255,255,0,.35);
+  padding-bottom:10px;
+}
+
+html.hc .filters-panel .filter-group:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+/* jeśli gdzieś masz divider jako <hr> to też ogarnie */
+html.hc .filters-panel hr{
+  border:none !important;
+  border-top:2px solid #ffff00 !important;
+  opacity:1 !important;
+}
+
+/* mobilny off-canvas: zero białych “kart” */
+html.hc .filters-panel.mobile-mode-filters{
+  background:#000 !important;
+  border:2px solid #ffff00 !important;
+}

@@ -494,3 +494,56 @@ html.dark .group-card {
     padding: 0.4rem 0.55rem;
   }
 }
+
+/* ===== tournamentDetails.css (DOPISZ NA KOŃCU) ===== */
+
+/* żeby sticky pasek nie przykrywał contentu */
+.tournament-details {
+  padding-bottom: 96px; /* ~ wysokość paska */
+}
+
+/* mobile: pasek jako fixed (pewniejsze niż sticky na iOS) */
+@media (max-width: 767px) {
+  .details-actions.sticky {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    width: 100%;
+    z-index: 999;
+    padding: 12px;
+    background: #fff;
+  }
+
+  .details-actions.sticky button {
+    flex: 1;
+    min-width: 140px;
+  }
+}
+
+/* landscape na telefonie: często brakuje wysokości -> lepiej nie fixed */
+@media (max-width: 900px) and (orientation: landscape) {
+  .tournament-details { padding-bottom: 16px; }
+  .details-actions.sticky { position: static; }
+}
+
+
+/* ===== tournamentDetails.css (DOPISZ NA KOŃCU) ===== */
+
+@media (max-width: 767px) {
+  .actions-toolbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .actions-toolbar .btn-delete {
+    grid-column: 1 / -1; /* full width */
+  }
+
+  .organizer-list-header {
+    gap: 10px;
+  }
+
+  .organizer-list-header .btn-add-org {
+    width: 100%;
+  }
+}

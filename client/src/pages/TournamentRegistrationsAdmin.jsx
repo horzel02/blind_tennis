@@ -678,6 +678,8 @@ export default function TournamentRegistrationsAdmin() {
                       <div className="card-details">
                         <p><strong>Email:</strong> {reg.user.email}</p>
                         <p><strong>Opiekun:</strong> {guardianLabel}</p>
+                        <p><strong>Płeć:</strong> {genderChip(reg.user?.gender)}</p>
+                        <p><strong>Preferowana kat.:</strong> {categoryChip(reg.user?.preferredCategory)}</p>
                         <p>
                           <strong>Data zgłoszenia:</strong> {new Date(reg.createdAt).toLocaleString('pl-PL', {
                             day: '2-digit', month: '2-digit', year: 'numeric',

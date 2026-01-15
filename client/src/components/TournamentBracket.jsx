@@ -112,7 +112,7 @@ export default function TournamentBracket() {
   useEffect(() => { fetchAll(); }, [fetchAll]);
 
   useEffect(() => {
-    try { socketRef.current?.disconnect(); } catch {}
+    try { socketRef.current?.disconnect(); } catch { }
 
     let s;
     try {
@@ -177,10 +177,10 @@ export default function TournamentBracket() {
     s.on('real-time-score-update', onLive);
 
     return () => {
-      try { s.emit('leave-tournament', tid); } catch {}
+      try { s.emit('leave-tournament', tid); } catch { }
       try {
         for (const mid of joinedRoomsRef.current) s.emit('leave-match', mid);
-      } catch {}
+      } catch { }
       joinedRoomsRef.current.clear();
 
       s.off('match-status-changed', onStatus);
@@ -188,7 +188,7 @@ export default function TournamentBracket() {
       s.off('matches-invalidate', onInvalidate);
       s.off('real-time-score-update', onLive);
 
-      try { s.disconnect(); } catch {}
+      try { s.disconnect(); } catch { }
       if (socketRef.current === s) socketRef.current = null;
     };
   }, [id, fetchAll]);
@@ -290,51 +290,53 @@ export default function TournamentBracket() {
       ) : columns.length === 0 ? (
         <p>Brak meczów fazy pucharowej.</p>
       ) : (
-        <div
-          className="br-grid"
-          style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(260px, 1fr))` }}
-        >
-          {columns.map(([title, list]) => (
-            <div key={title} className="br-col">
-              <div className="br-col-title">{title}</div>
-              <div className="br-col-matches">
-                {list.map(m => {
-                  const live = m.status === 'in_progress';
-                  const finished = m.status === 'finished';
-                  const wId = m.winner?.id;
-                  return (
-                    <div key={m.id} className={`br-match ${live ? 'live' : ''} ${finished ? 'finished' : ''}`}>
-                      <div className="br-round">{m.round}</div>
+        <div className="br-grid-wrap">
+          <div
+            className="br-grid"
+            style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(260px, 1fr))` }}
+          >
+            {columns.map(([title, list]) => (
+              <div key={title} className="br-col">
+                <div className="br-col-title">{title}</div>
+                <div className="br-col-matches">
+                  {list.map(m => {
+                    const live = m.status === 'in_progress';
+                    const finished = m.status === 'finished';
+                    const wId = m.winner?.id;
+                    return (
+                      <div key={m.id} className={`br-match ${live ? 'live' : ''} ${finished ? 'finished' : ''}`}>
+                        <div className="br-round">{m.round}</div>
 
-                      {renderScheduleChip(m)}
+                        {renderScheduleChip(m)}
 
-                      <div className="br-players">
-                        {renderPlayer(m.player1, wId && m.player1 && wId === m.player1.id)}
-                        {renderPlayer(m.player2, wId && m.player2 && wId === m.player2.id)}
+                        <div className="br-players">
+                          {renderPlayer(m.player1, wId && m.player1 && wId === m.player1.id)}
+                          {renderPlayer(m.player2, wId && m.player2 && wId === m.player2.id)}
+                        </div>
+
+                        {renderScore(m)}
+                        {renderAdminBadge(m)}
+
+                        <div className="br-footer">
+                          {live && <span className="live-dot" aria-label="live" />}
+                          {finished && wId && (
+                            <span className="winner-badge">
+                              {m.winner.name} {m.winner.surname}
+                            </span>
+                          )}
+                          {canUseScorePanel(m) && (
+                            <button className="br-btn" onClick={() => goToScorePanel(m)}>
+                              Panel wyniku
+                            </button>
+                          )}
+                        </div>
                       </div>
-
-                      {renderScore(m)}
-                      {renderAdminBadge(m)}
-
-                      <div className="br-footer">
-                        {live && <span className="live-dot" aria-label="live" />}
-                        {finished && wId && (
-                          <span className="winner-badge">
-                            {m.winner.name} {m.winner.surname}
-                          </span>
-                        )}
-                        {canUseScorePanel(m) && (
-                          <button className="br-btn" onClick={() => goToScorePanel(m)}>
-                            Panel wyniku
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
     </section>

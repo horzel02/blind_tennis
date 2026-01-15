@@ -2251,3 +2251,235 @@ html.hc .reg-admin-date:focus {
   /* mały „outline”, gdy żółty leży na żółtym wypełnieniu */
   box-shadow: 0 0 0 2px #000;
 }
+
+
+zzzzz/* =========================================================
+   HIGH CONTRAST — FILTRY (Twoje klasy: filters-modal-*)
+   naprawia białe tło/pasy wokół .filters-panel
+   ========================================================= */
+
+/* wspieramy oba warianty (czasem masz html.hc, czasem .hc na body) */
+html.hc .filters-modal-backdrop,
+html.hc .filters-modal-content,
+html.hc .mobile-off-canvas-panel,
+.hc .filters-modal-backdrop,
+.hc .filters-modal-content,
+.hc .mobile-off-canvas-panel {
+  background: #000 !important;
+  color: #ffff00 !important;
+}
+
+/* ten wrapper robi białe “ramy” przez padding + background */
+html.hc .filters-modal-content.mobile-off-canvas-panel,
+.hc .filters-modal-content.mobile-off-canvas-panel {
+  padding: 12px !important;      /* kontrolowany padding, ale tło czarne */
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* backdrop (to co zasłania stronę) */
+html.hc .filters-modal-backdrop,
+.hc .filters-modal-backdrop {
+  background: rgba(0,0,0,.88) !important;
+}
+
+/* sam panel w środku – czarny, żółta ramka */
+html.hc .filters-panel,
+.hc .filters-panel {
+  background: #000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+  box-shadow: none !important;
+}
+
+/* legendy / tekst */
+html.hc .filters-panel legend,
+.hc .filters-panel legend {
+  color: #ffff00 !important;
+  border-bottom: 2px solid #ffff00 !important;
+}
+
+/* checkboxy */
+html.hc .filters-panel input[type="checkbox"],
+.hc .filters-panel input[type="checkbox"] {
+  accent-color: #ffff00 !important;
+}
+
+/* inputy/selecty (jeśli gdzieś są w filtrach) */
+html.hc .filters-panel input[type="text"],
+html.hc .filters-panel input[type="date"],
+html.hc .filters-panel select,
+.hc .filters-panel input[type="text"],
+.hc .filters-panel input[type="date"],
+.hc .filters-panel select {
+  background: #000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+  box-shadow: none !important;
+}
+
+/* focus żeby było widać jak pojebane */
+html.hc .filters-panel input:focus-visible,
+html.hc .filters-panel select:focus-visible,
+.hc .filters-panel input:focus-visible,
+.hc .filters-panel select:focus-visible {
+  outline: 3px solid #ffff00 !important;
+  outline-offset: 3px !important;
+}
+
+/* zamykanie (krzyżyk) – żeby nie był czarny na czarnym */
+html.hc .filters-modal-close-btn,
+.hc .filters-modal-close-btn {
+  background: #000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+/* =========================================================
+   HC FIX — Tournament form / wizard (usuń żółte “paski”)
+   ========================================================= */
+html.hc .wizard-shell,
+html.hc .wizard-body,
+html.hc .wizard-header,
+html.hc .wizard-footer,
+html.hc .wizard-step {
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Zostaw JEDNĄ ramkę: na głównej karcie */
+html.hc .wizard-card {
+  background: #000 !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* Nagłówki/labelki */
+html.hc .wizard-card h3 {
+  color: var(--hc-fg) !important;
+}
+html.hc .wizard-card label,
+html.hc .checkbox-line span,
+html.hc .hint {
+  color: var(--hc-text) !important;
+}
+
+/* Inputy/selecty/textarea — czarne, żółta ramka, zero białego */
+html.hc .wizard-card input:not([type="checkbox"]),
+html.hc .wizard-card select,
+html.hc .wizard-card textarea {
+  background: #000 !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+html.hc .wizard-card input::placeholder,
+html.hc .wizard-card textarea::placeholder {
+  color: var(--hc-text-muted) !important;
+}
+
+/* Focus ring sensowny (a nie milion ramek) */
+html.hc .wizard-card input:focus,
+html.hc .wizard-card select:focus,
+html.hc .wizard-card textarea:focus {
+  outline: 3px solid rgba(255, 255, 0, 0.35) !important;
+  outline-offset: 2px !important;
+}
+
+/* Checkboxy */
+html.hc .checkbox-line input[type="checkbox"] {
+  accent-color: var(--hc-accent) !important;
+  outline: 0 !important;
+}
+
+/* Panel informacyjny (jeśli używasz .panel w środku) */
+html.hc .wizard-card .panel {
+  background: #000 !important;
+  color: var(--hc-text) !important;
+  border: 2px solid var(--hc-border) !important;
+  box-shadow: none !important;
+}
+
+/* Errory bez “białych plam” */
+html.hc .wizard-card .error {
+  background: #000 !important;
+  color: var(--hc-accent) !important;
+  border: 2px solid var(--hc-border) !important;
+}
+
+/* Jakby coś z zewnątrz dalej dawało ramki na wrapperze strony,
+   to to dobija temat tylko dla widoku z wizardem */
+html.hc .wizard-shell * {
+  box-shadow: none !important;
+}
+
+/* ===== HC FIX: Group standings (karty + tabelki) ===== */
+html.hc .group-standings,
+html.hc .group-standings * {
+  color: #fff;
+}
+
+html.hc .group-card {
+  background: #000 !important;
+  border: 2px solid #FFD600 !important;
+  box-shadow: none !important;
+}
+
+html.hc .group-card-title {
+  color: #fff !important;
+}
+
+html.hc .group-card-pill {
+  background: #000 !important;
+  color: #FFD600 !important;
+  border: 2px solid #FFD600 !important;
+}
+
+html.hc .group-table-wrapper {
+  background: #000 !important;
+  border: 2px solid #FFD600 !important;
+}
+
+html.hc .group-table-wrapper::-webkit-scrollbar-thumb {
+  background: #FFD600 !important;
+}
+
+html.hc .standings-table {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+html.hc .standings-table thead {
+  background: #000 !important;          /* wywala gradient */
+  color: #FFD600 !important;
+}
+
+html.hc .standings-table thead th {
+  border-bottom: 2px solid #FFD600 !important;
+  color: #FFD600 !important;
+}
+
+html.hc .standings-table tbody td {
+  border-top: 1px solid rgba(255, 214, 0, 0.45) !important;
+  color: #fff !important;
+}
+
+html.hc .standings-table tbody tr:nth-child(odd),
+html.hc .standings-table tbody tr:nth-child(even) {
+  background: #000 !important;          /* zabija białe zebra z defaulta */
+}
+
+html.hc .standings-table tbody tr:hover {
+  background: #111 !important;
+  transform: none !important;
+}
+
+/* linki w tabeli (jeśli są) */
+html.hc .standings-table a {
+  color: #FFD600 !important;
+  text-decoration: underline !important;
+}

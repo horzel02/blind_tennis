@@ -8,8 +8,6 @@ import '../styles/timetable.css';
 import { socketOrigin } from '../services/api';
 
 
-const s = io(socketOrigin(), { withCredentials: true });
-
 function fmtDT(dt) {
   try {
     const d = new Date(dt);
@@ -107,9 +105,11 @@ export default function TimetablePage() {
 
   // sockets: prosty invalidator listy
   useEffect(() => {
-    const s = io(API_URL, { withCredentials: true });
+    const s = io(socketOrigin(), { withCredentials: true });
     socketRef.current = s;
+
     const invalidate = () => fetchList(true);
+
     s.on('match-updated', invalidate);
     s.on('matches-invalidate', invalidate);
     s.on('match-status-changed', invalidate);
@@ -121,6 +121,7 @@ export default function TimetablePage() {
       s.disconnect();
     };
   }, [fetchList]);
+
 
   const emptyText = useMemo(() => {
     if (state === 'upcoming') return 'Brak nadchodzących meczów.';
@@ -202,8 +203,8 @@ export default function TimetablePage() {
             const dur = m.durationMin ? ` • ${m.durationMin}’` : '';
             return (
               <div key={m.id} className="schedule-item" role="button" tabIndex={0}
-                   onClick={() => onClickRow(m)}
-                   onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onClickRow(m)}>
+                onClick={() => onClickRow(m)}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onClickRow(m)}>
                 <div className="sl-left">
                   <div className="sl-title">{m.tournament?.name || `Turniej #${m.tournamentId}`}</div>
                   <div className="sl-sub">
