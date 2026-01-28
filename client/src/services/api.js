@@ -2,14 +2,14 @@
 
 const ENV_ORIGIN = (import.meta?.env?.VITE_API_URL || "").replace(/\/$/, "");
 
-// Jeśli env nie podany, lecimy po origin aktualnej strony (czyli prod: ten sam host)
+// Jeśli env nie podany, lecimy po origin aktualnej strony
 const ORIGIN =
   ENV_ORIGIN ||
   (typeof window !== "undefined" ? window.location.origin : "");
 
 /** Buduje URL do backendu. */
 export const api = (path = "") => {
-  if (!path) return ORIGIN; // zwróć zawsze pełny origin
+  if (!path) return ORIGIN;
   const p = path.startsWith("/") ? path : `/${path}`;
   return `${ORIGIN}${p}`;
 };

@@ -19,7 +19,7 @@
   margin-top: 2rem;
 }
 
-.panel--form {
+.panel.panel--form {
   flex: 1 1 350px;
   max-width: 400px;
   background-color: #fff;
@@ -49,11 +49,11 @@
   text-decoration: underline;
 }
 
-.panel--aside {
+.panel.panel--aside {
   flex: 1 1 350px;
   max-width: 400px;
   background: linear-gradient(135deg, var(--ct-primary), var(--ct-accent));
-  color: #fff;
+  color: #381eaa;
   padding: 2rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   border-radius: 0 8px 8px 0;
