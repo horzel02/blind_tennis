@@ -35,7 +35,6 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const httpServer = createServer(app);
 
-// ważne na Render/Fly/Proxy (secure cookies itd.)
 app.set("trust proxy", 1);
 
 console.log("🛠️ cwd:", process.cwd());

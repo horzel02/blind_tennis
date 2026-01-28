@@ -126,10 +126,12 @@ export async function findAllByUser(userId) {
   return prisma.tournamentregistration.findMany({
     where: { userId },
     include: {
-      tournament: true
+      tournament: {
+        include: {
+          categories: true, // <<< TO
+        },
+      },
     },
     orderBy: { createdAt: 'desc' }
-  })
+  });
 }
-
-

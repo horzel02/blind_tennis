@@ -286,17 +286,30 @@ export async function deleteRegistration(req, res) {
 
 export async function getAllMyRegistrations(req, res) {
   try {
-    const userId = req.user.id
-    // serwis zwróci listę z includem turnieju
-    const regs = await registrationService.findAllByUser(userId)
+    const userId = req.user.id;
+
+    const regs = await prisma.tournamentregistration.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+      include: {
+        tournament: {
+          include: {
+            categories: true, // <<< TO CI DA categoryName + gender
+          },
+        },
+      },
+    });
+
     const out = regs.map(r => ({
       registrationId: r.id,
       status: r.status,
-      tournament: r.tournament
-    }))
-    res.json(out)
+      tournament: r.tournament,
+    }));
+
+    res.json(out);
   } catch (err) {
-    console.error('💥 [getAllMyRegistrations]', err)
-    res.status(500).json({ error: err.message })
+    console.error('💥 [getAllMyRegistrations]', err);
+    res.status(500).json({ error: err.message });
   }
 }
+
