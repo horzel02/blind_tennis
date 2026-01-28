@@ -10,27 +10,26 @@ import prisma from '../prismaClient.js';
 const router = Router();
 
 export async function ensureTournyOrg(req, res, next) {
-  const tournamentId = parseInt(req.params.id || req.params.tournamentId, 10);
-  const userId = req.user.id;
+  const tournamentId = Number(req.params.id || req.params.tournamentId);
+  const userId = Number(req.user?.id);
 
-  if (isNaN(tournamentId)) {
+  if (!Number.isFinite(tournamentId)) {
     return res.status(400).json({ error: 'Nieprawidłowe ID turnieju' });
+  }
+  if (!Number.isFinite(userId)) {
+    return res.status(401).json({ error: 'Unauthorized' });
   }
 
   const tour = await prisma.tournament.findUnique({
     where: { id: tournamentId },
-    include: {
-      tournamentUserRoles: true,
-    }
+    include: { tournamentUserRoles: true }
   });
 
-  if (!tour) {
-    return res.status(404).json({ error: 'Turniej nie istnieje' });
-  }
+  if (!tour) return res.status(404).json({ error: 'Turniej nie istnieje' });
 
-  const isCreator = tour.organizer_id === userId;
+  const isCreator = Number(tour.organizer_id) === userId;
   const hasRole = tour.tournamentUserRoles.some(
-    role => role.userId === userId && role.role === 'organizer'
+    r => Number(r.userId) === userId && r.role === 'organizer'
   );
 
   if (isCreator || hasRole) {
@@ -40,7 +39,6 @@ export async function ensureTournyOrg(req, res, next) {
 
   return res.status(403).json({ error: 'Potrzebna rola organizatora turnieju' });
 }
-
 
 // „moje turnieje” dla organizatora
 router.get('/mine', ensureAuth, tournamentController.getByOrganizer);

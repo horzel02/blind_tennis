@@ -7,7 +7,8 @@ export async function getAll(req, res) {
   try {
     const tours = await tournamentService.findAllTournaments();
     res.json(tours);
-  } catch (err) {S
+  } catch (err) {
+    S
     console.error('💥 [getAll] wyjątek:', err);
     res.status(500).json({ error: err.message });
   }
@@ -28,11 +29,29 @@ export async function getById(req, res) {
 export async function create(req, res) {
   try {
     const tour = await tournamentService.createTournament({ ...req.body, organizer_id: req.user.id });
+
+    await prisma.tournamentuserrole.upsert({
+      where: {
+        tournamentId_userId_role: {
+          tournamentId: tour.id,
+          userId: req.user.id,
+          role: 'organizer',
+        }
+      },
+      update: {},
+      create: {
+        tournamentId: tour.id,
+        userId: req.user.id,
+        role: 'organizer',
+      }
+    });
+
     res.status(201).json(tour);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 }
+
 
 export async function getByOrganizer(req, res) {
   try {
