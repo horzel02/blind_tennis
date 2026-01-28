@@ -143,6 +143,20 @@ export default function TournamentDetailsPage() {
     }
   }, [tournament?.id]);
 
+  useEffect(() => {
+    if (!tournament?.id || !user?.id) return;
+
+    // jeśli masz uprawnienia (twórca albo organizer) to pobierz listę ról
+    const creator = Number(user.id) === Number(tournament.organizer_id);
+
+    if (creator || myRoles.some(r => r.role === 'organizer')) {
+      refreshRoles();
+    } else {
+      setRoles([]); // żeby nie trzymać starych danych
+    }
+  }, [tournament?.id, user?.id, myRoles, refreshRoles]);
+
+
   const fetchMyRegistration = useCallback(() => {
     if (!tournament || !user) {
       setCheckingReg(false);
@@ -168,13 +182,6 @@ export default function TournamentDetailsPage() {
     if (!tournament) return;
     registrationService.getAcceptedCount(tournament.id).then(setAcceptedCount).catch(console.error);
   }, [tournament]);
-
-useEffect(() => {
-  if (!user || !tournament?.id) return;
-  roleService.getMyRoles(tournament.id)
-    .then(setMyRoles)
-    .catch(() => setMyRoles([]));
-}, [user, tournament?.id]);
 
   useEffect(() => {
     if (!user || !tournament?.id) return;
@@ -232,7 +239,7 @@ useEffect(() => {
   } = tournament;
 
   const isLoggedIn = Boolean(user);
-  const isCreator = user?.id === organizer_id;
+  const isCreator = Number(user?.id) === Number(organizer_id);
   const isTournyOrg = myRoles.some(r => r.role === 'organizer');
   const address = `${street}, ${postalCode} ${city}, ${country}`;
   const isInviteOnly = type === 'invite';
