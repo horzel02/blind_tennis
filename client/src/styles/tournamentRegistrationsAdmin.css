@@ -1,8 +1,5 @@
 /* client/src/styles/tournamentRegistrationsAdmin.css */
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 1) Podstawowe zmiany tabeli (szersza, lekki cień, itp.)          */
-/* ─────────────────────────────────────────────────────────────── */
 .registrations-table {
   width: 100%;
   border-collapse: collapse;
@@ -36,17 +33,11 @@
   background-color: #f5f5f5;
 }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 2) Kolory statusów (reg-admin-status‐…)                         */
-/* ─────────────────────────────────────────────────────────────── */
 .reg-admin-status-pending { color: orange; font-weight: 600; }
 .reg-admin-status-approved { color: green; font-weight: 600; }
 .reg-admin-status-rejected { color: var(--ct-red); font-weight: 600; }
 .reg-admin-status-invited { color: #165aa7; font-weight: 600; }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 3) Komórki akcji (przyciski)                                     */
-/* ─────────────────────────────────────────────────────────────── */
 .actions-cell {
   white-space: nowrap;
   display: flex;
@@ -54,9 +45,6 @@
   justify-content: center;
 }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 4) Przyciski ikon (btn-icon)                                    */
-/* ─────────────────────────────────────────────────────────────── */
 .btn-icon {
   background: none;
   border: none;
@@ -78,9 +66,6 @@
 .btn-icon.btn-reject { color: var(--ct-red); }
 .btn-icon.btn-delete { color: var(--ct-red); }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 4.1) Rozszerzone style dla przycisków akcji w widoku desktopowym */
-/* ─────────────────────────────────────────────────────────────── */
 .actions-cell .btn-icon.btn-approve {
   background-color: green;
   color: white;
@@ -117,9 +102,6 @@
   background-color: #c00000;
 }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 5) Pasek akcji masowych (bulk-actions-bar)                      */
-/* ─────────────────────────────────────────────────────────────── */
 .bulk-actions-bar {
   background-color: #f7f7f7;
   border: 1px solid #e0e0e0;
@@ -145,9 +127,6 @@
   font-size: 0.9rem;
 }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 6) Paginacja (przenieś do globals.css, jeśli jest globalna)      */
-/* ─────────────────────────────────────────────────────────────── */
 .pagination {
   margin-top: 1.5rem;
   display: flex;
@@ -178,9 +157,6 @@
   font-size: 0.9rem;
 }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 7) Link do profilu zawodnika (styl)                              */
-/* ─────────────────────────────────────────────────────────────── */
 .reg-username-link {
   color: var(--ct-primary);
   font-weight: 500;
@@ -190,9 +166,6 @@
   text-decoration: underline;
 }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 8) Responsywność dla Tabeli i Widoku Kart                       */
-/* ─────────────────────────────────────────────────────────────── */
 
 .registrations-cards-list {
   display: none;
@@ -206,9 +179,6 @@
   min-width: unset;
 }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 8.1) Style dla inputów i selectów w panelu filtrów  */
-/* ─────────────────────────────────────────────────────────────── */
 .reg-admin-search {
   width: 100%;
   padding: 0.5rem 0.75rem;
@@ -231,9 +201,6 @@
   border-radius: 4px;
 }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 8.2) Podsumowanie (reg-summary)                                 */
-/* ─────────────────────────────────────────────────────────────── */
 .reg-summary {
   background-color: #fdfdfd;
   border-left: 4px solid var(--ct-primary);
@@ -242,9 +209,6 @@
   font-size: 0.95rem;
 }
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 8.3) Komunikaty błędów                                          */
-/* ─────────────────────────────────────────────────────────────── */
 .error {
   color: #c62828;
   margin: 1rem 0;
@@ -252,15 +216,10 @@
 }
 
 
-/* ─────────────────────────────────────────────────────────────── */
-/* 9) Mobile styles (breakpoint 767px)                            */
-/* ─────────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
   .table-responsive-wrapper {
     display: none;
   }
-
-  /* Pokaż listę kart na mobile */
   .registrations-cards-list {
     display: flex;
     flex-direction: column;
@@ -341,7 +300,6 @@
     background-color: #f0f0f0;
   }
   
-  /* Kolory dla przycisków akcji */
   .card-actions-mobile .btn-approve {
     color: var(--ct-green);
     border-color: var(--ct-green);
@@ -403,46 +361,26 @@
 
 }
 
-/* ZMIEŃ/DODAJ TO W tournamentRegistrationsAdmin.css */
-
-/* Nadpisanie globalnej klasy .container dla tej konkretnej sekcji */
-/* Plik do edycji: tournamentRegistrationsAdmin.css */
-
-/* Nadpisanie globalnej klasy .container dla tej sekcji */
 .container.reg-admin {
-    /* Ustawienie szerokości maksymalnej na 98% widoku (98vw),
-       dzięki czemu kontener zajmie prawie całą szerokość ekranu. */
     max-width: 98vw !important; 
-    
-    /* Wymuś centrowanie */
     margin-left: auto !important;
-    margin-right: auto !important;
-    
-    /* Zapewnienie równych marginesów/paddingów, które psuły wizualne wyrównanie */
+    margin-right: auto !important;    
     padding-left: 10px !important; 
     padding-right: 10px !important;
-    
     box-sizing: border-box;
 }
 
-/* Upewnienie się, że element nagłówkowy jest wyrównany z tym paddingiem */
 .reg-admin-header {
-    /* Usuń potencjalne marginesy/paddingi, które psułyby wyrównanie */
     margin-left: 0;
     margin-right: 0;
 }
-/* ─────────────────────────────────────────────────────────────── */
-/* 4) Kontener przewijania dla tabeli                             */
-/* ─────────────────────────────────────────────────────────────── */
+
 .table-responsive {
   width: 100%;
-  overflow-x: auto; /* Włącza przewijanie w poziomie, gdy tabela wystaje */
+  overflow-x: auto;
   margin-bottom: 1rem;
 }
 
-/* =========================================================
-   TournamentRegistrationsAdmin — MOBILE CARDS + LANDSCAPE
-   ========================================================= */
 
 @media (max-width: 767px) {
   .registration-card {
@@ -458,7 +396,6 @@
     line-height: 1.2;
   }
 
-  /* status w headerze niech nie rozpycha */
   .card-header > span {
     white-space: nowrap;
     font-size: 0.9rem;
@@ -468,7 +405,6 @@
     padding: 0.9rem 1rem 1rem;
   }
 
-  /* Detale jako 2 kolumny tam gdzie się da */
   .card-details {
     display: grid;
     grid-template-columns: 1fr;
@@ -482,10 +418,9 @@
 
   .card-details p strong {
     display: inline-block;
-    min-width: 140px; /* wyrównuje “E-mail / Opiekun / …” */
+    min-width: 140px;
   }
 
-  /* Akcje: pełna szerokość i równe */
   .card-actions-mobile {
     margin-top: 12px;
     display: grid;
@@ -501,12 +436,10 @@
     padding: 0.65rem 0.75rem;
   }
 
-  /* Jak jest 1 przycisk (np. invited/accepted) to niech zajmuje 2 kolumny */
   .card-actions-mobile .btn-icon:only-child {
     grid-column: 1 / -1;
   }
 
-  /* To “Czeka na akceptację…” niech wygląda normalnie */
   .card-actions-mobile > span {
     grid-column: 1 / -1;
     font-style: normal !important;
@@ -516,9 +449,7 @@
   }
 }
 
-/* LANDSCAPE: mała wysokość, większa szerokość */
 @media (max-width: 900px) and (orientation: landscape) {
-  /* header filtrów: daj 3 w rzędzie, żeby nie było “kupy” */
   .reg-admin-header {
     gap: 0.6rem !important;
   }
@@ -530,7 +461,6 @@
     width: calc(33.333% - (0.6rem * 2 / 3)) !important;
   }
 
-  /* karty: dwa “tile” obok siebie (czytelniej na landscape) */
   .registrations-cards-list {
     display: grid !important;
     grid-template-columns: 1fr 1fr;
@@ -546,7 +476,6 @@
   }
 }
 
-/* MEGA wąskie telefony: wróć do 1 kolumny akcji */
 @media (max-width: 360px) {
   .card-actions-mobile {
     grid-template-columns: 1fr;

@@ -61,12 +61,8 @@ export default function Header() {
             <span className="tooltip">Dodaj turniej</span>
           </Link>
 
-          {/* Dzwonek z powiadomieniami – tylko dla zalogowanych */}
-          {user && (
-            <div className="icon-button" aria-label="Powiadomienia" style={{ position: 'relative' }}>
-              <NotificationBell />
-            </div>
-          )}
+          {user && <NotificationBell />}
+
           <HighContrastToggle />
 
           {user ? (

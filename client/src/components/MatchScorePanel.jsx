@@ -496,8 +496,8 @@ export default function MatchScorePanel() {
                 <form onSubmit={handleSubmit} className="score-input-form">
                     <div className="sets-header">
                         <span>Set</span>
-                        <span>{match.player1?.name}</span>
-                        <span>{match.player2?.name}</span>
+                        <span>{match.player1?.surname || match.player1?.name}</span>
+                        <span>{match.player2?.surname || match.player2?.name}</span>
                         <span></span>
                     </div>
 
@@ -506,71 +506,81 @@ export default function MatchScorePanel() {
                             <span>Set {idx + 1}</span>
 
                             {/* Gracz 1: - input + */}
-                            <div className="score-stepper">
-                                <button
-                                    type="button"
-                                    className="score-step-btn"
-                                    onClick={() => bumpScore(idx, 1, -1)}
-                                    disabled={resultType !== "NORMAL"}
-                                    aria-label={`Odejmij punkt: ${match.player1?.name} (set ${idx + 1})`}
-                                >
-                                    −
-                                </button>
+                            <div className="score-player-block">
+                                <div className="score-player-label">
+                                    {match.player1?.name} {match.player1?.surname}
+                                </div>
+                                <div className="score-stepper">
+                                    <button
+                                        type="button"
+                                        className="score-step-btn"
+                                        onClick={() => bumpScore(idx, 1, -1)}
+                                        disabled={resultType !== "NORMAL"}
+                                        aria-label={`Odejmij punkt: ${match.player1?.name} (set ${idx + 1})`}
+                                    >
+                                        −
+                                    </button>
 
-                                <input
-                                    type="number"
-                                    min={0}
-                                    max={limitForSetAt(idx, sets, rules)}
-                                    value={s.p1}
-                                    onChange={(e) => handleScoreChange(idx, 1, e.target.value)}
-                                    disabled={resultType !== 'NORMAL'}
-                                    className="score-input"
-                                    required
-                                />
+                                    <input
+                                        type="number"
+                                        min={0}
+                                        max={limitForSetAt(idx, sets, rules)}
+                                        value={s.p1}
+                                        onChange={(e) => handleScoreChange(idx, 1, e.target.value)}
+                                        disabled={resultType !== 'NORMAL'}
+                                        className="score-input"
+                                        required
+                                    />
 
-                                <button
-                                    type="button"
-                                    className="score-step-btn"
-                                    onClick={() => bumpScore(idx, 1, +1)}
-                                    disabled={resultType !== "NORMAL"}
-                                    aria-label={`Dodaj punkt: ${match.player1?.name} (set ${idx + 1})`}
-                                >
-                                    +
-                                </button>
+                                    <button
+                                        type="button"
+                                        className="score-step-btn"
+                                        onClick={() => bumpScore(idx, 1, +1)}
+                                        disabled={resultType !== "NORMAL"}
+                                        aria-label={`Dodaj punkt: ${match.player1?.name} (set ${idx + 1})`}
+                                    >
+                                        +
+                                    </button>
+                                </div>
                             </div>
 
                             {/* Gracz 2: - input + */}
-                            <div className="score-stepper">
-                                <button
-                                    type="button"
-                                    className="score-step-btn"
-                                    onClick={() => bumpScore(idx, 2, -1)}
-                                    disabled={resultType !== "NORMAL"}
-                                    aria-label={`Odejmij punkt: ${match.player2?.name} (set ${idx + 1})`}
-                                >
-                                    −
-                                </button>
+                            <div className="score-player-block">
+                                <div className="score-player-label">
+                                    {match.player2?.name} {match.player2?.surname}
+                                </div>
+                                <div className="score-stepper">
+                                    <button
+                                        type="button"
+                                        className="score-step-btn"
+                                        onClick={() => bumpScore(idx, 2, -1)}
+                                        disabled={resultType !== "NORMAL"}
+                                        aria-label={`Odejmij punkt: ${match.player2?.name} (set ${idx + 1})`}
+                                    >
+                                        −
+                                    </button>
 
-                                <input
-                                    type="number"
-                                    min={0}
-                                    max={limitForSetAt(idx, sets, rules)}
-                                    value={s.p2}
-                                    onChange={(e) => handleScoreChange(idx, 2, e.target.value)}
-                                    disabled={resultType !== 'NORMAL'}
-                                    className="score-input"
-                                    required
-                                />
+                                    <input
+                                        type="number"
+                                        min={0}
+                                        max={limitForSetAt(idx, sets, rules)}
+                                        value={s.p2}
+                                        onChange={(e) => handleScoreChange(idx, 2, e.target.value)}
+                                        disabled={resultType !== 'NORMAL'}
+                                        className="score-input"
+                                        required
+                                    />
 
-                                <button
-                                    type="button"
-                                    className="score-step-btn"
-                                    onClick={() => bumpScore(idx, 2, +1)}
-                                    disabled={resultType !== "NORMAL"}
-                                    aria-label={`Dodaj punkt: ${match.player2?.name} (set ${idx + 1})`}
-                                >
-                                    +
-                                </button>
+                                    <button
+                                        type="button"
+                                        className="score-step-btn"
+                                        onClick={() => bumpScore(idx, 2, +1)}
+                                        disabled={resultType !== "NORMAL"}
+                                        aria-label={`Dodaj punkt: ${match.player2?.name} (set ${idx + 1})`}
+                                    >
+                                        +
+                                    </button>
+                                </div>
                             </div>
 
                             {resultType === 'NORMAL' && !isResolved && sets.length > 1 && (

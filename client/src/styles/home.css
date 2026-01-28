@@ -16,7 +16,7 @@
   
   .hero-text,
   .hero-image {
-    flex: 1 1 400px;    /* mogą się skurczyć do 400px i rosnąć, ale zachowają proporcje */
+    flex: 1 1 400px;
     max-width: 500px;
 }
 
@@ -64,7 +64,6 @@
   }
   
   
-  /* Features */
   .features {
     padding: 0 1rem;
   }
@@ -109,7 +108,6 @@
     color: var(--ct-dark);
   }
   
-  /* CTA */
   .cta {
     background-color: var(--ct-accent);
     color: white;
@@ -138,12 +136,7 @@
   .cta-button:hover {
     background-color: #f0f0f0;
   }
-  
-  /* =========================
-   MOBILE FIX (bez zmiany stylu przycisków)
-   ========================= */
 
-/* mobile: mniej mleka, mniej ozdób, lepszy layout */
 @media (max-width: 767px) {
   .home{
     gap: 1.5rem;
@@ -151,7 +144,6 @@
   }
 
   .hero{
-    /* kasujemy “kapsułę” na mobile */
     padding: 1rem 1rem;
     border-radius: 0;
     background: transparent;
@@ -160,7 +152,6 @@
   }
 
   .hero-badge{
-    /* zostaje, ale mniej “tłuste” */
     background: rgba(95,61,217,.10);
     color: var(--ct-primary);
     box-shadow: 0 0 0 1px rgba(95,61,217,.14) inset;
@@ -173,7 +164,6 @@
     margin-top: .6rem;
   }
 
-  /* usuń pasek highlight pod tytułem na mobile */
   .hero-title::after{
     content: none;
   }
@@ -190,14 +180,12 @@
     max-width: 100%;
   }
 
-  /* przyciski: układ na mobile OK, ale styl bierzemy globalny */
   .hero-buttons{
     flex-direction: column;
     gap: .75rem;
     margin-top: 1rem;
   }
 
-  /* nie zmieniamy wyglądu przycisków, tylko szerokość/układ */
   .hero-buttons .btn-primary,
   .hero-buttons .btn-secondary{
     width: 100%;
@@ -211,7 +199,6 @@
   }
 }
 
-/* małe telefony: jeszcze ciaśniej */
 @media (max-width: 480px) {
   .hero{
     padding: .85rem .9rem;

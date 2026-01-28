@@ -1,6 +1,4 @@
-/* ========================================================================== */
-/* 0. AUTH PAGE WRAPPER - nowy kontener dla całej strony autoryzacji        */
-/* ========================================================================== */
+
 .auth-page-wrapper {
   display: flex;
   flex-direction: column;
@@ -10,9 +8,6 @@
   box-sizing: border-box;
 }
 
-/* ========================================================================== */
-/* 1. SPLIT-CONTAINER – układ dwóch paneli obok siebie                        */
-/* ========================================================================== */
 .auth-split-container {
   width: 90%;
   max-width: 800px;
@@ -24,9 +19,6 @@
   margin-top: 2rem;
 }
 
-/* ========================================================================== */
-/* 2. FORM PANEL                                                              */
-/* ========================================================================== */
 .panel--form {
   flex: 1 1 350px;
   max-width: 400px;
@@ -36,7 +28,6 @@
   border-radius: 8px 0 0 8px;
 }
 
-/* Nagłówek formularza i bazowe etykiety formularza */
 .panel--form .auth-title {
   margin-bottom: 1.5rem;
   color: var(--ct-darkest);
@@ -45,12 +36,10 @@
   color: var(--ct-darkest);
 }
 
-/* 2.2 Przycisk formularza  */
 .panel--form .auth-button {
   margin-top: 1rem;
 }
 
-/* 2.3 Link w stopce formularza */
 .panel--form .auth-footer {
   margin-top: 1.5rem;
   color: var(--ct-darkest);
@@ -60,9 +49,6 @@
   text-decoration: underline;
 }
 
-/* ========================================================================== */
-/* 3. ASIDE PANEL                                                             */
-/* ========================================================================== */
 .panel--aside {
   flex: 1 1 350px;
   max-width: 400px;
@@ -78,9 +64,6 @@
   text-align: center;
 }
 
-/* ========================================================================== */
-/* 4. ILLUSTRATION WRAPPER – styl otoczki obrazka                             */
-/* ========================================================================== */
 .aside-illustration-wrapper {
   background: rgba(255, 255, 255, 0.2);
   padding: 1rem;
@@ -93,48 +76,38 @@
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-/* ========================================================================== */
-/* 5. ASIDE TEXT                                                              */
-/* ========================================================================== */
 .aside-text h3 {
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
-  color: #ffffff !important; /* Biały tekst nagłówka na fioletowym tle */
+  color: #ffffff !important;
 }
 
 .aside-text p {
   font-size: 1rem;
   margin-bottom: 1.5rem;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9) !important; /* Lekko przezroczysty biały */
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* ========================================================================== */
-/* 6. ASIDE BUTTON - Poprawione kolory                                        */
-/* ========================================================================== */
-
 .aside-button {
-  display: inline-block;        /* Żeby padding działał poprawnie na linku */
-  background-color: #ffffff;    /* Białe tło przycisku */
-  color: var(--ct-primary) !important; /* FIOLETOWY TEKST (wymuszenie) */
+  display: inline-block;
+  background-color: #ffffff;
+  color: var(--ct-primary) !important;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
-  font-weight: 600;             /* Nieco grubszy tekst */
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
-  border: 2px solid transparent; /* Rezerwacja miejsca na border */
+  border: 2px solid transparent;
 }
 
 .aside-button:hover {
-  background-color: #f0f0f0;    /* Lekko szare tło po najechaniu */
-  color: var(--ct-accent) !important; /* Jaśniejszy fiolet tekstu */
-  transform: translateY(-2px);  /* Lekkie uniesienie */
+  background-color: #f0f0f0;
+  color: var(--ct-accent) !important;
+  transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* ========================================================================== */
-/* 7. RESPONSIVE (MOBILE) – jeśli szerokość < 800px                           */
-/* ========================================================================== */
 @media (max-width: 800px) {
   .auth-split-container {
     flex-direction: column;
@@ -158,9 +131,6 @@
 }
 
 
-/* ========================================================================== */
-/* 8. GLOBAL AUTH INPUT (inputy logowania/rejestracji)                        */
-/* ========================================================================== */
 .auth-input {
   display: block;
   width: 100%;
@@ -176,9 +146,6 @@
   color: #777; 
 }
 
-/* ========================================================================== */
-/* 9. GLOBAL AUTH-INPUT HOVER / FOCUS                                         */
-/* ========================================================================== */
 .auth-input:hover,
 .auth-input:focus {
   border-color: var(--ct-primary);
@@ -187,19 +154,19 @@
 
 @media (max-width: 800px) {
   .auth-page-wrapper{
-    padding: 1.25rem 1rem;   /* mniej pustki */
+    padding: 1.25rem 1rem;
     min-height: auto;
   }
 
   .auth-split-container{
-    margin-top: .75rem;      /* było 1.5rem */
-    gap: 1rem 0;             /* było 2rem 0 */
+    margin-top: .75rem;
+    gap: 1rem 0;
   }
 
   .panel--form,
   .panel--aside{
-    padding: 1.25rem;        /* było 2rem */
-    box-shadow: 0 6px 18px rgba(0,0,0,.12); /* lżej */
+    padding: 1.25rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
   }
 
   .aside-illustration-wrapper{
@@ -208,14 +175,14 @@
   }
 
   .aside-illustration{
-    width: 84px;             /* było 100px */
+    width: 84px;
   }
 
   .aside-text h3{
-    font-size: 1.5rem;       /* było 1.75rem */
+    font-size: 1.5rem;
   }
 
   .aside-text p{
-    margin-bottom: 1rem;     /* było 1.5rem */
+    margin-bottom: 1rem;
   }
 }

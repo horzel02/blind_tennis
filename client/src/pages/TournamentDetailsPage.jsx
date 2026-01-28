@@ -169,18 +169,12 @@ export default function TournamentDetailsPage() {
     registrationService.getAcceptedCount(tournament.id).then(setAcceptedCount).catch(console.error);
   }, [tournament]);
 
-  useEffect(() => {
-    if (!tournament) return;
-    fetchMyRegistration();
-    fetchAcceptedCount();
-    roleService
-    if (user?.id === tournament.organizer_id) {
-      roleService.listRoles(tournament.id)
-        .then(setRoles)
-        .catch(() => setRoles([]));
-    } else {
-    }
-  }, [tournament, fetchMyRegistration, fetchAcceptedCount]);
+useEffect(() => {
+  if (!user || !tournament?.id) return;
+  roleService.getMyRoles(tournament.id)
+    .then(setMyRoles)
+    .catch(() => setMyRoles([]));
+}, [user, tournament?.id]);
 
   useEffect(() => {
     if (!user || !tournament?.id) return;
@@ -239,7 +233,7 @@ export default function TournamentDetailsPage() {
 
   const isLoggedIn = Boolean(user);
   const isCreator = user?.id === organizer_id;
-  const isTournyOrg = roles.some((r) => r.role === 'organizer' && r.user.id === user?.id);
+  const isTournyOrg = myRoles.some(r => r.role === 'organizer');
   const address = `${street}, ${postalCode} ${city}, ${country}`;
   const isInviteOnly = type === 'invite';
   const isFull = Number.isFinite(limit) && acceptedCount >= limit;
@@ -409,16 +403,18 @@ export default function TournamentDetailsPage() {
     }
   };
 
-  const handleRemoveOrganizer = async (roleRecordId) => {
+  const handleRemoveOrganizer = async (userId) => {
     if (!window.confirm('Usunąć organizatora?')) return;
     try {
-      await roleService.removeRole(tournament.id, roleRecordId);
+      await roleService.removeRole(tournament.id, userId, 'organizer');
       setRoles(await roleService.listRoles(tournament.id));
       toast.success('Usunięto organizatora');
     } catch (err) {
-      toast.error(err.message);
+      const msg = err?.payload?.error || err?.message || 'Nie udało się usunąć organizatora';
+      toast.error(msg);
     }
   };
+
 
   const handleAcceptInvite = async () => {
     try {
@@ -800,7 +796,7 @@ export default function TournamentDetailsPage() {
                       {r.user.name} {r.user.surname}
                     </span>
                     {r.user.id !== user.id && (
-                      <button className="btn-delete" onClick={() => handleRemoveOrganizer(r.id)} disabled={readOnly}
+                      <button className="btn-delete" onClick={() => handleRemoveOrganizer(r.user.id)} disabled={readOnly}
                         title={readOnly ? 'Turniej zablokowany' : undefined}>
                         Usuń
                       </button>

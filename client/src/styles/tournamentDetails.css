@@ -1,10 +1,4 @@
 /* client/src/styles/tournamentDetails.css */
-
-/* ========================================================================== */
-/* 1. OGÓLNE ELEMENTY NA GÓRZE STRONY                                         */
-/* ========================================================================== */
-
-/* Nawigacja breadcrumbs */
 .breadcrumbs {
   margin-bottom: 1rem;
 }
@@ -23,8 +17,6 @@
 .breadcrumbs li:last-child::after {
   content: '';
 }
-
-/* Przycisk "Wstecz" */
 .btn-back {
   background: transparent;
   border: none;
@@ -43,9 +35,6 @@
   color: var(--ct-primary);
 }
 
-/* ========================================================================== */
-/* 2. GŁÓWNY UKŁAD DETALI (Lewy Panel / Prawy Panel)                          */
-/* ========================================================================== */
 .details-grid {
   display: flex;
   flex-direction: column;
@@ -53,13 +42,11 @@
   margin-bottom: 1.5rem;
 }
 
-/* Lewy panel */
 .left-panel h1.details-title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
-/* Sekcja chipów */
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -75,7 +62,6 @@
   font-size: 0.85rem;
 }
 
-/* Etykieta z ikoną*/
 .icon-label {
   display: flex;
   align-items: center;
@@ -85,26 +71,22 @@
   color: var(--ct-dark);
 }
 
-/* Pasek postępu - Styl "Pastylka na środku" */
 .progress-container {
   margin-top: 1rem;
   width: 100%;
 }
 
 .progress-bar {
-  /* Tło paska (szare, żeby było widać, że jest pusty) */
   background-color: #e5e7eb;
-  /* Ramka dookoła całego paska (fioletowa) */
   border: 2px solid var(--ct-primary, #6d28d9); 
   border-radius: 999px;
   position: relative;
-  height: 1.5rem; /* Wysokość paska */
+  height: 1.5rem;
   margin-top: 0.5rem;
-  overflow: hidden; /* Żeby wypełnienie nie wychodziło poza zaokrąglenie */
+  overflow: hidden;
 }
 
 .progress-fill {
-  /* Wypełnienie paska (fioletowe) */
   background-color: var(--ct-primary, #6d28d9);
   height: 100%;
   position: absolute;
@@ -115,29 +97,21 @@
 }
 
 .progress-text {
-  /* Pozycjonowanie na samym środku */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2; /* Musi być NAD wypełnieniem */
-  
-  /* STYLIZACJA "PASTYLKI" Z LICZBĄ (jak na screenie) */
-  background-color: var(--ct-primary, #6d28d9); /* Tło pod liczbą (fioletowe) */
-  color: #ffffff; /* Kolor liczby (biały) */
-  
-  /* Kształt i odstępy */
+  z-index: 2;
+  background-color: var(--ct-primary, #6d28d9);
+  color: #ffffff;
   padding: 0.1rem 0.6rem;
   border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 700;
   white-space: nowrap;
-  
-  /* Opcjonalnie: cień, żeby odstawało */
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
-/* Podgląd mapy */
 .map-preview iframe {
   width: 100%;
   height: 200px;
@@ -145,9 +119,6 @@
   border-radius: 4px;
 }
 
-/* ========================================================================== */
-/* 3. SEKCJA ORGANIZATORA                                                     */
-/* ========================================================================== */
 .organizer-section {
   display: flex;
   flex-direction: column;
@@ -163,7 +134,6 @@
   color: var(--ct-dark);
 }
 
-/* Panel akcji organizatora */
 .organizer-actions h2 {
   margin-bottom: 0.5rem;
   font-size: 1.25rem;
@@ -176,7 +146,6 @@
   gap: 0.75rem;
 }
 
-/* Lista organizatorów */
 .organizer-list h2 {
   margin-bottom: 0.5rem;
   font-size: 1.25rem;
@@ -202,7 +171,6 @@
   flex: 1;
 }
 
-/* Nagłówek listy organizatorów */
 .organizer-list-header {
   display: flex;
   align-items: center;
@@ -216,9 +184,6 @@
   white-space: nowrap;
 }
 
-/* ========================================================================== */
-/* 4. PASEK AKCJI                                                             */
-/* ========================================================================== */
 .details-actions.sticky {
   position: sticky;
   bottom: 0;
@@ -235,9 +200,6 @@
   z-index: 999;
 }
 
-/* ========================================================================== */
-/* 5. MEDIA QUERIES DLA WIĘKSZYCH EKRANÓW (TABLET I DESKTOP)                  */
-/* ========================================================================== */
 @media (min-width: 768px) {
   .details-grid {
     display: grid;
@@ -246,7 +208,6 @@
     margin-bottom: 2rem;
   }
 
-  /* Układ sekcji organizatora */
   .organizer-section {
     display: grid;
     grid-template-columns: minmax(250px, 1fr) minmax(200px, 1fr);
@@ -269,21 +230,15 @@
   }
 }
 
-/* ========================================================================== */
-/* 6. DODATKOWE POPRAWKI DLA PRZYCISKÓW W SEKCJACH                            */
-/* ========================================================================== */
 .organizer-actions .btn-secondary,
 .organizer-actions .btn-primary {
   white-space: nowrap;
 }
 
-/* Specjalny styl dla przycisku "Usuń turniej" */
 .organizer-actions .btn-delete {
   white-space: nowrap;
   background-color: #ef4444;
   color: #ffffff;
-  
-  /* Dodajemy przezroczystą ramkę, żeby zarezerwować miejsce (zapobiega skakaniu) */
   border: 1px solid transparent; 
   
   padding: 0.5rem 1rem;
@@ -293,23 +248,17 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* Zmiana po najechaniu myszką (Styl "Outline") */
 .organizer-actions .btn-delete:hover {
-  background-color: #ffffff; /* Białe tło */
-  color: #ef4444;            /* Czerwony tekst */
-  border: 1px solid #ef4444; /* Czerwona ramka */
+  background-color: #ffffff;
+  color: #ef4444;
+  border: 1px solid #ef4444;
 }
 
-/* Opcjonalnie: styl po kliknięciu */
 .organizer-actions .btn-delete:active {
-  background-color: #fee2e2; /* Bardzo jasny czerwony przy kliknięciu */
+  background-color: #fee2e2;
   border-color: #dc2626;
   color: #dc2626;
 }
-
-/* ========================================================================== */
-/* 7. FAZA GRUPOWA – KARTY + TABELKI                                          */
-/* ========================================================================== */
 
 .group-standings {
   margin: 3rem 0 2rem;
@@ -327,7 +276,6 @@
   color: var(--color-text-muted, #6b7280);
 }
 
-/* siatka kart grupowych */
 .group-standings-grid {
   margin-top: 1.5rem;
   display: grid;
@@ -341,7 +289,6 @@
   }
 }
 
-/* pojedyncza karta grupy */
 .group-card {
   background: var(--color-bg-secondary, #ffffff);
   color: var(--color-text, #111827);
@@ -358,7 +305,6 @@ html.dark .group-card {
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
 }
 
-/* nagłówek karty */
 .group-card-header {
   display: flex;
   align-items: center;
@@ -383,7 +329,7 @@ html.dark .group-card {
   color: var(--color-primary, #5b21b6);
 }
 
-/* wrapper tabeli – scroll na małych ekranach */
+
 .group-table-wrapper {
   margin-top: 0.5rem;
   border-radius: 12px;
@@ -400,10 +346,9 @@ html.dark .group-card {
   background: rgba(148, 163, 184, 0.85);
 }
 
-/* tabela */
 .standings-table {
   width: 100%;
-  min-width: 420px; /* na telefonie pojawi się poziomy scroll */
+  min-width: 420px;
   border-collapse: collapse;
   font-size: 0.85rem;
 }
@@ -431,7 +376,6 @@ html.dark .group-card {
   text-align: center;
 }
 
-/* wiersze */
 .standings-table tbody tr {
   transition: background-color 0.12s ease, transform 0.08s ease;
 }
@@ -442,7 +386,6 @@ html.dark .group-card {
   border-top: 1px solid rgba(148, 163, 184, 0.3);
 }
 
-/* podświetlenie wierszy – używamy zmiennych, więc działa w dark mode */
 .standings-table tbody tr:nth-child(odd) {
   background: var(--color-bg-secondary, #ffffff);
 }
@@ -456,7 +399,6 @@ html.dark .group-card {
   transform: translateY(-1px);
 }
 
-/* kolumny specjalne */
 .standings-table tbody td.col-player {
   text-align: left;
   max-width: 230px;
@@ -479,7 +421,6 @@ html.dark .group-card {
   font-weight: 700;
 }
 
-/* mobile tweak */
 @media (max-width: 640px) {
   .group-card {
     padding: 0.9rem;
@@ -495,14 +436,10 @@ html.dark .group-card {
   }
 }
 
-/* ===== tournamentDetails.css (DOPISZ NA KOŃCU) ===== */
-
-/* żeby sticky pasek nie przykrywał contentu */
 .tournament-details {
-  padding-bottom: 96px; /* ~ wysokość paska */
+  padding-bottom: 96px;
 }
 
-/* mobile: pasek jako fixed (pewniejsze niż sticky na iOS) */
 @media (max-width: 767px) {
   .details-actions.sticky {
     position: fixed;
@@ -519,14 +456,11 @@ html.dark .group-card {
   }
 }
 
-/* landscape na telefonie: często brakuje wysokości -> lepiej nie fixed */
 @media (max-width: 900px) and (orientation: landscape) {
   .tournament-details { padding-bottom: 16px; }
   .details-actions.sticky { position: static; }
 }
 
-
-/* ===== tournamentDetails.css (DOPISZ NA KOŃCU) ===== */
 
 @media (max-width: 767px) {
   .actions-toolbar {
@@ -536,7 +470,7 @@ html.dark .group-card {
   }
 
   .actions-toolbar .btn-delete {
-    grid-column: 1 / -1; /* full width */
+    grid-column: 1 / -1;
   }
 
   .organizer-list-header {

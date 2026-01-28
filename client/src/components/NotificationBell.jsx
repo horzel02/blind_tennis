@@ -45,7 +45,6 @@ export default function NotificationBell() {
     }
   }, [user?.id]);
 
-  // zamykanie dropdowna po kliknięciu poza
   useEffect(() => {
     const onClick = (e) => {
       if (open && ref.current && !ref.current.contains(e.target)) setOpen(false);
@@ -54,7 +53,6 @@ export default function NotificationBell() {
     return () => document.removeEventListener('click', onClick);
   }, [open]);
 
-  // initial refresh po zalogowaniu / zmianie usera
   useEffect(() => {
     if (!user?.id) {
       setItems([]);
@@ -64,11 +62,9 @@ export default function NotificationBell() {
     refresh();
   }, [user?.id, refresh]);
 
-  // socket: realtime noty
   useEffect(() => {
     if (!user?.id) return;
 
-    // ważne: ubij ewentualny poprzedni socket (np. szybkie relogi)
     try {
       socketRef.current?.disconnect();
     } catch {}
@@ -77,7 +73,7 @@ export default function NotificationBell() {
     try {
       s = io(socketOrigin(), {
         withCredentials: true,
-        transports: ['websocket', 'polling'], // stabilniej w dev
+        transports: ['websocket', 'polling'],
       });
     } catch (e) {
       console.error('notif socket init failed', e);
@@ -101,10 +97,8 @@ export default function NotificationBell() {
     s.on('notif:read', onRead);
     s.on('notif:read-all', onReadAll);
 
-    // jak socket nie wstanie -> NIE ZABIJAJ APPKI
     s.on('connect_error', (err) => {
       console.warn('notif socket connect_error', err?.message || err);
-      // nie toastuj tego, bo user dostanie pierdolca; debug w konsoli wystarczy
     });
 
     return () => {
@@ -146,7 +140,6 @@ export default function NotificationBell() {
     }
   };
 
-  // === akcje: player invite
   const acceptPlayerInvite = async (n) => {
     try {
       const tid = n?.meta?.tournamentId;
@@ -181,7 +174,6 @@ export default function NotificationBell() {
     }
   };
 
-  // === akcje: guardian invite
   const acceptGuardianInvite = async (n) => {
     try {
       const gid = n?.meta?.guardianId;
@@ -234,7 +226,6 @@ export default function NotificationBell() {
     }
   };
 
-  // === akcje: referee invite
   const acceptRefereeInvite = async (n) => {
     try {
       const tid = n?.meta?.tournamentId;
@@ -291,8 +282,10 @@ export default function NotificationBell() {
           if (willOpen) await refresh();
         }}
         aria-label="Powiadomienia"
+        
       >
         <Bell size={24} />
+        <span className="tooltip">Powiadomienia</span>
         {unread > 0 && <span className="badge">{unread}</span>}
       </button>
 

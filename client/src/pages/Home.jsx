@@ -1,8 +1,30 @@
 // client/src/pages/Home.jsx
-import { Link } from 'react-router-dom';
-import '../styles/home.css';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/home.css";
+
+function useHC() {
+  const [hc, setHc] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    const check = () => setHc(root.classList.contains("hc"));
+    check();
+
+    // obserwuj zmiany klas na <html>
+    const obs = new MutationObserver(check);
+    obs.observe(root, { attributes: true, attributeFilter: ["class"] });
+
+    return () => obs.disconnect();
+  }, []);
+
+  return hc;
+}
 
 export default function Home() {
+  const hc = useHC();
+
   return (
     <div className="home">
       {/* Sekcja Hero */}
@@ -13,7 +35,7 @@ export default function Home() {
             Dołącz i organizuj<br />turnieje Blind Tennis
           </h1>
           <p className="hero-desc">
-            Znajdź nadchodzące turnieje i zgłoś swój udział, lub stwórz własne wydarzenie - wszystko w pełni dostępne dla osób niewidomych i słabowidzących.
+            Znajdź nadchodzące turnieje i zgłoś swój udział, lub utwórz własne wydarzenie - wszystko w pełni dostępne dla osób niewidomych i słabowidzących.
           </p>
           <div className="hero-buttons">
             <Link to="/tournaments" className="btn-primary">
@@ -24,8 +46,12 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
         <div className="hero-image">
-          <img src="/hero.png" alt="Hero" />
+          <img
+            src={hc ? "/hero_hc.png" : "/hero.png"}
+            alt="Blind Tennis – grafika główna"
+          />
         </div>
       </section>
 

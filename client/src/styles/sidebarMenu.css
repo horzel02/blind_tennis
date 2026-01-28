@@ -1,6 +1,5 @@
 /* sidebarMenu.css */
 
-/* Kontener bocznego menu (cały ekran) */
 .sidebar-menu-overlay {
   position: fixed;
   top: 0;
@@ -16,18 +15,16 @@
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Stan otwarty overlaya */
 .sidebar-menu-overlay.open {
   visibility: visible;
   opacity: 1;
 }
 
-/* Panel bocznego menu (zawartość) */
 .sidebar-menu-panel {
   width: 280px;
   max-width: 85%;
   height: 100%;
-  background-color: #fff; /* Tło menu */
+  background-color: #fff;
   color: var(--ct-darkest);
   box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
   transform: translateX(100%);
@@ -36,12 +33,10 @@
   flex-direction: column;
 }
 
-/* Stan otwarty panelu */
 .sidebar-menu-overlay.open .sidebar-menu-panel {
   transform: translateX(0);
 }
 
-/* Nagłówek menu bocznego */
 .sidebar-menu-header {
   display: flex;
   justify-content: space-between;
@@ -73,7 +68,6 @@
   opacity: 0.8;
 }
 
-/* Zawartość menu (linki i inne elementy) */
 .sidebar-menu-content {
   display: flex;
   flex-direction: column;
@@ -82,7 +76,6 @@
   overflow-y: auto;
 }
 
-/* Style dla sekcji z informacjami o użytkowniku */
 .sidebar-user-info {
   display: flex;
   flex-direction: column;
@@ -125,7 +118,6 @@
   color: var(--ct-muted);
 }
 
-/* Tytuły sekcji w sidebarze */
 .sidebar-section-title {
   font-size: 0.9rem;
   font-weight: 700;
@@ -160,7 +152,6 @@
   background-color: #f0f0f0;
 }
 
-/* Przycisk wylogowania  */
 .sidebar-menu-content button.logout-btn {
   margin-top: auto;
   border-top: 1px solid #eee;
@@ -171,7 +162,6 @@
   background-color: rgba(68, 35, 140, 0.05);
 }
 
-/* Media Query dla desktopu */
 @media (min-width: 768px) {
   .sidebar-menu-panel {
     width: 320px;

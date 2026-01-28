@@ -1,13 +1,7 @@
-/* =========================
-   TOURNAMENT BRACKET (clean)
-   - scroll pionowy: strona
-   - scroll poziomy: tylko drabinka
-   - high contrast: html.hc
-   ========================= */
 
 .br-section {
   padding: 16px;
-  overflow-x: hidden; /* nie rozpychaj body na boki */
+  overflow-x: hidden;
 }
 
 .br-header {
@@ -24,7 +18,7 @@
   flex-wrap: wrap;
 }
 
-/* pills */
+
 .pill {
   font-size: 12px;
   padding: 4px 8px;
@@ -46,14 +40,9 @@
   background: #f1f5f9;
 }
 
-/* =========================
-   SCROLL TYLKO W ŚRODKU (POZIOM)
-   - musisz mieć wrapper w JSX:
-     <div className="br-grid-wrap"><div className="br-grid">...</div></div>
-   ========================= */
 .br-grid-wrap {
-  overflow-x: auto;                 /* tylko X */
-  overflow-y: visible;              /* Y zostaw stronie */
+  overflow-x: auto;
+  overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
   padding-bottom: 10px;
@@ -65,8 +54,8 @@
   gap: 24px;
   align-items: start;
 
-  width: max-content;               /* może być szersze niż ekran */
-  min-width: 100%;                  /* ale przynajmniej na szerokość kontenera */
+  width: max-content;
+  min-width: 100%;
 }
 
 .br-col {
@@ -89,7 +78,6 @@
   gap: 16px;
 }
 
-/* match card */
 .br-match {
   background: #fff;
   border: 1px solid #e5e7eb;
@@ -186,9 +174,6 @@
   background: #eef2f7;
 }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
 @media (max-width: 1024px) {
   .br-section { padding: 10px; }
 
@@ -219,9 +204,6 @@
   }
 }
 
-/* =========================
-   HIGH CONTRAST (html.hc)
-   ========================= */
 html.hc .br-section {
   background: #000 !important;
   color: #fff !important;

@@ -1,189 +1,281 @@
 /* client/src/styles/matchScorePanel.css */
+
+.score-page-wrapper{
+  padding: 0 16px;
+}
+
 .score-panel-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
 .score-panel-title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.rules-banner{
+  margin: 0 0 1rem 0;
+  padding: 10px 12px;
+  background: #eef3ff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 10px;
+  color: #1f2a44;
+  font-size: 0.95rem;
 }
 
 .match-details {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  gap: 12px;
+}
+
+.player-name{
+  max-width: 45%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .vs-label {
-    font-weight: normal;
-    color: #666;
+  font-weight: normal;
+  color: #666;
+}
+
+.panel{
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 10px;
+}
+
+.panel label{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.panel select{
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.sets-scoreline{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 14px 0;
+  font-size: 1rem;
+}
+
+.resolved-tag{
+  margin-left: 6px;
+  font-weight: 700;
+  color: #2f6b2f;
 }
 
 .score-input-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
+/* ===== DESKTOP (domyślnie): tabela + inputy, BEZ +/- ===== */
 .sets-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 50px;
-    gap: 10px;
-    font-weight: bold;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #ccc;
-    text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 50px;
+  gap: 10px;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ccc;
+  text-align: center;
 }
 
 .set-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 50px;
-    gap: 10px;
-    align-items: center;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 50px;
+  gap: 10px;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.score-stepper{
+  display: block; /* na desktop “opakowanie”, ale bez stepper UI */
+}
+
+/* desktop: przyciski ukryte */
+.score-step-btn{
+  display: none;
 }
 
 .score-input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 700;
 }
 
+/* przyciski akcji */
 .add-set-btn, .submit-score-btn {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s;
+  padding: 0.85rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s;
 }
 
 .add-set-btn {
-    background-color: #5cb85c;
-    color: white;
+  background-color: #5cb85c;
+  color: white;
 }
-
-.add-set-btn:hover {
-    background-color: #4cae4c;
-}
+.add-set-btn:hover { background-color: #4cae4c; }
 
 .submit-score-btn {
-    background-color: #0275d8;
-    color: white;
+  background-color: #0275d8;
+  color: white;
 }
-
-.submit-score-btn:hover {
-    background-color: #025aa5;
-}
+.submit-score-btn:hover { background-color: #025aa5; }
 
 .remove-set-btn {
-    background: transparent;
-    border: none;
-    color: #d9534f;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
+  background: transparent;
+  border: none;
+  color: #d9534f;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
 }
-
-.remove-set-btn:hover {
-    color: #c9302c;
-}
+.remove-set-btn:hover { color: #c9302c; }
 
 .form-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 1.25rem;
 }
 
 .success-message {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border: 1px solid #d6e9c6;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 1rem;
-    text-align: center;
+  color: #3c763d;
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 .error-message {
-    color: #a94442;
-    background-color: #f2dede;
-    border: 1px solid #ebccd1;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 1rem;
-    text-align: center;
+  color: #a94442;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 1rem;
+  text-align: center;
 }
 
-/* ==========================================================
-   MATCH SCORE PANEL – MOBILE PACK (phone + tablet touch)
-   Wklej NA KONIEC matchScorePanel.css
-   ========================================================== */
+/* ===== MOBILE REDESIGN: karty + steppere ===== */
+@media (max-width: 768px) {
+  .score-page-wrapper{ padding: 0 10px; }
 
-/* 1) Domyślnie (desktop): steppery niewidoczne, układ jak był */
-.score-stepper{ display: contents; }
-.score-step-btn{ display: none; }
-
-/* 2) Touch devices (telefon/tablet, także landscape):
-      pokaż steppery i zrób je "appowe" */
-@media (hover: none) and (pointer: coarse) {
   .score-panel-container{
-    max-width: 680px;           /* tablet friendly */
     margin: 1rem auto;
-    padding: 1.25rem;
+    padding: 1rem;
+    border-radius: 14px;
   }
+
+  .score-panel-title{ margin-bottom: 0.75rem; }
 
   .match-details{
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    text-align: center;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 1.05rem;
   }
+  .player-name{ max-width: 100%; }
 
-  /* nagłówki tabelki */
-  .sets-header{
+  .panel label{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .panel select{ width: 52%; }
+
+  /* chowamy tabelkowy header – mobile jest kartowy */
+  .sets-header{ display: none; }
+
+  /* set jako karta */
+  .set-row{
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "set remove"
+      "p1  p1"
+      "p2  p2";
     gap: 12px;
+    text-align: left;
+    padding: 12px 0;
   }
 
-  /* Stepper jako jedna kapsuła (ładny kontroler) */
+  .set-row > span{
+    grid-area: set;
+    font-weight: 900;
+  }
+
+  .set-row .remove-set-btn{
+    grid-area: remove;
+    justify-self: end;
+    font-size: 2rem;
+  }
+
+@media (max-width: 768px) {
+  .set-row .score-player-block:nth-of-type(1){ grid-area: p1; }
+  .set-row .score-player-block:nth-of-type(2){ grid-area: p2; }
+}
+
+  /* MOBILE: prawdziwy stepper */
   .score-stepper{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 0;
-    padding: 0;
     background: #fff;
     border: 1px solid rgba(0,0,0,.14);
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    width: 100%;
   }
 
   .score-step-btn{
-    display: inline-flex;
+    display: inline-flex; /* mobile: pokaż +/- */
     align-items: center;
     justify-content: center;
-    min-width: 48px;
-    min-height: 46px;
+    width: 56px;
+    height: 48px;
     border: 0;
     border-radius: 0;
     background: #f6f7fb;
-    box-shadow: none;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 900;
     line-height: 1;
     cursor: pointer;
@@ -199,21 +291,20 @@
   }
 
   .score-input{
-    width: 84px;
-    min-width: 84px;
-    height: 46px;
+    width: 86px;
+    min-width: 86px;
+    height: 48px;
     padding: 0;
     border: 0;
     border-left: 1px solid rgba(0,0,0,.10);
     border-right: 1px solid rgba(0,0,0,.10);
     border-radius: 0;
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 900;
     background: #fff;
     text-align: center;
   }
 
-  /* wywal strzałki w number input */
   .score-input::-webkit-outer-spin-button,
   .score-input::-webkit-inner-spin-button{
     -webkit-appearance: none;
@@ -221,143 +312,96 @@
   }
   .score-input[type=number]{ -moz-appearance: textfield; }
 
-  /* wiersze setów: trochę luźniej */
-  .set-row{
-    gap: 12px;
-    padding: 0.75rem 0;
-  }
-
-  /* Akcje (Dodaj set / Zapisz wynik) – lepiej pod palec */
-  .form-actions{
-    gap: 12px;
-  }
-  .add-set-btn,
-  .submit-score-btn{
-    min-height: 46px;
-  }
-}
-
-/* 3) Phone portrait (klasyczne telefony) – trochę ciaśniej */
-@media (max-width: 767px) and (hover: none) and (pointer: coarse) {
-  .score-panel-container{
-    padding: 1.05rem;
-  }
-
-  .match-details{
-    font-size: 1.05rem;
-  }
-
-  /* na telefonie przyciski akcji w kolumnę */
   .form-actions{
     flex-direction: column;
     align-items: stretch;
-  }
-  .add-set-btn,
-  .submit-score-btn{
-    width: 100%;
-  }
-}
-
-/* 4) Ultra small portrait (np. iPhone SE / małe okno):
-      set jako blok 2-rzędowy + steppery jeden pod drugim */
-@media (max-width: 420px) and (hover: none) and (pointer: coarse) {
-  /* żeby nic nie uciekało */
-  .score-page-wrapper{ padding: 0 10px; }
-
-  .score-panel-container{
-    margin: 0.9rem auto;
-    padding: 0.95rem;
-    border-radius: 12px;
-  }
-
-  .score-panel-title{ margin-bottom: 1rem; }
-
-  /* nagłówek setów uprość */
-  .sets-header{
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
-  }
-  .sets-header span:nth-child(1){ display:none; }
-  .sets-header span:nth-child(4){ display:none; }
-
-  /* każdy set jako: label / remove, potem p1, potem p2 */
-  .set-row{
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "label remove"
-      "p1    p1"
-      "p2    p2";
-    text-align: left;
-    align-items: center;
     gap: 12px;
   }
+  .add-set-btn, .submit-score-btn{
+    width: 100%;
+    min-height: 48px;
+    border-radius: 12px;
+  }
+}
 
-  .set-row > span{
-    grid-area: label;
+/* ===== KONTRAST (działa i na desktop i na mobile) ===== */
+body.high-contrast .score-panel-container,
+body.contrast-on .score-panel-container{
+  background: #0b0b0b !important;
+  color: #ffd400 !important;
+}
+
+body.high-contrast .rules-banner,
+body.contrast-on .rules-banner,
+body.high-contrast .panel,
+body.contrast-on .panel{
+  background: transparent !important;
+  border-color: #ffd400 !important;
+  color: #ffd400 !important;
+}
+
+body.high-contrast .score-stepper,
+body.contrast-on .score-stepper{
+  background: transparent !important;
+  border-color: #ffd400 !important;
+  box-shadow: none !important;
+}
+
+body.high-contrast .score-input,
+body.contrast-on .score-input{
+  background: transparent !important;
+  color: #ffd400 !important;
+  border-left-color: #ffd400 !important;
+  border-right-color: #ffd400 !important;
+}
+
+body.high-contrast .score-step-btn,
+body.contrast-on .score-step-btn{
+  background: transparent !important;
+  color: #ffd400 !important;
+}
+
+body.high-contrast .score-step-btn:disabled,
+body.contrast-on .score-step-btn:disabled{
+  opacity: .5 !important;
+}
+
+
+@media (max-width: 768px) {
+  .score-player-block{
+    width: 100%;
+  }
+
+  .score-player-label{
+    font-size: 0.95rem;
     font-weight: 800;
+    color: #222;
+    margin: 0 0 6px 6px;
   }
 
-  .set-row .remove-set-btn{
-    grid-area: remove;
-    justify-self: end;
-    font-size: 1.9rem;
-    line-height: 1;
-  }
-
-  .set-row .score-stepper:nth-of-type(1){
-    grid-area: p1;
-    justify-content: space-between;
-    width: 100%;
-  }
-  .set-row .score-stepper:nth-of-type(2){
-    grid-area: p2;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  /* na ultra small trochę węższy input, ale nadal czytelny */
-  .score-input{
-    width: 78px;
-    min-width: 78px;
-  }
-}
-
-/* 5) Backup: małe szerokości bez wykrycia dotyku (dziwne emulatory)
-      – żeby przyciski nie znikały */
-@media (max-width: 900px){
-  .score-stepper{ display: flex; }
-  .score-step-btn{ display: inline-flex; }
-}
-
-/* ===== High contrast: usuń białe tła w stepperach ===== */
-/* ZOSTAW tylko ten selektor, który masz u siebie:
-   body.high-contrast  albo  body.contrast-on (albo html...) */
-
-@media (hover: none) and (pointer: coarse) {
-
-  body.high-contrast .score-stepper,
-  body.contrast-on .score-stepper{
-    background: transparent !important;
-    border-color: #ffd400 !important;          /* żółta ramka jak u Ciebie */
-    box-shadow: none !important;
-  }
-
-  body.high-contrast .score-input,
-  body.contrast-on .score-input{
-    background: transparent !important;
-    color: #ffd400 !important;                /* tekst żółty */
-    border-left-color: #ffd400 !important;
-    border-right-color: #ffd400 !important;
-  }
-
-  body.high-contrast .score-step-btn,
-  body.contrast-on .score-step-btn{
-    background: transparent !important;
+  body.high-contrast .score-player-label,
+  body.contrast-on .score-player-label{
     color: #ffd400 !important;
   }
+}
 
-  body.high-contrast .score-step-btn:disabled,
-  body.contrast-on .score-step-btn:disabled{
-    opacity: .5 !important;
+/* DOMYŚLNIE (PC): ukryj podpisy zawodników nad stepperami */
+.score-player-label{
+  display: none;
+}
+
+/* MOBILE: pokaż podpis */
+@media (max-width: 768px){
+  .score-player-label{
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #222;
+    margin: 0 0 6px 6px;
+  }
+
+  body.high-contrast .score-player-label,
+  body.contrast-on .score-player-label{
+    color: #ffd400 !important;
   }
 }

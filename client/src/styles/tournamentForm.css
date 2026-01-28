@@ -2,10 +2,10 @@
 
 :root {
   --bg-card: #ffffff;
-  --text-main: #1f2937;      /* Ciemny szary tekst */
-  --text-muted: #6b7280;     /* Jasny szary tekst */
-  --border-color: #d1d5db;   /* Szara ramka */
-  --primary-color: #2563eb;  /* Niebieski (lub Twój główny kolor) */
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #d1d5db;
+  --primary-color: #2563eb;
   --focus-ring: rgba(37, 99, 235, 0.2);
 }
 
@@ -52,7 +52,6 @@
   justify-content: center;
 }
 
-/* Standardowy wygląd karty (białe tło) */
 .wizard-card {
   background: var(--bg-card);
   border: 1px solid #e5e7eb;
@@ -83,7 +82,6 @@
   font-size: 0.95rem;
 }
 
-/* Inputy w normalnym stylu */
 .wizard-card input:not([type="checkbox"]),
 .wizard-card select,
 .wizard-card textarea {
@@ -105,35 +103,32 @@
   box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
-/* === CHECKBOX FIX (To jest to ustawienie, o które Ci chodziło) === */
 .checkbox-line {
   display: flex;
-  align-items: center; /* Kluczowe: centruje checkbox i tekst w pionie */
-  gap: 12px;           /* Odstęp między checkboxem a tekstem */
+  align-items: center;
+  gap: 12px;
   cursor: pointer;
   padding: 0.25rem 0;
   width: 100%;
   user-select: none;
 }
 
-/* Wygląd samego checkboxa - standardowy, ale powiększony i wyrównany */
 .checkbox-line input[type="checkbox"] {
   width: 18px;
   height: 18px;
   margin: 0;
   cursor: pointer;
-  accent-color: var(--primary-color); /* Używa koloru głównego aplikacji */
-  flex-shrink: 0; /* Zapobiega zgniataniu checkboxa przy długim tekście */
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
 }
 
 .checkbox-line span {
   font-weight: normal;
   color: var(--text-main);
   line-height: 1.4;
-  padding-top: 2px; /* Mikrokorekta dla idealnego wyrównania z tekstem */
+  padding-top: 2px;
 }
 
-/* Footer */
 .wizard-footer {
   display: flex;
   justify-content: center;
@@ -173,7 +168,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Media Query */
 @media (min-width: 601px) {
   .wizard-shell {
     padding: 2rem 0;

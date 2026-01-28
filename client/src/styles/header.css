@@ -1,4 +1,4 @@
-/* ---------------- Header ---------------- */
+
 .header {
   position: fixed;
   top: 0;
@@ -39,7 +39,6 @@
   white-space: nowrap;
 }
 
-/* ---------------- Nav & Buttons ---------------- */
 .header-nav {
   display: flex;
   gap: 1rem;
@@ -67,7 +66,6 @@
   background-color: rgba(95, 61, 217, 0.3);
 }
 
-/* Tooltip */
 .icon-button .tooltip {
   position: absolute;
   top: 100%;
@@ -101,8 +99,6 @@
   opacity: 1;
 }
 
-
-/* --- Stylowanie dla desktopów (od 768px w górę) --- */
 @media (min-width: 768px) {
   .header-inner {
     padding: 0 1.5rem;
@@ -112,7 +108,6 @@
   }
 }
 
-/* --- Dostosowania responsywne dla urządzeń mobilnych (do 767px włącznie) --- */
 @media (max-width: 767px) {
   .header {
     height: auto;
@@ -151,7 +146,6 @@
   }
 }
 
-/* --- Dostosowania dla bardzo małych ekranów (do 480px) --- */
 @media (max-width: 480px) {
   .header-inner {
     padding: 0.5rem 0.5rem;

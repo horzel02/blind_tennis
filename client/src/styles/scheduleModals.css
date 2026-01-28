@@ -1,6 +1,4 @@
-/* ===========================
-   WSPÓLNE – MODAL BASE
-   =========================== */
+
 .modal-backdrop,
 .schedule-modal__backdrop,
 .auto-modal__backdrop {
@@ -82,9 +80,7 @@
   background: #fafafa;
 }
 
-/* ===========================
-   FORM ELEMENTS
-   =========================== */
+/* form*/
 .form-row,
 .schedule-row,
 .auto-row {
@@ -132,7 +128,6 @@
   margin-bottom: 8px;
 }
 
-/* grid 2 kolumny wewnątrz modala – do daty/godziny/courtu */
 .inline-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -144,9 +139,6 @@
   gap: 10px;
 }
 
-/* ===========================
-   BUTTONY – bazuj na Twoich klasach
-   =========================== */
 .btn-primary {
   background: #2563eb;
   color: #fff;
@@ -169,12 +161,8 @@
 }
 .btn-secondary:hover { background: #eef1f5; }
 
-/* separator/przestrzeń w footerze */
 .modal-spacer { flex: 1; }
 
-/* ===========================
-   CHIPY / BADGE
-   =========================== */
 .badge,
 .schedule-badge {
   display: inline-flex;
@@ -188,9 +176,6 @@
   border: 1px solid #e7ecff;
 }
 
-/* ===========================
-   SPECYFIKA: SCHEDULE MODAL
-   =========================== */
 .schedule-modal__card {
   width: min(92vw, 560px);
 }
@@ -199,16 +184,12 @@
   grid-template-columns: 120px 1fr;
 }
 
-/* mini input na numer kortu */
 .court-inline {
   display: grid;
   grid-template-columns: 1fr 120px;
   gap: 10px;
 }
 
-/* ===========================
-   SPECYFIKA: AUTO SCHEDULE MODAL
-   =========================== */
 .auto-modal__card {
   width: min(94vw, 720px);
 }
@@ -234,9 +215,6 @@
   gap: 10px;
 }
 
-/* ===========================
-   RESPONSYWNOŚĆ
-   =========================== */
 @media (max-width: 680px) {
   .form-row,
   .schedule-row,
@@ -259,12 +237,6 @@
 }
 
 
-
-
-
-/* === ALIASY, żeby działały klasy użyte w komponentach === */
-
-/* Karta modala */
 .modal {
   background: #fff;
   color: #111;
@@ -277,7 +249,6 @@
   border: 1px solid #eee;
 }
 
-/* Tytuł u góry – styl jak header */
 .modal > h3 {
   margin: 0;
   font-size: 18px;
@@ -287,15 +258,14 @@
   background: #fafafa;
 }
 
-/* Sekcje z polami */
 .modal-section {
   padding: 16px;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 kolumny domyślnie */
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-/* Pojedyncze pole z etykietą */
+
 .field {
   display: grid;
   gap: 6px;
@@ -321,7 +291,6 @@
   box-shadow: 0 0 0 3px rgba(106,169,255,0.25);
 }
 
-/* Stopka (przyciski) */
 .modal-actions {
   display: flex;
   align-items: center;
@@ -332,7 +301,6 @@
   background: #fafafa;
 }
 
-/* Dodatkowy styl dla "Wyczyść" w ScheduleMatchModal */
 .btn-danger {
   background: #fee2e2;
   color: #991b1b;
@@ -344,7 +312,6 @@
 }
 .btn-danger:hover { background: #fecaca; }
 
-/* Responsywność – na wąskich ekranach sekcje w jedną kolumnę */
 @media (max-width: 680px) {
   .modal-section {
     grid-template-columns: 1fr;
