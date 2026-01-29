@@ -52,7 +52,7 @@ export default function TournamentFilters({
 
       <fieldset className="filter-group">
         <legend>Formuła</legend>
-        {['open', 'towarzyski', 'mistrzowski'].map(key => (
+        {['towarzyski', 'mistrzowski'].map(key => (
           <label key={key} className="filter-item">
             <input
               type="checkbox"
