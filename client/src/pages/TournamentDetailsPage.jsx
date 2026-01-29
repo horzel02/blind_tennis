@@ -184,6 +184,15 @@ export default function TournamentDetailsPage() {
   }, [tournament]);
 
   useEffect(() => {
+    fetchMyRegistration();
+  }, [fetchMyRegistration]);
+
+  useEffect(() => {
+    if (!tournament?.id) return;
+    fetchAcceptedCount();
+  }, [tournament?.id, fetchAcceptedCount]);
+
+  useEffect(() => {
     if (!user || !tournament?.id) return;
     roleService.getMyRoles(tournament.id)
       .then(setMyRoles)
