@@ -25,9 +25,7 @@ export default function TournamentCard({ tournament }) {
     ? 'Tylko na zaproszenie'
     : applicationsOpen
       ? 'Przyjmowanie zgłoszeń'
-      : hasLimit
-        ? 'Brak miejsc'
-        : 'Zamknięte zgłoszenia';
+      : 'Zamknięte zgłoszenia';
 
   return (
     <article className="card" tabIndex="0" role="region" aria-labelledby={`tour-${id}-title`}>
