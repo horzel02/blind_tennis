@@ -5,10 +5,9 @@ import * as matchService from '../services/matchService.js';
 
 export async function getAll(req, res) {
   try {
-    const tours = await tournamentService.findAllTournaments();
+    const tours = await tournamentService.findAllPublicTournaments();
     res.json(tours);
   } catch (err) {
-    S
     console.error('💥 [getAll] wyjątek:', err);
     res.status(500).json({ error: err.message });
   }
@@ -17,14 +16,33 @@ export async function getAll(req, res) {
 export async function getById(req, res) {
   try {
     const tour = await tournamentService.findTournamentById(req.params.id);
-    if (!tour) {
-      return res.status(404).json({ error: 'Nie znaleziono turnieju' });
+    if (!tour) return res.status(404).json({ error: 'Nie znaleziono turnieju' });
+
+    if (['hidden', 'deleted'].includes(tour.status)) {
+      const u = req.user;
+
+      // niezalogowany -> nie istnieje
+      if (!u) return res.status(404).json({ error: 'Nie znaleziono turnieju' });
+
+      const isPrivileged = (u.roles || []).some(r => ['admin', 'moderator'].includes(String(r).toLowerCase()));
+      const isCreator = tour.organizer_id === u.id;
+
+      const isInvitedOrg = await prisma.tournamentuserrole.findFirst({
+        where: { tournamentId: tour.id, userId: u.id, role: 'organizer' },
+        select: { id: true },
+      });
+
+      if (!isPrivileged && !isCreator && !isInvitedOrg) {
+        return res.status(404).json({ error: 'Nie znaleziono turnieju' });
+      }
     }
+
     res.json(tour);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 }
+
 
 export async function create(req, res) {
   try {

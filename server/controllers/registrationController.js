@@ -20,6 +20,9 @@ export async function createRegistration(req, res) {
       return res.status(400).json({ error: 'Zgłoszenia są zamknięte' });
     if (tour.registration_deadline && new Date() > new Date(tour.registration_deadline))
       return res.status(400).json({ error: 'Termin rejestracji minął' });
+    if (['hidden', 'deleted'].includes(tour.status)) {
+      return res.status(404).json({ error: 'Turniej niedostępny' });
+    }
 
     const existing = await registrationService.findByTournamentAndUser(tournamentId, userId);
     if (existing)

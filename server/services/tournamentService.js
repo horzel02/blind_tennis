@@ -338,7 +338,16 @@ export function updateTournament(
   });
 }
 
-
+export function findAllPublicTournaments() {
+  return prisma.tournament.findMany({
+    where: {
+      // schowaj ukryte i usunięte z publicznej listy
+      status: { notIn: ['hidden', 'deleted'] },
+    },
+    orderBy: { start_date: 'desc' },
+    include: { categories: true },
+  });
+}
 
 export function findAllTournaments() {
   return prisma.tournament.findMany({
